@@ -6,7 +6,7 @@ import Stack from 'react-bootstrap/Stack'
 function ProjectList(props) {
     return(
         <Stack gap={3}>
-            {props.projectslist.projects.map((project) => (
+            {props.projects.map((project) => (
                 <ProjectItemShort
                     key={project.id}
                     project={project}

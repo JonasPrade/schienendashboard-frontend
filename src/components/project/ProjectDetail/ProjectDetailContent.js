@@ -3,6 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faGaugeHigh, faStairs} from "@fortawesome/free-solid-svg-icons";
 
 function ProjectDetailContent(props) {
+    //TODO: ETCS symbol
 
     return (
         <div>
@@ -19,10 +20,21 @@ function ProjectDetailContent(props) {
                         <span title='Neubaustrecke' className='border border-white bg-info rounded-1 p-1'>NBS</span>
                     </Col>
                 }
+                {props.activeProjectVariant.abs &&
+                    <Col>
+                        <span title="Ausbaustecke" className='border border-white bg-info rounded-1 p-1'>ABS</span>
+                    </Col>
+                }
                 {props.activeProjectVariant.elektrification &&
                     <Col>
                         <span title='Elektrifizierung'>&#9190;</span>
                     </Col>
+                }
+                {props.activeProjectVariant.batterie &&
+                    <Col>
+                        <span title="Batterie">🔋</span>
+                    </Col>
+
                 }
                 {props.activeProjectVariant.second_track &&
                     <Col>
@@ -92,6 +104,20 @@ function ProjectDetailContent(props) {
                     <Col>
                         <span title='Beseitigung höhengleicher Bahnsteigzugang'>
                             <FontAwesomeIcon icon={faStairs}/>
+                        </span>
+                    </Col>
+                }
+                {props.activeProjectVariant.etcs &&
+                    <Col>
+                        <span title='ETCS'>
+                            ETCS L{props.activeProjectVariant.etcs_level}
+                        </span>
+                    </Col>
+                }
+                {props.activeProjectVariant.delta_co2 &&
+                    <Col>
+                        <span title='CO2'>
+                            {props.activeProjectVariant.delta_co2.toLocaleString('de')} t CO2
                         </span>
                     </Col>
                 }

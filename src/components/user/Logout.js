@@ -1,6 +1,7 @@
 import Button from "react-bootstrap/Button";
 import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
+import Container from "react-bootstrap/Container";
 
 
 function Logout(props) {
@@ -19,32 +20,27 @@ function Logout(props) {
         navigate('/', { replace: true });
     }
 
-    /*
-    useEffect(() =>{
-        props.changeUser(false)
-    }, [])
-     */
 
     localStorage.removeItem('user');
-    // we clear the user, so that at reload it will get set on false.
+    // clear the user, so that at reload it will get set on false.
     // if we set it here directly to false, we get problems with the hooks and the update of the states.
 
     return(
-        <div>
+        <Container>
             <div>
                 Du wurdest ausgeloggt
             </div>
-            <div>
+            <div className="mt-3">
                 <Button onClick={login}>
                     Login
                 </Button>
             </div>
-            <div>
+            <div className="mt-3">
                 <Button onClick={home}>
                     Home
                 </Button>
             </div>
-        </div>
+        </Container>
     )
 }
 

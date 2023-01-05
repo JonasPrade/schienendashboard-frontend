@@ -64,7 +64,6 @@ function Login(props) {
         );
     }
 
-    //TODO: Change Form in correct form (like in the video tutorials i have).
     return (
         <Container>
             <Form onSubmit={submitLoginHandler}>

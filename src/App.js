@@ -1,4 +1,4 @@
-import {Route, Routes, useNavigate} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 
 import Home from "./components/pages/Home";
@@ -9,13 +9,12 @@ import Profile from "./components/user/Profile";
 import AllProjects from "./components/pages/AllProjects";
 import ProjectDetail from "./components/pages/ProjectDetail";
 import useLocalStorage from "./services/LocalStorageHook.service";
-import checkValidToken from "./services/CheckToken.service";
 import Authenticate from "./components/user/Authenticate";
-
+import Lines from "./components/pages/Lines"
+import MasterArea from "./components/pages/MasterArea";
 
 function App() {
     //TODO Check if this method of user and user token can't be tricked by manipulate local storage to some input and the page gets loaded (and then redirect, but the data gets send)
-
     const [activeProject, changeActiveProject] = useLocalStorage('project', null);
 
     // user
@@ -43,6 +42,21 @@ function App() {
                         <ProjectDetail activeProject={activeProject} changeActiveProject={changeActiveProject} user={user} changeUser={changeUser}/>
                     </Authenticate>
                 }/>
+                <Route path="/lines/:id" element={
+                    <Authenticate user={user} changeUser={changeUser}>
+                        <Lines/>
+                    </Authenticate>
+                }/>
+                <Route path="/master_area">
+                   <Route path=":id" element={
+                       <Authenticate user={user} changeUser={changeUser}>
+                           <MasterArea/>
+                       </Authenticate>
+                   }/>
+                   <Route index element = {
+                      <MasterArea/>
+                   }/>
+                </Route>
             </Routes>
         </Layout>
     );

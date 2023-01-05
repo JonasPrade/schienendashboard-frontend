@@ -24,6 +24,12 @@ function MainNavigation(props) {
                         {props.loggedIn &&
                             <Nav.Link href="/logout">Logout</Nav.Link>
                         }
+                        {props.loggedIn &&
+                            <Nav.Link href="/lines/0">Deutschlandtakt Linien</Nav.Link>
+                        }
+                        {props.loggedIn &&
+                            <Nav.Link href="/master_area/">Untersuchungsgebiete</Nav.Link>
+                        }
                     </Nav>
                 </Navbar.Collapse>
             </Container>

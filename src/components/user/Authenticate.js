@@ -1,6 +1,7 @@
 import {Navigate} from "react-router-dom";
 import checkValidToken from "../../services/CheckToken.service";
 import {useEffect, useState} from "react";
+import Loading from "../layout/Loading";
 
 function Authenticate(props) {
     const [isLoading, changeStatusLoading] = useState(true)
@@ -20,30 +21,10 @@ function Authenticate(props) {
             })
     }, [])
 
-    /*
-    useEffect(() => {
-        if (tokeValid===true) {
-            return (
-                <div>
-                    <main>
-                        {props.children}
-                    </main>
-                </div>
-            )
-        } else {
-            return (
-                <Navigate to='/logout'/>
-            )
-        }
-
-    }, [tokeValid])
-
-     */
-
     if (isLoading){
         return(
             <section>
-                <p>Loading...</p>
+                <Loading/>
             </section>
         );
     } else {

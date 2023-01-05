@@ -5,6 +5,8 @@ import Button from 'react-bootstrap/Button'
 import Badge from 'react-bootstrap/Badge'
 import ProjectGroupBadge from "./ProjectGroupBadge";
 import ProjectDetailContent from "./ProjectDetail/ProjectDetailContent";
+import ProjectDetailEffects from "./ProjectDetail/ProjectDetailEffects";
+import {Col, Row} from "react-bootstrap";
 
 function ProjectItemShort(props) {
     let navigate = useNavigate();
@@ -33,12 +35,12 @@ function ProjectItemShort(props) {
     // TODO: make the badges responsive to open the Project Groups with all there Projects.
     return(
         <Card>
-            <Card.Header>
+            <Card.Header className="bg-light">
                 {project.project_contents.length>0 &&
                     <ProjectDetailContent activeProjectVariant={firstProjectContent}/>
                 }
             </Card.Header>
-            <Card.Body>
+            <Card.Body className="bg-background">
                 <Card.Title>
                     {project.name}
                 </Card.Title>
@@ -50,14 +52,20 @@ function ProjectItemShort(props) {
                 </Button>
             </Card.Body>
             {firstProjectContent &&
-                <Card.Footer>
-                    Teil von:
-                    {firstProjectContent.projectcontent_groups.map((project_group) => (
-                        <ProjectGroupBadge
-                            key = {project_group.id}
-                            name = {project_group.name}
-                        />)
-                    )}
+                <Card.Footer className="bg-light">
+                    <Row>
+                        <Col>
+                            {firstProjectContent.projectcontent_groups.map((project_group) => (
+                                <ProjectGroupBadge
+                                    key = {project_group.id}
+                                    name = {project_group.name}
+                                />)
+                            )}
+                        </Col>
+                        <Col>
+                            <ProjectDetailEffects activeProjectVariant={firstProjectContent}/>
+                        </Col>
+                    </Row>
                 </Card.Footer>
             }
         </Card>

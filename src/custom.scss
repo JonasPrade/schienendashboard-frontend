@@ -1,0 +1,32 @@
+// Import Bootstrap and its default variables
+//@import '~bootstrap/scss/bootstrap.scss';
+
+// Variables
+$primary: #1D3449;
+$blue: $primary;
+$info: #769FB6;
+$light: #F4F1DE;
+$danger: #E9806E;
+$success: #204E4A;
+$secondary: #4A6A80;
+$background: #FAF9F0;
+
+// change the theme
+$theme-colors: (
+  "primary": $primary,
+  "info": $info,
+  "light": $light,
+  "danger": $danger,
+  "success": $success,
+  "secondary": $secondary,
+  "background": $background,
+);
+
+
+@import '~bootstrap/scss/bootstrap.scss';
+
+
+#root {
+  height: 100vh;
+  background-color: $background;
+}
