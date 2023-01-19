@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import getTraingroupById from "../../services/lines/line_service";
 import {useState} from "react";
 import {useEffect} from "react";
+import Loading from "../layout/Loading";
 
 function Lines(props) {
     let params = useParams();
@@ -33,7 +34,7 @@ function Lines(props) {
     if (loading){
         return(
             <section>
-                <p>Loading...</p>
+                <Loading/>
             </section>
         )
     } else if (traingroup == null || Object.keys(traingroup).length === 0){

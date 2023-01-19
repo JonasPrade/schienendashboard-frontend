@@ -8,6 +8,8 @@ import {Col} from "react-bootstrap";
 import {Popup} from "react-leaflet/Popup";
 import {divIcon} from "leaflet/dist/leaflet-src.esm";
 import {renderToStaticMarkup} from "react-dom/server";
+import LineTractionCost from "./LineTractionCost";
+import LineTractionCostDiagramm from "./LineTractionCostDiagramm";
 
 function LineDetail(props) {
     //TODO: Add stops to map
@@ -84,8 +86,27 @@ function LineDetail(props) {
                             </ul>
                         </div>
                     </div>
+
                 </Col>
             </Row>
+
+            <div>
+                <h3 className="mt-3">Kosten Traktionsarten</h3>
+                <div>
+                    <Row className="mt-2">
+                        <LineTractionCostDiagramm train_costs={props.activeLine.train_costs}/>
+                        <p>Hinweis: Infrastrukturkosten sind hier nicht enthalten!</p>
+                    </Row>
+                    <Row className="mt-2">
+                        {props.activeLine.train_costs.map(train_cost =>
+                            <Col xl="4">
+                                <LineTractionCost key={train_cost.id} train_cost={train_cost}/>
+                            </Col>
+                        )}
+                    </Row>
+
+                </div>
+            </div>
 
             <div>
                 <h3 className="mt-3">Informationen zu Traingroup</h3>
