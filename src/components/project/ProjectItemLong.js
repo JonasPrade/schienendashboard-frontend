@@ -33,7 +33,7 @@ function ProjectItemLong(props) {
                     <Row className="rounded-3 bg-light">
                         <Col xl="8" className="p-2">
                             <div style={{'height': '400px', 'width': '100%'}} className='p-2'>
-                                <ProjectMap geodata={firstProjectContent.projectcontent_railway_lines} centroid={firstProjectContent.coords_centroid}/>
+                                <ProjectMap geodata={firstProjectContent.railway_lines} centroid={firstProjectContent.coords_centroid}/>
                             </div>
                         </Col>
                         <Col xl="4" className="p-2">

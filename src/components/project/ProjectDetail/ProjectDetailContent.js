@@ -11,7 +11,7 @@ function ProjectDetailContent(props) {
                 {props.activeProjectVariant.length &&
                     <Col>
                         <nobr>
-                            <span title='Länge'>&#10231; {props.activeProjectVariant.length}km</span>
+                            <span title='Länge'>&#10231; {Math.round(props.activeProjectVariant.length).toLocaleString('de')}km</span>
                         </nobr>
                     </Col>
                 }
@@ -30,9 +30,27 @@ function ProjectDetailContent(props) {
                         <span title='Elektrifizierung'>&#9190;</span>
                     </Col>
                 }
-                {props.activeProjectVariant.batterie &&
+                {props.activeProjectVariant.battery &&
                     <Col>
                         <span title="Batterie">🔋</span>
+                    </Col>
+
+                }
+                {props.activeProjectVariant.filling_stations_efuel &&
+                    <Col>
+                        <span title="E-Fuel">E-Fuel Tankstellen {props.activeProjectVariant.filling_stations_count}</span>
+                    </Col>
+
+                }
+                {props.activeProjectVariant.filling_stations_h2 &&
+                    <Col>
+                        <span title="Wasserstoff">H2 Tankstellen {props.activeProjectVariant.filling_stations_count}</span>
+                    </Col>
+
+                }
+                {props.activeProjectVariant.filling_stations_diesel &&
+                    <Col>
+                        <span title="Diesel">Diesel Tankstellen {props.activeProjectVariant.filling_stations_count}</span>
                     </Col>
 
                 }

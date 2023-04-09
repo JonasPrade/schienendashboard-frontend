@@ -25,8 +25,8 @@ function ProjectGeoJson(props) {
                 return object.id===projectcontentid
             })
             let firstProjectContent = props.project.project_contents[firstProjectContentArrayId]
-            if (firstProjectContent.projectcontent_railway_lines) {
-                return firstProjectContent.projectcontent_railway_lines
+            if (firstProjectContent.railway_lines) {
+                return firstProjectContent.railway_lines
             } else {
                 return false
             }
@@ -38,13 +38,13 @@ function ProjectGeoJson(props) {
 
     if (firstProjectContentGeo) {
         return(
-            firstProjectContentGeo.map((geo) => (
+            firstProjectContentGeo.map(line =>
                 <GeoJSON
-                    key={geo.id}
-                    data={geo.coordinates}
+                    key={line.id}
+                    data={line.coordinates}
                     onEachFeature={oneachfeature}
                 />
-            ))
+            )
         )
     } else {
         <span></span>

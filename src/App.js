@@ -12,6 +12,7 @@ import useLocalStorage from "./services/LocalStorageHook.service";
 import Authenticate from "./components/user/Authenticate";
 import Lines from "./components/pages/Lines"
 import MasterArea from "./components/pages/MasterArea";
+import MasterScenario from "./components/pages/Scenario";
 
 function App() {
     //TODO Check if this method of user and user token can't be tricked by manipulate local storage to some input and the page gets loaded (and then redirect, but the data gets send)
@@ -43,19 +44,23 @@ function App() {
                     </Authenticate>
                 }/>
                 <Route path="/lines/:id" element={
-                    <Authenticate user={user} changeUser={changeUser}>
-                        <Lines/>
-                    </Authenticate>
+                    <Lines/>
                 }/>
                 <Route path="/master_area">
                    <Route path=":id" element={
-                       <Authenticate user={user} changeUser={changeUser}>
-                           <MasterArea/>
-                       </Authenticate>
+                        <MasterArea/>
                    }/>
                    <Route index element = {
                       <MasterArea/>
                    }/>
+                </Route>
+                <Route path="/master_scenario">
+                    <Route path=":id" element={
+                        <MasterScenario/>
+                    }/>
+                    <Route index element ={
+                        <MasterScenario/>
+                    }/>
                 </Route>
             </Routes>
         </Layout>

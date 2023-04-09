@@ -44,7 +44,7 @@ function LineDetail(props) {
                 <Col xl="8">
                     <div>
                         <h3>Linienverlauf</h3>
-                        <div style={{'height': '400px', 'width': '100%'}}>
+                        <div style={{'height': '500px', 'width': '100%'}}>
                             <MapContainer center={[stations[0].coordinates[0][1],stations[0].coordinates[0][0]]} zoom={11} style={{"height": "100%"}}>
                                 <TileLayer
                                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

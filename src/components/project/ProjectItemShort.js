@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button'
-import Badge from 'react-bootstrap/Badge'
 import ProjectGroupBadge from "./ProjectGroupBadge";
 import ProjectDetailContent from "./ProjectDetail/ProjectDetailContent";
 import ProjectDetailEffects from "./ProjectDetail/ProjectDetailEffects";
