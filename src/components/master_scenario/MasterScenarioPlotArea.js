@@ -10,14 +10,6 @@ function MasterScenarioPlotArea(props) {
         props.setMasterArea(props.master_area);
     }
 
-    // function highlightFeature(e){
-    //     var layer = e.target
-    //     layer.setStyle({
-    //         color: 'red'
-    //     })
-    // }
-
-
     function oneachfeature(feature, layer){
         layer.on({
             click: openArea,

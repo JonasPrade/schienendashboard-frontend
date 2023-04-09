@@ -6,6 +6,7 @@ import {useEffect} from "react";
 import getMainMasterAreaForScenario from "../../services/master_areas/main_master_area_service";
 import Loading from "../layout/Loading";
 import MasterScenarioMaps from "./MasterScenarioMap";
+import MasterScenarioParameterArea from "./MasterScenarioParameterArea";
 
 
 Chart.register(
@@ -17,9 +18,6 @@ Chart.register(
 function MasterScenarioDetails(props) {
     const [masterAreas, setMasterAreas] = useState(null)
     const [areaLoading, setAreaLoading] = useState(true)
-    const [parameters, setParameters] = useState(null)
-
-    var data_area_count = {}
 
     useEffect(() => {
         setAreaLoading(true);
@@ -29,10 +27,6 @@ function MasterScenarioDetails(props) {
             setAreaLoading(false);
         })
     }, [])
-
-    // useEffect(() => {
-    //     setParameters(master_area_calc_parameters(masterAreas))
-    // }, [masterAreas])
 
     const options_pie = {
         plugins: {
@@ -49,20 +43,17 @@ function MasterScenarioDetails(props) {
                 <Alert key={'danger'} variant={'danger'}>Laden des Szenarios dauert ungefähr eine Minute</Alert>
             }
 
-
             <div>
                 <MasterScenarioMaps areaLoading={areaLoading} masterAreas={masterAreas} />
-
-
 
                 <Row>
                     <h3 className='mt-1'>Übersicht Untersuchungsgebiete</h3>
                 </Row>
 
-                {/*{!areaLoading ?*/}
-                {/*    <MasterScenarioParameterArea parameters={parameters}/>:*/}
-                {/*    <Loading/>*/}
-                {/*}*/}
+                {!areaLoading ?
+                    <MasterScenarioParameterArea scenario={props.master_scenario}/>:
+                    <Loading/>
+                }
                 {/*{!areaLoading ?*/}
                 {/*    <MasterScenarioParametersTraingroup master_scenario_id={props.master_scenario.id}*/}
                 {/*                                        parameters={parameters}/> :*/}
@@ -73,7 +64,7 @@ function MasterScenarioDetails(props) {
                 {/*    <Loading/>*/}
                 {/*}*/}
 
-                <Row className="mt-3">
+                <Row className="mt-5">
                     <div>
                         <h3>Untersuchungsgebiete</h3>
                         {!areaLoading ?
