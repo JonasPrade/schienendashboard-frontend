@@ -1,15 +1,14 @@
 import {MapContainer} from "react-leaflet/MapContainer";
 import {Marker} from "react-leaflet";
 import {TileLayer} from "react-leaflet/TileLayer";
-import ProjectGeoJson from "../project/ProjectGeoJson";
 import {GeoJSON} from "react-leaflet/GeoJSON";
 import {Row} from "react-bootstrap";
 import {Col} from "react-bootstrap";
-import {Popup} from "react-leaflet/Popup";
 import {divIcon} from "leaflet/dist/leaflet-src.esm";
 import {renderToStaticMarkup} from "react-dom/server";
 import LineTractionCost from "./LineTractionCost";
 import LineTractionCostDiagramm from "./LineTractionCostDiagramm";
+import TimetableTrainGroupMap from "./TimetableTrainGroupMap";
 
 function LineDetail(props) {
     //TODO: Add stops to map
@@ -42,35 +41,7 @@ function LineDetail(props) {
             </h2>
             <Row>
                 <Col xl="8">
-                    <div>
-                        <h3>Linienverlauf</h3>
-                        <div style={{'height': '500px', 'width': '100%'}}>
-                            <MapContainer center={[stations[0].coordinates[0][1],stations[0].coordinates[0][0]]} zoom={11} style={{"height": "100%"}}>
-                                <TileLayer
-                                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                    url={process.env.REACT_APP_TILE_LAYER_URL}
-                                />
-                                {props.activeLine.railway_lines.map(route =>
-                                    <GeoJSON
-                                        key={route.id}
-                                        data={route.railway_line.coordinates}
-                                    />
-                                )}
-                                {stations.map(station => {
-                                        var iconMarkup = renderToStaticMarkup(<div>{station.name} {station.db_kuerzel}</div>);
-                                        var customMarkerIcon = divIcon({
-                                            html: iconMarkup
-                                        });
-                                        return <Marker
-                                            position={[station.coordinates[0][1], station.coordinates[0][0]]}
-                                            icon={customMarkerIcon}
-                                        />
-                                    }
-                                )}
-
-                            </MapContainer>
-                        </div>
-                    </div>
+                    <TimetableTrainGroupMap stations={stations} activeLine={props.activeLine}/>
                 </Col>
                 <Col xl="4">
                     <div>
