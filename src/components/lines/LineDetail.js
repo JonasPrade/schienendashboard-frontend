@@ -1,7 +1,3 @@
-import {MapContainer} from "react-leaflet/MapContainer";
-import {Marker} from "react-leaflet";
-import {TileLayer} from "react-leaflet/TileLayer";
-import {GeoJSON} from "react-leaflet/GeoJSON";
 import {Row} from "react-bootstrap";
 import {Col} from "react-bootstrap";
 import {divIcon} from "leaflet/dist/leaflet-src.esm";
@@ -9,6 +5,7 @@ import {renderToStaticMarkup} from "react-dom/server";
 import LineTractionCost from "./LineTractionCost";
 import LineTractionCostDiagramm from "./LineTractionCostDiagramm";
 import TimetableTrainGroupMap from "./TimetableTrainGroupMap";
+import TimetableTrainGroupTimetable from "./TimetableTrainGroupTimetable";
 
 function LineDetail(props) {
     //TODO: Add stops to map
@@ -44,20 +41,7 @@ function LineDetail(props) {
                     <TimetableTrainGroupMap stations={stations} activeLine={props.activeLine}/>
                 </Col>
                 <Col xl="4">
-                    <div>
-                        <h4>Fahrplan</h4>
-                        <div>
-                            <ul>
-                                {stations.map(station =>
-                                    station.ocp_type === 'stop' &&
-                                    <li key={station.name}>
-                                        {station.name} {station.db_kuerzel}
-                                    </li>
-                                )}
-                            </ul>
-                        </div>
-                    </div>
-
+                    <TimetableTrainGroupTimetable stations={stations} activeLine={props.activeLine}/>
                 </Col>
             </Row>
 
