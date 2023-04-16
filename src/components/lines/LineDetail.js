@@ -5,6 +5,7 @@ import {renderToStaticMarkup} from "react-dom/server";
 import TimetableTrainGroupMap from "./TimetableTrainGroupMap";
 import TimetableTrainGroupTimetable from "./TimetableTrainGroupTimetable";
 import TimetableTrainGroupCost from "./TimetableTrainGroupCost";
+import TimetableTrainGroupFormationAndVehicles from "./TimetableTrainGroupFormationAndVehicles";
 
 function LineDetail(props) {
     //TODO: Add stops to map
@@ -37,36 +38,12 @@ function LineDetail(props) {
             </h2>
             <Row>
                 <Col xl="8">
-                    <TimetableTrainGroupMap stations={stations} activeLine={props.activeLine}/>
-                    <div>
-                        <h3 className="mt-3">Informationen zu Traingroup</h3>
-                        <div>
-                            <h4>Formation</h4>
-                            <div>
-                                <ul>
-                                    <li>Formation {props.activeLine.trains[0].train_part.formation.id}</li>
-                                    <li>Geschwindigkeit {props.activeLine.trains[0].train_part.formation.speed}</li>
-                                    <li>Länge {props.activeLine.trains[0].train_part.formation.length}</li>
-                                </ul>
-                            </div>
-                            <h5>Wagenmaterial</h5>
-                            <div>
-                                {props.activeLine.trains[0].train_part.formation.vehicles.map(vehicle =>
-                                    <div key={vehicle.id}>
-
-                                        <h6>{vehicle.name} {vehicle.id}</h6>
-                                        <ul key={vehicle.id}>
-                                            <li>Gewicht {vehicle.weight}</li>
-                                            <li>Länge {vehicle.length}</li>
-                                            <li>Geschwindigkeit {vehicle.speed}</li>
-                                            <li>Antrieb? {vehicle.engine}</li>
-                                            <li>Waggon? {vehicle.wagon}</li>
-                                        </ul>
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                    </div>
+                    <Row>
+                        <TimetableTrainGroupMap stations={stations} activeLine={props.activeLine}/>
+                    </Row>
+                    <Row className="mt-3">
+                        <TimetableTrainGroupFormationAndVehicles activeLine={props.activeLine}/>
+                    </Row>
                 </Col>
                 <Col xl="4">
                     <TimetableTrainGroupTimetable stations={stations} activeLine={props.activeLine}/>
