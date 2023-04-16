@@ -31,6 +31,7 @@ function TimetableTrainGroupMap(props) {
                             return <Marker
                                 position={[station.coordinates[0][1], station.coordinates[0][0]]}
                                 icon={customMarkerIcon}
+                                key={station.id}
                             />
                         }
                     )}

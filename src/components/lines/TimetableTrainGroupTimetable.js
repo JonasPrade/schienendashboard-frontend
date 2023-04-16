@@ -76,11 +76,14 @@ function TimetableTrainGroupTimetable(props) {
             <div className="mt-3">
                 {!loading ?
                 <Table>
+                    <thead>
                     <tr>
                         <td>Station</td>
                         <td>Ankunft</td>
                         <td>Abfahrt</td>
                     </tr>
+                    </thead>
+                    <tbody>
                     {tt_ocps.map((stop)=>
                     <tr key={stop.tt_ocp.id}>
                         <td>{stop.tt_ocp.ocp.name}</td>
@@ -88,6 +91,7 @@ function TimetableTrainGroupTimetable(props) {
                         <td>{stop.departure}</td>
                     </tr>
                     )}
+                    </tbody>
                 </Table>
                 :
                 <Loading/>
