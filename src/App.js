@@ -10,7 +10,7 @@ import AllProjects from "./components/pages/AllProjects";
 import ProjectDetail from "./components/pages/ProjectDetail";
 import useLocalStorage from "./services/LocalStorageHook.service";
 import Authenticate from "./components/user/Authenticate";
-import Lines from "./components/pages/Lines"
+import TimetableTrainGroup from "./components/pages/TimetableTrainGroup"
 import MasterArea from "./components/pages/MasterArea";
 import MasterScenario from "./components/pages/Scenario";
 
@@ -44,7 +44,7 @@ function App() {
                     </Authenticate>
                 }/>
                 <Route path="/lines/:id" element={
-                    <Lines/>
+                    <TimetableTrainGroup/>
                 }/>
                 <Route path="/master_area">
                    <Route path=":id" element={

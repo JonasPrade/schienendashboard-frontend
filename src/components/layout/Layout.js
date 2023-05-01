@@ -7,7 +7,7 @@ function Layout(props) {
     return (
         <div className="bg-background w-100">
             <MainNavigation loggedIn={props.loggedIn}/>
-            <main>
+            <main className="pb-5">
                 {props.children}
             </main>
             <Footer/>

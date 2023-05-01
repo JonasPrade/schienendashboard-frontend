@@ -128,7 +128,7 @@ function MasterAreaDetail(props) {
                         <ul>
                             {props.master_area.traingroups.map(traingroup =>
                                 <li key={traingroup.id}>
-                                    <Link to={"../../lines/"+traingroup.id}>{traingroup.id}</Link>
+                                    <Link to={"../../timetabletraingroup/"+traingroup.id}>{traingroup.id}</Link>
                                 </li>
                             )}
                         </ul>

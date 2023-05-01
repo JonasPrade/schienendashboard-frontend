@@ -7,7 +7,7 @@ import TimetableTrainGroupTimetable from "./TimetableTrainGroupTimetable";
 import TimetableTrainGroupCost from "./TimetableTrainGroupCost";
 import TimetableTrainGroupFormationAndVehicles from "./TimetableTrainGroupFormationAndVehicles";
 
-function LineDetail(props) {
+function TimetableTrainGroupDetail(props) {
     //TODO: Add stops to map
     //TODO: List all informations about traingroup
 
@@ -34,8 +34,10 @@ function LineDetail(props) {
     return(
         <div>
             <h2 className="mt-3">
-                Traingroup {props.activeLine.code}
+                Traingroup {props.activeLine.trains[0].description}
             </h2>
+            <p>Code: {props.activeLine.code}</p>
+            <p>Id: {props.activeLine.id}</p>
             <Row>
                 <Col xl="8">
                     <Row>
@@ -55,4 +57,4 @@ function LineDetail(props) {
 
 }
 
-export default LineDetail
+export default TimetableTrainGroupDetail

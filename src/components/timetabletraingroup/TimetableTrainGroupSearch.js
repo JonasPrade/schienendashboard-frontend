@@ -4,7 +4,7 @@ import getTraingroupById from "../../services/lines/line_service";
 import { useNavigate } from "react-router-dom";
 import {useParams} from "react-router-dom";
 
-function LineSearch(props) {
+function TimetableTrainGroupSearch(props) {
     const lineidInputRef = useRef()
     var message = ""
     let navigate = useNavigate();
@@ -31,4 +31,4 @@ function LineSearch(props) {
     )
 }
 
-export default LineSearch
+export default TimetableTrainGroupSearch

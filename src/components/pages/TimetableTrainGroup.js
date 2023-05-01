@@ -1,13 +1,13 @@
 import Container from "react-bootstrap/Container";
-import LineSearch from "../lines/LineSearch";
-import LineDetail from "../lines/LineDetail";
+import TimetableTrainGroupSearch from "../timetabletraingroup/TimetableTrainGroupSearch";
+import TimetableTrainGroupDetail from "../timetabletraingroup/TimetableTrainGroupDetail";
 import { useParams } from 'react-router-dom'
 import getTraingroupById from "../../services/lines/line_service";
 import {useState} from "react";
 import {useEffect} from "react";
 import Loading from "../layout/Loading";
 
-function Lines(props) {
+function TimetableTrainGroup(props) {
     let params = useParams();
     var message = ""
     const [loading, setLoading] = useState(false)
@@ -39,20 +39,20 @@ function Lines(props) {
         )
     } else if (traingroup == null || Object.keys(traingroup).length === 0){
         return(
-            <LineSearch
+            <TimetableTrainGroupSearch
             />
         )
     }
 
     return(
         <Container>
-            <LineSearch
+            <TimetableTrainGroupSearch
             />
-            <LineDetail
+            <TimetableTrainGroupDetail
                 activeLine={traingroup}
             />
         </Container>
     )
 }
 
-export default Lines
+export default TimetableTrainGroup
