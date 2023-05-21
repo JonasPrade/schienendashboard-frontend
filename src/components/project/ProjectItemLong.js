@@ -1,64 +1,80 @@
-import {useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import ProjectContent from "./ProjectContent";
 import ProjectMap from "./ProjectMap/ProjectMap";
 import ProjectContentDropdownSelector from "./ProjectContentDropdownSelector";
-import {Col, Container, Row} from "react-bootstrap";
+import {Alert, Col, Container, Row} from "react-bootstrap";
+import ProjectListMap from "./ProjectMap/ProjectListMap";
+import ProjectItemShort from "./ProjectItemShort";
+import ProjectList from "./ProjectList";
 
 function ProjectItemLong(props) {
-    const projectData = props.projectData.projectData
+    const project = props.project
+    const [subProject, setSubProject] = useState(null)
 
-    const firstProjectContent = getFirstProjectContent(projectData.first_project_content)
-    function getFirstProjectContent(projectcontentid) {
-        if (projectData.project_contents) {
-            let firstProjectContentArrayId =  projectData.project_contents.findIndex(object => {
-                return object.id===projectcontentid
-            })
-            return projectData.project_contents[firstProjectContentArrayId]
-        }
-        else {
-            return false
+    let map = null
+
+    if (project.sub_project_contents.length > 0) {
+        map = <Row>
+            <Col xl="8" className="p-2 bg-light">
+                <h3>Teilprojekte Karte</h3>
+                <ProjectListMap projectscontent={project.sub_project_contents} activeProject={subProject} changeActiveProject={setSubProject}/>
+            </Col>
+            <Col xl="4">
+                {subProject ?
+                    <ProjectItemShort key={subProject.id}
+                                      project={subProject}
+                                      activeProject={subProject}
+                                      changeActiveProject={setSubProject}
+                    />:
+                    <p>Projekt in Karte auswählen</p>
+                }
+            </Col>
+        </Row>
+
+    } else {
+        if (project.coords_centroid === null) {
+            map = <Row>
+                <Col>
+                    <Alert key={'info'} variant={'info'}>Keine Geo-Daten verfügbar</Alert>
+                </Col>
+            </Row>
+        } else {
+            map = <Row>
+                <Col className="p-2 bg-light">
+                    <div style={{'height': '400px', 'width': '100%'}} className='p-2'>
+                        <ProjectMap geodata={project.coords} centroid={project.coords_centroid}/>
+                    </div>
+                </Col>
+            </Row>
         }
     }
-    const [activeProjectVariant, changeActiveProjectVariant] = useState(firstProjectContent)
 
     return(
-        <div>
-            <h2>{projectData.name}</h2>
-            {projectData.description &&
-                <p>{projectData.description}</p>
-            }
-
+        <div className="mt-5">
             <Container>
-                {firstProjectContent.coords_centroid &&
-                    <Row className="rounded-3 bg-light">
-                        <Col xl="8" className="p-2">
-                            <div style={{'height': '400px', 'width': '100%'}} className='p-2'>
-                                <ProjectMap geodata={firstProjectContent.railway_lines} centroid={firstProjectContent.coords_centroid}/>
-                            </div>
-                        </Col>
-                        <Col xl="4" className="p-2">
-                            <div>
-                                <span>Dummy - Untergeordnete Projekte + etc</span>
-                            </div>
-                        </Col>
+                <h2>{project.name}</h2>
+                <div>
+                    {map}
+                </div>
+                {project.sub_project_contents.length > 0 &&
+                    <Row className = "mt-3">
+                        <h3>Teilprojekte Liste</h3>
+                        <ProjectList projectscontent={project.sub_project_contents} activeProject={subProject} changeActiveProject={setSubProject}/>
                     </Row>
                 }
+                {project.superior_project_content &&
+                    <Row className = "mt-3 bg-background">
+                        <h3>Übergeordnetes Projekte</h3>
+                        <ProjectItemShort
+                            project={project.superior_project_content}
+                        />
+                    </Row>
+                }
+
+                <Row className ="mt-3">
+                    <ProjectContent activeProjectVariant={project}/>
+                </Row>
             </Container>
-
-            {projectData.project_contents.length>1 &&
-                <Container className='mt-3 p-2 bg-light rounded-3'>
-                    <h3>Projektauswahl</h3>
-                    <ProjectContentDropdownSelector activeProjectVariant={activeProjectVariant} changeActiveProjectVariant={changeActiveProjectVariant} projectData={projectData}/>
-                </Container>
-            }
-
-            {projectData.project_contents.length>0 &&
-                <div className='mt-3 mb-3 p-2 bg-light rounded-3'>
-                    <h3>{activeProjectVariant.name}</h3>
-                    <ProjectContent activeProjectVariant={activeProjectVariant}/>
-                </div>
-            }
-
         </div>
     );
 }

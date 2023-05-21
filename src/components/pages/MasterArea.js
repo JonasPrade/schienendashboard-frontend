@@ -4,6 +4,7 @@ import {useParams} from "react-router-dom";
 import getMasterAreaById from "../../services/master_areas/master_areas_service";
 import MasterAreaDetail from "../master_area/MasterAreaDetail";
 import MasterAreaSearch from "../master_area/MasterAreaSearch";
+import Loading from "../layout/Loading";
 
 function MasterArea(props) {
     let params = useParams()
@@ -32,9 +33,7 @@ function MasterArea(props) {
 
     if (loading){
         return(
-            <section>
-                <p>Loading...</p>
-            </section>
+            <Loading/>
         )
     } else if (masterarea == null || Object.keys(masterarea).length === 0){
         return(

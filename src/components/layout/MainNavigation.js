@@ -17,10 +17,14 @@ function MainNavigation(props) {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="/projects">Alle Projekte</Nav.Link>
-                        <Nav.Link href="/lines/0">Deutschlandtakt Linien</Nav.Link>
-                        <Nav.Link href="/master_scenario/">Szenarien</Nav.Link>
-                        <Nav.Link href="/master_area/">Untersuchungsgebiete</Nav.Link>
+                        <Nav.Link href="/projects">Projektdashboard</Nav.Link>
+                        {props.loggedIn &&
+                            <Nav.Link href="/lines/0">Deutschlandtakt Linien</Nav.Link>
+                        }
+                        <Nav.Link href="/master_scenario/">Masterarbeit Szenarien</Nav.Link>
+                        {props.loggedIn &&
+                            <Nav.Link href="/master_area/">Untersuchungsgebiete</Nav.Link>
+                        }
                         {!props.loggedIn &&
                             <Nav.Link href="/login">Login</Nav.Link>
                         }

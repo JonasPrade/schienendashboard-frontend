@@ -7,16 +7,14 @@ import Logout from "./components/user/Logout";
 import Layout from "./components/layout/Layout";
 import Profile from "./components/user/Profile";
 import AllProjects from "./components/pages/AllProjects";
-import ProjectDetail from "./components/pages/ProjectDetail";
 import useLocalStorage from "./services/LocalStorageHook.service";
 import Authenticate from "./components/user/Authenticate";
 import TimetableTrainGroup from "./components/pages/TimetableTrainGroup"
 import MasterArea from "./components/pages/MasterArea";
 import MasterScenario from "./components/pages/Scenario";
+import Project from "./components/pages/Project";
 
 function App() {
-    //TODO Check if this method of user and user token can't be tricked by manipulate local storage to some input and the page gets loaded (and then redirect, but the data gets send)
-    const [activeProject, changeActiveProject] = useLocalStorage('project', null);
 
     // user
     const [user, changeUser] = useLocalStorage("user", false);
@@ -35,14 +33,22 @@ function App() {
 
                 <Route path="/projects" element={
                     <Authenticate user={user} changeUser={changeUser}>
-                        <AllProjects activeProject={activeProject} changeActiveProject={changeActiveProject} user={user} changeUser={changeUser}/>
+                        <AllProjects user={user} changeUser={changeUser}/>
                     </Authenticate>
                 }/>
-                <Route path="/project" element={
-                    <Authenticate user={user} changeUser={changeUser}>
-                        <ProjectDetail activeProject={activeProject} changeActiveProject={changeActiveProject} user={user} changeUser={changeUser}/>
-                    </Authenticate>
-                }/>
+                <Route path="/project">
+                    <Route path=":id" element={
+                        <Authenticate user={user} changeUser={changeUser}>
+                            <Project user={user} changeUser={changeUser}/>
+                        </Authenticate>
+                    }/>
+                    <Route index element ={
+                        <Authenticate user={user} changeUser={changeUser}>
+                            <Project user={user} changeUser={changeUser}/>
+                        </Authenticate>
+                    }/>
+                </Route>
+
                 <Route path="/lines/:id" element={
                     <TimetableTrainGroup/>
                 }/>

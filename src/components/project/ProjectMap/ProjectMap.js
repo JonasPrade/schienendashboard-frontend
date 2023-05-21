@@ -12,9 +12,7 @@ function ProjectMap(props) {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url={process.env.REACT_APP_TILE_LAYER_URL}
             />
-            {props.geodata.map((geo) => (
-                <GeoJSON key={geo.id} data={geo.coordinates} />
-            ))}
+            <GeoJSON data={props.geodata} />
         </MapContainer>
     )
 }

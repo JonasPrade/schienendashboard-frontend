@@ -6,11 +6,10 @@ import Stack from 'react-bootstrap/Stack'
 function ProjectList(props) {
     return(
         <Stack gap={3}>
-            {props.projects.map((project) => (
+            {props.projectscontent.map((project) => (
                 <ProjectItemShort
                     key={project.id}
                     project={project}
-
                     activeProject={props.activeProject}
                     changeActiveProject={props.changeActiveProject}
                 />

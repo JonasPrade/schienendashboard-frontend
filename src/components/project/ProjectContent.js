@@ -1,4 +1,4 @@
-import {Button, ButtonGroup, Col, Row} from "react-bootstrap";
+import {Alert, Button, ButtonGroup, Col, Row} from "react-bootstrap";
 import {useState} from "react";
 import ProjectDetailBewertung from "./ProjectDetail/ProjectDetailBewertung";
 import ProjectDetailContent from "./ProjectDetail/ProjectDetailContent";
@@ -6,6 +6,7 @@ import ProjectGroupBadge from "./ProjectGroupBadge";
 import ProjectDetailStatus from "./ProjectDetail/ProjectDetailStatus";
 import ProjectMap from "./ProjectMap/ProjectMap";
 import ProjectDetailEffects from "./ProjectDetail/ProjectDetailEffects";
+import {ErrorBoundary} from "react-error-boundary";
 
 function ProjectContent(props) {
     const [selectedCategorie, changeSelectedCategorie] = useState(1)
@@ -18,8 +19,8 @@ function ProjectContent(props) {
     return(
         <div>
             <div id="projectContent">
-                <h4 className="mb-2 mt-2">Projektinhalt</h4>
-                <Row>
+                <h3>Projektinhalt</h3>
+                <Row className="pt-3 pb-3 bg-light">
                     <Col xl="6">
                         <ProjectDetailContent activeProjectVariant={props.activeProjectVariant}/>
                     </Col>
@@ -53,10 +54,10 @@ function ProjectContent(props) {
 
             </div>
 
-            <div id="projectStatus">
-                <h4 className="mb-2 mt-2">Projektstatus</h4>
-                <ProjectDetailStatus activeProjectVariant={props.activeProjectVariant}/>
-            </div>
+            {/*<div id="projectStatus">*/}
+            {/*    <h4 className="mb-2 mt-2">Projektstatus</h4>*/}
+            {/*    <ProjectDetailStatus activeProjectVariant={props.activeProjectVariant}/>*/}
+            {/*</div>*/}
 
 
             <h4 className="mb-2 mt-2">Kennzahlen</h4>
@@ -72,7 +73,11 @@ function ProjectContent(props) {
             </div>
 
             {selectedCategorie===1 && props.activeProjectVariant.nkv &&
-                <ProjectDetailBewertung activeProjectVariant={props.activeProjectVariant}/>
+                <ErrorBoundary fallback={
+                    <Alert key={'info'} variant={'info'}>Es gab ein Fehler bei der Darstellung der Bewertungsdaten</Alert>
+                }>
+                    <ProjectDetailBewertung activeProjectVariant={props.activeProjectVariant}/>
+                </ErrorBoundary>
             }
             {selectedCategorie===2 &&
                 <h4>Umwelt</h4>
