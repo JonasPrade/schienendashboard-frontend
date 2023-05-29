@@ -3,15 +3,28 @@ import {useNavigate} from "react-router-dom";
 
 
 function ProjectGeoJson(props) {
-    const projectname = props.projectcontent.name;
+    var style= { color: '#D741A7', weight:4};
 
     function openProject(){
         props.changeActiveProject(props.projectcontent);
     }
 
+    function highlightFeature(e) {
+        e.target.setStyle({
+            color: '#1E491D'
+        })
+    };
+
+    function resetHighlight(e) {
+        e.target.setStyle(style)
+    }
+
+
     function oneachfeature(feature, layer){
         layer.on({
-            click: openProject
+            click: openProject,
+            mouseover: highlightFeature,
+            mouseout: resetHighlight
         })
     }
 
@@ -20,6 +33,7 @@ function ProjectGeoJson(props) {
             key={props.projectcontent.id}
             data={props.projectcontent.coords}
             onEachFeature={oneachfeature}
+            style={style}
         />
     )
 }
