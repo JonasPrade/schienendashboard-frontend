@@ -14,7 +14,7 @@ $green_color: #1E491D;
 $purple_color: #481D49;
 $diagram_color: #6ED7E9;
 $diagram_color_2: #E09A1A;
-$diagram_color_3: "#D741A7";
+$diagram_color_3: #D741A7;
 
 // change the theme
 $theme-colors: (
@@ -25,6 +25,7 @@ $theme-colors: (
   "success": $success,
   "secondary": $secondary,
   "background": $background,
+  "website": $diagram_color
 );
 
 
@@ -34,4 +35,8 @@ $theme-colors: (
 #root {
   height: 100vh;
   background-color: $background;
+}
+
+.progress{
+  height: 30px;
 }

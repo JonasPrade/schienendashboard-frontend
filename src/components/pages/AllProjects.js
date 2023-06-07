@@ -12,7 +12,6 @@ import ProjectGroupDropdown from "../project/ProjectGroupDropdown";
 import useLocalStorage from "../../services/LocalStorageHook.service";
 import getFirstProjectGroup from "../../services/projects/getfirstprojectgroup";
 import getProjectsContentByGroup from "../../services/project_content/getprojectcontentbygroup";
-import getProjectContentShortById from "../../services/project_content/getprojectcontentbygroup";
 
 
 function AllProjects(props) {

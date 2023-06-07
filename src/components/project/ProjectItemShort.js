@@ -6,6 +6,7 @@ import ProjectGroupBadge from "./ProjectGroupBadge";
 import ProjectDetailContent from "./ProjectDetail/ProjectDetailContent";
 import ProjectDetailEffects from "./ProjectDetail/ProjectDetailEffects";
 import {Col, Row} from "react-bootstrap";
+import ProjectProgress from "./ProjectDetail/ProjectProgress";
 
 function ProjectItemShort(props) {
     let navigate = useNavigate();
@@ -30,12 +31,14 @@ function ProjectItemShort(props) {
                 <Card.Text>
                     {project.description}
                 </Card.Text>
+            </Card.Body>
+            <Card.Body className="bg-background">
+                <ProjectProgress project={project}/>
                 <Link to={'/project/'+project.id}>
                     <Button variant='outline-info' onClick={openProjectlong}>
                         Mehr Informationen
                     </Button>
                 </Link>
-
             </Card.Body>
             <Card.Footer className="bg-light">
                 <Row>

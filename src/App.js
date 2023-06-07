@@ -32,20 +32,14 @@ function App() {
                 <Route path="/profile" element={<Profile/>}/>
 
                 <Route path="/projects" element={
-                    <Authenticate user={user} changeUser={changeUser}>
-                        <AllProjects user={user} changeUser={changeUser}/>
-                    </Authenticate>
+                    <AllProjects user={user} changeUser={changeUser}/>
                 }/>
                 <Route path="/project">
                     <Route path=":id" element={
-                        <Authenticate user={user} changeUser={changeUser}>
-                            <Project user={user} changeUser={changeUser}/>
-                        </Authenticate>
+                        <Project user={user} changeUser={changeUser}/>
                     }/>
                     <Route index element ={
-                        <Authenticate user={user} changeUser={changeUser}>
-                            <Project user={user} changeUser={changeUser}/>
-                        </Authenticate>
+                        <Project user={user} changeUser={changeUser}/>
                     }/>
                 </Route>
 

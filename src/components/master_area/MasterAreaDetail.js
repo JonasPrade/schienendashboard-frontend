@@ -10,6 +10,7 @@ import MasterAreaProjectShort from "./MasterAreaProjectShort";
 import MasterScenarioPlotArea from "../master_scenario/MasterScenarioPlotArea";
 import {useState} from "react";
 import MasterAreaShort from "./MasterAreaShort";
+import MasterAreaMap from "./MasterAreaMap";
 
 Chart.register(
     CategoryScale,
@@ -66,12 +67,10 @@ function MasterAreaDetail(props) {
                                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                 url={process.env.REACT_APP_TILE_LAYER_URL}
                             />
-                            {props.master_area.railway_lines.map(line =>
-                                <GeoJSON
-                                    key={line.id}
-                                    data={line.coordinates}
-                                />
-                            )}
+                            <MasterAreaMap
+                                key={props.master_area.id}
+                                masterArea={props.master_area}
+                            />
                         </MapContainer>
                     </div>
                 </Col>
@@ -79,6 +78,7 @@ function MasterAreaDetail(props) {
                     <Col xl="4">
                         <h4>Vergleich Antriebe</h4>
                         <p>präferierte Traktion: {props.master_area.cost_overview.minimal_cost}</p>
+                        <p>die Traktionen für die jeweiligen Strecken im Fall opimierte Elektrifizierung weiter unten</p>
                         <h5>Übersicht Kosten</h5>
                         <Table>
                             <tbody>
@@ -153,9 +153,9 @@ function MasterAreaDetail(props) {
                 <Col xl="8">
                     <h4>Optimierte Elektrifizierung</h4>
                     <div style={{'height':'500px', 'width': '100%'}}>
-                        <MapContainer center={[51.3127114, 9.4797461]} zoom={7} style={{"height": "100%"}}>
+                        <MapContainer center={start_centroid} zoom={7} style={{"height": "100%"}}>
                             <TileLayer
-                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                attribution='Kartenhintergrund: <a href="http://www.bkg.bund.de">Bundesamt für Kartographie und Geodäsie</a>'
                                 url={process.env.REACT_APP_TILE_LAYER_URL}
                             />
                             {props.master_area.sub_master_areas.map(area =>

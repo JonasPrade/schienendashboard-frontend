@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
 import ProjectContent from "./ProjectContent";
 import ProjectMap from "./ProjectMap/ProjectMap";
-import ProjectContentDropdownSelector from "./ProjectContentDropdownSelector";
 import {Alert, Col, Container, Row} from "react-bootstrap";
 import ProjectListMap from "./ProjectMap/ProjectListMap";
 import ProjectItemShort from "./ProjectItemShort";
@@ -32,7 +31,7 @@ function ProjectItemLong(props) {
         </Row>
 
     } else {
-        if (project.coords_centroid === null) {
+        if (project.coords_centroid === null && project.railway_stations.length === 0) {
             map = <Row>
                 <Col>
                     <Alert key={'info'} variant={'info'}>Keine Geo-Daten verfügbar</Alert>
@@ -42,7 +41,7 @@ function ProjectItemLong(props) {
             map = <Row>
                 <Col className="p-2 bg-light">
                     <div style={{'height': '400px', 'width': '100%'}} className='p-2'>
-                        <ProjectMap geodata={project.coords} centroid={project.coords_centroid}/>
+                        <ProjectMap project={project}/>
                     </div>
                 </Col>
             </Row>

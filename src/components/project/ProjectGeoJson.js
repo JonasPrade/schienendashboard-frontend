@@ -1,9 +1,8 @@
 import {GeoJSON} from "react-leaflet/GeoJSON";
-import {useNavigate} from "react-router-dom";
 
 
 function ProjectGeoJson(props) {
-    var style= { color: '#D741A7', weight:4};
+    var style= { color: '#17C3B2', weight:4};
 
     function openProject(){
         props.changeActiveProject(props.projectcontent);
@@ -11,7 +10,7 @@ function ProjectGeoJson(props) {
 
     function highlightFeature(e) {
         e.target.setStyle({
-            color: '#1E491D'
+            color: '#E09A1A'  // diagram_color_2
         })
     };
 
