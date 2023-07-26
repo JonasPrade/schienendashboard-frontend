@@ -30,6 +30,12 @@ function AllTextWebsites(props) {
         )
     }
 
+    if (textes.length === 0) {
+        return(
+            <div></div>
+        )
+    }
+
     return(
         <div>
             <h5>Websites</h5>

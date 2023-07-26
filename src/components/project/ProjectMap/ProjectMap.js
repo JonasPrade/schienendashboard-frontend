@@ -11,7 +11,9 @@ function ProjectMap(props) {
     var centroid = [51.3127114, 9.4797461]
 
     if (props.project.hasOwnProperty('coords_centroid')) {
-        centroid = [props.project.coords_centroid.coordinates[1],props.project.coords_centroid.coordinates[0]]
+        if (props.project.coords_centroid != null) {
+            centroid = [props.project.coords_centroid.coordinates[1],props.project.coords_centroid.coordinates[0]]
+        }
     }
 
     if (props.project.railway_stations.length > 0) {

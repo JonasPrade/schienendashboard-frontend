@@ -19,14 +19,24 @@ function ProjectProgress(props) {
                 </div>
             )
         } else if (project.bau === 1) {
-            return(
+            return (
                 <div>
-                    <ProgressBar variant = "info" now={50} label={`LP 5-9`}/>
-                    <p className='mt-1'>Leistungsphase 3-4 aktiv (Ausführungsplanung, Vergabe, Bau) </p>
+                    <ProgressBar variant="info" now={75} label={`LP 5-9`}/>
+                    <p className='mt-1'>Leistungsphase 5-9 aktiv (Ausführungsplanung, Vergabe, Bau) </p>
                 </div>
             )
+        } else if (project.ibn_erfolgt === 1) {
+            return (
+                <div>
+                    <ProgressBar variant="success" now={100} label={`Fertiggestellt`}/>
+                    <p className='mt-1'>Inbetriebnahme ist erfolgt</p>
+                </div>
+            )
+
         } else {
-            <p>Kein Projektstatus verfügbar</p>
+            return(
+                    <p>Kein Projektstatus verfügbar</p>
+                )
         }
     }
 

@@ -67,6 +67,7 @@ function ProjectContent(props) {
                 <ProjectProgress project={props.activeProjectVariant}/>
             </div>
 
+            {props.activeProjectVariant.nkv &&
             <div className="mb-2 mt-2">
                 <h4 >Kennzahlen</h4>
 
@@ -93,8 +94,9 @@ function ProjectContent(props) {
                 {selectedCategorie===3 &&
                     <h4>Finanzen</h4>
                 }
-            </div>
+            </div>}
 
+            {props.activeProjectVariant.texts.length >0 &&
             <div className="mb-2 mt-2">
                 <h4>Hinweise</h4>
                 <div className="mb-2">
@@ -104,6 +106,7 @@ function ProjectContent(props) {
                     <AllTextWebsites project={props.activeProjectVariant}/>
                 </div>
             </div>
+            }
         </div>
 
 

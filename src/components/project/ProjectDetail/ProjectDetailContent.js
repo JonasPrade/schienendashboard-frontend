@@ -139,6 +139,13 @@ function ProjectDetailContent(props) {
                         </span>
                     </Col>
                 }
+                {props.activeProjectVariant.sgv740m &&
+                    <Col>
+                        <span title='740m'>
+                            740m
+                        </span>
+                    </Col>
+                }
             </Row>
         </div>
     )
