@@ -1,7 +1,7 @@
 import {Dropdown} from "react-bootstrap";
 import React, {useEffect, useState} from "react";
 import Loading from "../layout/Loading";
-import getProjectGroups from "../../services/projects/getprojectgroups";
+import getProjectGroups from "../../services/projectgroup/getprojectgroups";
 
 function ProjectGroupDropdown(props) {
     const [projectGroups, setProjectGroups] = useState(null)

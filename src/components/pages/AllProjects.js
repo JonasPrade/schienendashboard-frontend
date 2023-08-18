@@ -10,7 +10,7 @@ import Loading from "../layout/Loading";
 import {Col, Row} from "react-bootstrap";
 import ProjectGroupDropdown from "../project/ProjectGroupDropdown";
 import useLocalStorage from "../../services/LocalStorageHook.service";
-import getFirstProjectGroup from "../../services/projects/getfirstprojectgroup";
+import getFirstProjectGroup from "../../services/projectgroup/getfirstprojectgroup";
 import getProjectsContentByGroup from "../../services/project_content/getprojectcontentbygroup";
 
 
