@@ -16,7 +16,6 @@ import getProjectsContentByGroup from "../../services/project_content/getproject
 
 function AllProjects(props) {
     const [activeProjectGroup, setActiveProjectGroup] = useLocalStorage('projectgroup', null);
-
     const [isloadingProjectContent, setIsloadingProjectContent] = useState(true);
     const [projectContents, setProjectContents] = useState([]);
     const [activeProjectContent, setActiveProjectContent] = useState(false)

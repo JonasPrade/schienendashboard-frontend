@@ -13,6 +13,7 @@ import TimetableTrainGroup from "./components/pages/TimetableTrainGroup"
 import MasterArea from "./components/pages/MasterArea";
 import MasterScenario from "./components/pages/Scenario";
 import Project from "./components/pages/Project";
+import ProjectGroup from "./components/pages/ProjectGroup";
 
 function App() {
 
@@ -32,7 +33,7 @@ function App() {
                 <Route path="/profile" element={<Profile/>}/>
 
                 <Route path="/projects" element={
-                    <AllProjects user={user} changeUser={changeUser}/>
+                    <ProjectGroup/>
                 }/>
                 <Route path="/project">
                     <Route path=":id" element={
