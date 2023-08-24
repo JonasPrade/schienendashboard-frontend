@@ -26,7 +26,7 @@ function ProjectMap(props) {
                 attribution='Kartenhintergrund: <a href="http://www.bkg.bund.de">Bundesamt für Kartographie und Geodäsie</a>'
                 url={process.env.REACT_APP_TILE_LAYER_URL}
             />
-            {props.project.coords.coordinates.length > 0 && <ProjectListLine projectcontent={props.project}/>}
+            {props.project.coords.features.length > 0 && <ProjectListLine projectcontent={props.project}/>}
             <ProjectMapStation projectcontent={props.project} showpopup={false}/>
             <GeoJSON data={props.geodata} style={style} />
         </MapContainer>

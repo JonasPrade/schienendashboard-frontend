@@ -3,7 +3,6 @@ import {TileLayer} from "react-leaflet/TileLayer";
 
 import 'leaflet/dist/leaflet.css';
 import ProjectGeoJson from "../ProjectGeoJson";
-import ProjectMapStation from "./ProjectMapStation";
 
 function ProjectListMap(props) {
 
@@ -18,19 +17,20 @@ function ProjectListMap(props) {
                     <ProjectGeoJson
                         key={projectcontent.id}
                         projectcontent={projectcontent}
-                        activeProject={props.activeProject}
-                        changeActiveProject={props.changeActiveProject}
+                        selectedProject={props.activeProject}
+                        setSelectedProject={props.changeActiveProject}
+                        color={'#17C3B2'}
                     />
                 ))}
-                {props.projectscontent.map(projectcontent => (
-                    <ProjectMapStation
-                        key={projectcontent.id}
-                        projectcontent={projectcontent}
-                        activeProject={props.activeProject}
-                        changeActiveProject={props.changeActiveProject}
-                        showpopup={true}
-                    />
-                ))}
+                {/*{props.projectscontent.map(projectcontent => (*/}
+                {/*    <ProjectMapStation*/}
+                {/*        key={projectcontent.id}*/}
+                {/*        projectcontent={projectcontent}*/}
+                {/*        activeProject={props.activeProject}*/}
+                {/*        changeActiveProject={props.changeActiveProject}*/}
+                {/*        showpopup={true}*/}
+                {/*    />*/}
+                {/*))}*/}
             </MapContainer>
         </div>
 

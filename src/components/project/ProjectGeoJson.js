@@ -15,11 +15,11 @@ function ProjectGeoJson(props) {
             if (l.feature.properties.projectcontent_id === targetProjectContentId) {
                 if (l instanceof L.CircleMarker) {
                     l.setStyle({
-                        fillColor: '#E09A1A'
+                        fillColor: props.selectedProject && props.selectedProject.id === props.projectcontent.id ? '#FF0000' : '#E09A1A'
                     });
                 } else {
                     l.setStyle({
-                        color: '#E09A1A'
+                        color: props.selectedProject && props.selectedProject.id === props.projectcontent.id ? '#FF0000' : '#E09A1A'
                     });
                 }
             }
@@ -68,8 +68,8 @@ function ProjectGeoJson(props) {
     }
 
     function openPopupHandler(e) {
-        highlightAllRelatedFeatures(e.target);
         props.setSelectedProject(props.projectcontent);
+        highlightAllRelatedFeatures(e.target);
     }
 
     return (
