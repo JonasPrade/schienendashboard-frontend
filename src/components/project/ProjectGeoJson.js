@@ -76,7 +76,7 @@ function ProjectGeoJson(props) {
         <GeoJSON
             ref={(ref) => { geoJsonLayer.current = ref; }} // Aktualisieren Sie .current direkt
             key={props.projectcontent.id}
-            data={props.projectcontent.coords}
+            data={props.projectcontent.geojson_representation}
             onEachFeature={onEachFeature}
             style={style}
             pointToLayer={pointToLayer}

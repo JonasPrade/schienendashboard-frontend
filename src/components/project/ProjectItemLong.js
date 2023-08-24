@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import ProjectContent from "./ProjectContent";
 import ProjectMap from "./ProjectMap/ProjectMap";
 import {Alert, Col, Container, Row} from "react-bootstrap";
@@ -31,7 +31,7 @@ function ProjectItemLong(props) {
         </Row>
 
     } else {
-        if (project.coords_centroid === null && project.railway_stations.length === 0) {
+        if (project.centroid === null && project.railway_stations.length === 0) {
             map = <Row>
                 <Col>
                     <Alert key={'info'} variant={'info'}>Keine Geo-Daten verfügbar</Alert>
