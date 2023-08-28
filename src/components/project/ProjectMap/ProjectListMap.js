@@ -5,10 +5,17 @@ import 'leaflet/dist/leaflet.css';
 import ProjectGeoJson from "../ProjectGeoJson";
 
 function ProjectListMap(props) {
+    var centroid = [51.3127114, 9.4797461]
+
+    if (props.projectscontent[0].hasOwnProperty('centroid')) {
+        if (props.projectscontent[0].centroid != null) {
+            centroid = [props.projectscontent[0].centroid.coordinates[1],props.projectscontent[0].centroid.coordinates[0]]
+        }
+    }
 
     return(
         <div style={{'height': '800px', 'width': '100%'}}>
-            <MapContainer center={[51.3127114, 9.4797461]} zoom={7} scrollWheelZoom={true} style={{"height": "100%"}}>
+            <MapContainer center={centroid} zoom={7} scrollWheelZoom={true} style={{"height": "100%"}}>
                 <TileLayer
                     attribution='Kartenhintergrund: <a href="http://www.bkg.bund.de">Bundesamt für Kartographie und Geodäsie</a>'
                     url={process.env.REACT_APP_TILE_LAYER_URL}

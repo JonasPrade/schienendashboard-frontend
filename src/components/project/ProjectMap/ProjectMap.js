@@ -27,7 +27,7 @@ function ProjectMap(props) {
     }
 
     return(
-        <MapContainer center={centroid} zoom={10} scrollWheelZoom={true} style={{"height": "100%"}}>
+        <MapContainer center={centroid} zoom={8} scrollWheelZoom={true} style={{"height": "100%"}}>
             <TileLayer
                 attribution='Kartenhintergrund: <a href="http://www.bkg.bund.de">Bundesamt für Kartographie und Geodäsie</a>'
                 url={process.env.REACT_APP_TILE_LAYER_URL}

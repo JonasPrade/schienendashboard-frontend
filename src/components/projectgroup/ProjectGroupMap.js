@@ -13,7 +13,7 @@ function ProjectGroupMap(props) {
 
     return(
         <div style={{'height': '800px', 'width': '100%'}}>
-            <MapContainer center={[51.3127114, 9.4797461]} zoom={7} scrollWheelZoom={true} style={{"height": "100%"}}>
+            <MapContainer center={[51.3127114, 9.4797461]} zoom={6} scrollWheelZoom={true} style={{"height": "100%"}}>
                 <TileLayer
                     attribution='Kartenhintergrund: <a href="http://www.bkg.bund.de">Bundesamt für Kartographie und Geodäsie</a>'
                     url={process.env.REACT_APP_TILE_LAYER_URL}
