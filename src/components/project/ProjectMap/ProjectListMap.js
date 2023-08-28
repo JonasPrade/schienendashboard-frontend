@@ -22,15 +22,6 @@ function ProjectListMap(props) {
                         color={'#17C3B2'}
                     />
                 ))}
-                {/*{props.projectscontent.map(projectcontent => (*/}
-                {/*    <ProjectMapStation*/}
-                {/*        key={projectcontent.id}*/}
-                {/*        projectcontent={projectcontent}*/}
-                {/*        activeProject={props.activeProject}*/}
-                {/*        changeActiveProject={props.changeActiveProject}*/}
-                {/*        showpopup={true}*/}
-                {/*    />*/}
-                {/*))}*/}
             </MapContainer>
         </div>
 
