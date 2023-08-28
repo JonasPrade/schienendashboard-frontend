@@ -10,7 +10,7 @@ function ProjectItemLong(props) {
     const project = props.project
     const [subProject, setSubProject] = useState(null)
 
-    let map = null
+    let map
 
     if (project.sub_project_contents.length > 0) {
         map = <Row>

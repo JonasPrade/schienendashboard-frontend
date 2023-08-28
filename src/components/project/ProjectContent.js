@@ -24,7 +24,7 @@ function ProjectContent(props) {
         <div>
             <div id="projectContent">
                 <h3>Projektinhalt</h3>
-                <Row className="pt-3 pb-3 bg-light">
+                <Row className="pt-3 pb-3 bg-light rounded">
                     <Col xl="6">
                         <ProjectDetailContent activeProjectVariant={props.activeProjectVariant}/>
                     </Col>
