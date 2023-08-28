@@ -40,21 +40,30 @@ function ProjectItemShort(props) {
                     </Button>
                 </Link>
             </Card.Body>
-            {/*<Card.Footer className="bg-light">*/}
-            {/*    <Row>*/}
-            {/*        <Col>*/}
-            {/*            {project.projectcontent_groups.map((project_group) => (*/}
-            {/*                <ProjectGroupBadge*/}
-            {/*                    key = {project_group.id}*/}
-            {/*                    name = {project_group.name}*/}
-            {/*                />)*/}
-            {/*            )}*/}
-            {/*        </Col>*/}
-            {/*        <Col>*/}
-            {/*            <ProjectDetailEffects activeProjectVariant={project}/>*/}
-            {/*        </Col>*/}
-            {/*    </Row>*/}
-            {/*</Card.Footer>*/}
+            {project.projectcontent_groups ?
+                <Card.Footer className="bg-light">
+                    <Row>
+                        <Col>
+                            {project.projectcontent_groups.map((project_group) => (
+                                <ProjectGroupBadge
+                                    key = {project_group.id}
+                                    name = {project_group.name}
+                                />)
+                            )}
+                        </Col>
+                        <Col>
+                            <ProjectDetailEffects activeProjectVariant={project}/>
+                        </Col>
+                    </Row>
+                </Card.Footer> :
+                <Card.Footer className="bg-light">
+                    <Row>
+                        <Col>
+                            <ProjectDetailEffects activeProjectVariant={project}/>
+                        </Col>
+                    </Row>
+                </Card.Footer>
+            }
         </Card>
     );
 }
