@@ -65,11 +65,13 @@ function ProjectItemLong(props) {
                     </Row>
                 }
                 {project.superior_project_content &&
-                    <Row className = "mt-3 bg-background">
-                        <h3>Übergeordnetes Projekte</h3>
-                        <ProjectItemShort
-                            project={project.superior_project_content}
-                        />
+                    <Row className = "mt-3">
+                        <Col>
+                            <h3>Übergeordnetes Projekte</h3>
+                            <ProjectItemShort
+                                project={project.superior_project_content}
+                            />
+                        </Col>
                     </Row>
                 }
             </Container>
