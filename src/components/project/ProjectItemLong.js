@@ -55,6 +55,9 @@ function ProjectItemLong(props) {
                 <div>
                     {map}
                 </div>
+                <Row className ="mt-3">
+                    <ProjectContent activeProjectVariant={project}/>
+                </Row>
                 {project.sub_project_contents.length > 0 &&
                     <Row className = "mt-3">
                         <h3>Teilprojekte Liste</h3>
@@ -69,10 +72,6 @@ function ProjectItemLong(props) {
                         />
                     </Row>
                 }
-
-                <Row className ="mt-3">
-                    <ProjectContent activeProjectVariant={project}/>
-                </Row>
             </Container>
         </div>
     );
