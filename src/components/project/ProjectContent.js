@@ -1,22 +1,23 @@
-import {Alert, Button, ButtonGroup, Col, Row} from "react-bootstrap";
+import {Col, Row} from "react-bootstrap";
 import {useState} from "react";
-import ProjectDetailBewertung from "./ProjectDetail/ProjectDetailBewertung";
 import ProjectDetailContent from "./ProjectDetail/ProjectDetailContent";
 import ProjectGroupBadge from "./ProjectGroupBadge";
-import ProjectDetailStatus from "./ProjectDetail/ProjectDetailStatus";
-import ProjectMap from "./ProjectMap/ProjectMap";
 import ProjectDetailEffects from "./ProjectDetail/ProjectDetailEffects";
-import {ErrorBoundary} from "react-error-boundary";
 import ProjectProgress from "./ProjectDetail/ProjectProgress";
 import AllTextWebsites from "../texts/AllTextWebsites";
 import AllTextInfo from "../texts/AllTextInfo";
 
 function ProjectContent(props) {
+    const project = props.activeProjectVariant  // the activeProjectVariant is an not used anymore feature. But the name is still there. New features can now also use the variable project
     const [selectedCategorie, changeSelectedCategorie] = useState(1)
 
     function clickCategeorie(e) {
         changeSelectedCategorie(parseInt(e.target.value))
         e.setState({ active: e.state.active})
+    }
+
+    function checkMemberProjectGroup(projectgroup_id) {
+        return project.projectcontent_groups.some(project => project.id === projectgroup_id);
     }
 
     return(
@@ -67,34 +68,38 @@ function ProjectContent(props) {
                 <ProjectProgress project={props.activeProjectVariant}/>
             </div>
 
-            {props.activeProjectVariant.nkv &&
+            {checkMemberProjectGroup(1) &&
             <div className="mb-2 mt-2">
                 <h4 >Kennzahlen</h4>
+                <span>Die BVWP Kennzahlen (sofern BVWP-Projekt) werden demnächst hier angezeigt</span>
 
-                <div className="mb-2">
-                    <ButtonGroup className={'d-flex'}>
-                        {props.activeProjectVariant.nkv &&
-                            <Button variant={selectedCategorie === 1 ? "outline-secondary active":"outline-secondary"} value="1" onClick={clickCategeorie}>Bewertung</Button>
-                        }
-                        <Button variant={selectedCategorie === 2 ? "outline-secondary active":"outline-secondary"} value="2" onClick={clickCategeorie}>Umwelt</Button>
-                        <Button variant={selectedCategorie === 3 ? "outline-secondary active":"outline-secondary"} value="3" onClick={clickCategeorie}>Finanzen</Button>
-                    </ButtonGroup>
-                </div>
+                {/*<div className="mb-2">*/}
+                {/*    <ButtonGroup className={'d-flex'}>*/}
+                {/*        {props.activeProjectVariant.nkv &&*/}
+                {/*            <Button variant={selectedCategorie === 1 ? "outline-secondary active":"outline-secondary"} value="1" onClick={clickCategeorie}>Bewertung</Button>*/}
+                {/*        }*/}
+                {/*        <Button variant={selectedCategorie === 2 ? "outline-secondary active":"outline-secondary"} value="2" onClick={clickCategeorie}>Umwelt</Button>*/}
+                {/*        <Button variant={selectedCategorie === 3 ? "outline-secondary active":"outline-secondary"} value="3" onClick={clickCategeorie}>Finanzen</Button>*/}
+                {/*    </ButtonGroup>*/}
+                {/*</div>*/}
 
-                {selectedCategorie===1 && props.activeProjectVariant.nkv &&
-                    <ErrorBoundary fallback={
-                        <Alert key={'info'} variant={'info'}>Es gab ein Fehler bei der Darstellung der Bewertungsdaten</Alert>
-                    }>
-                        <ProjectDetailBewertung activeProjectVariant={props.activeProjectVariant}/>
-                    </ErrorBoundary>
-                }
-                {selectedCategorie===2 &&
-                    <h4>Umwelt</h4>
-                }
-                {selectedCategorie===3 &&
-                    <h4>Finanzen</h4>
-                }
-            </div>}
+                {/*{selectedCategorie===1 && props.activeProjectVariant.nkv &&*/}
+                {/*    <ErrorBoundary fallback={*/}
+                {/*        <Alert key={'info'} variant={'info'}>Es gab ein Fehler bei der Darstellung der Bewertungsdaten</Alert>*/}
+                {/*    }>*/}
+                {/*        <ProjectDetailBewertung activeProjectVariant={props.activeProjectVariant}/>*/}
+                {/*    </ErrorBoundary>*/}
+                {/*}*/}
+                {/*{selectedCategorie===2 &&*/}
+                {/*    <h4>Umwelt</h4>*/}
+                {/*}*/}
+                {/*{selectedCategorie===3 &&*/}
+                {/*    <h4>Finanzen</h4>*/}
+                {/*}*/}
+            </div>
+            }
+
+
 
             {props.activeProjectVariant.texts.length >0 &&
             <div className="mb-2 mt-2">
