@@ -1,9 +1,9 @@
-import {Row, Col} from "react-bootstrap";
+import {Row, Col, Tooltip, OverlayTrigger} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faGaugeHigh, faStairs} from "@fortawesome/free-solid-svg-icons";
+import {faStairs} from "@fortawesome/free-solid-svg-icons";
+import TooltipWrapper from "../../layout/TooltipWrapper";
 
 function ProjectDetailContent(props) {
-    //TODO: ETCS symbol
 
     return (
         <div>
@@ -27,12 +27,16 @@ function ProjectDetailContent(props) {
                 }
                 {props.activeProjectVariant.elektrification &&
                     <Col>
-                        <span title='Elektrifizierung'>&#9190;</span>
+                        <TooltipWrapper tooltipContent="Elektrifizierung">
+                            <span>&#9190;</span>
+                        </TooltipWrapper>
                     </Col>
                 }
                 {props.activeProjectVariant.battery &&
                     <Col>
-                        <span title="Batterie">🔋</span>
+                        <TooltipWrapper tooltipContent="batterieelektrisch">
+                            <span>🔋</span>
+                        </TooltipWrapper>
                     </Col>
 
                 }
@@ -56,73 +60,93 @@ function ProjectDetailContent(props) {
                 }
                 {props.activeProjectVariant.second_track &&
                     <Col>
-                        <span title='Zweites Gleis'>&#8594;2</span>
+                        <TooltipWrapper tooltipContent="Zweites Gleis">
+                            <span>&#8594;2</span>
+                        </TooltipWrapper>
                     </Col>
                 }
                 {props.activeProjectVariant.third_track &&
                     <Col>
-                        <span title='Drittes Gleis'>&#8594;3</span>
+                        <TooltipWrapper tooltipContent="Drittes Gleis">
+                            <span>&#8594;3</span>
+                        </TooltipWrapper>
                     </Col>
                 }
                 {props.activeProjectVariant.fourth_track &&
                     <Col>
-                        <span title='Viertes Gleis'>&#8594;4</span>
+                        <TooltipWrapper tooltipContent="Viertes Gleis">
+                            <span>&#8594;4</span>
+                        </TooltipWrapper>
                     </Col>
                 }
                 {props.activeProjectVariant.curve &&
                     <Col>
-                        <span title='Neue Verbindungskurve'>&#10699;</span>
+                        <TooltipWrapper tooltipContent="Verbindungskurve">
+                            <span>&#10699;</span>
+                        </TooltipWrapper>
                     </Col>
                 }
                 {props.activeProjectVariant.platform &&
                     <Col>
-                        <span title='Neuer Bahnsteig'>+ &#9644;</span>
+                        <TooltipWrapper tooltipContent="Neuer Bahnsteig">
+                            <span>+ &#9644;</span>
+                        </TooltipWrapper>
                     </Col>
                 }
                 {props.activeProjectVariant.junction_station &&
                     <Col>
-                        <span title='Neue Begegnungsbahnhöfe'>[] {props.activeProjectVariant.number_junction_station}</span>
+                        <TooltipWrapper tooltipContent="Neue Begnungsbahnhöfe">
+                            <span>[] {props.activeProjectVariant.number_junction_station}</span>
+                        </TooltipWrapper>
                     </Col>
                 }
                 {props.activeProjectVariant.overtaking_station &&
                     <Col>
-                        <span title='Neue Überholbahnhöfe'>() {props.activeProjectVariant.number_overtaking_station}</span>
+                        <TooltipWrapper tooltipContent="Überholbahnhöfe">
+                            <span>() {props.activeProjectVariant.number_overtaking_station}</span>
+                        </TooltipWrapper>
                     </Col>
                 }
                 {props.activeProjectVariant.double_occupancy &&
                     <Col>
-                        <span title='Einfahrt in besetztes Gleis'>&#9644;|&#9644;</span>
+                        <TooltipWrapper tooltipContent="Einfahrt in besetzes Gleis">
+                            <span>&#9644;|&#9644;</span>
+                        </TooltipWrapper>
                     </Col>
                 }
                 {props.activeProjectVariant.block_increase &&
                     <Col>
-                        <span title='Blockverdichtung'>+ Bksig</span>
+                        <TooltipWrapper tooltipContent="Blockverdichtung">
+                            <span>+ Bksig</span>
+                        </TooltipWrapper>
                     </Col>
                 }
                 {props.activeProjectVariant.flying_junction &&
                     <Col>
-                        <span title='Höhenfrei (Überwerfungsbauwerk)'>]|[</span>
+                        <TooltipWrapper tooltipContent="Überholbahnhöfe">
+                            <span>]|[</span>
+                        </TooltipWrapper>
                     </Col>
                 }
                 {props.activeProjectVariant.tunnel_structural_gauge &&
                     <Col>
-                        <span title='Lichtraumprofilerweiterung (Tunnel)'>KV400</span>
+                        <TooltipWrapper tooltipContent="Lichtraumprofilerweiterung (Tunnel)">
+                            <span>KV400</span>
+                        </TooltipWrapper>
                     </Col>
                 }
                 {props.activeProjectVariant.new_vmax &&
                     <Col>
-                        <span title='Erhöhung Geschwindigkeit'>
-                            <span title='Erhöhung Geschwindigkeit'>{props.activeProjectVariant.new_vmax} </span>
-                            <FontAwesomeIcon icon={faGaugeHigh} title='Erhöhung Geschwindigkeit'/>
-                        </span>
-
+                        <TooltipWrapper tooltipContent="Erhöhung Geschwindigkeit">
+                            <span title='Erhöhung Geschwindigkeit'>vmax {props.activeProjectVariant.new_vmax} km/h</span>
+                        </TooltipWrapper>
                     </Col>
                 }
                 {props.activeProjectVariant.level_free_platform_entrance &&
                     <Col>
-                        <span title='Beseitigung höhengleicher Bahnsteigzugang'>
+                        <TooltipWrapper tooltipContent="Beseitigung höhengleicher Bahnsteig">
                             <FontAwesomeIcon icon={faStairs}/>
-                        </span>
+                        </TooltipWrapper>
                     </Col>
                 }
                 {props.activeProjectVariant.etcs &&
@@ -141,9 +165,9 @@ function ProjectDetailContent(props) {
                 }
                 {props.activeProjectVariant.sgv740m &&
                     <Col>
-                        <span title='740m'>
-                            740m
-                        </span>
+                        <TooltipWrapper tooltipContent="740m">
+                            <span>740m</span>
+                        </TooltipWrapper>
                     </Col>
                 }
             </Row>

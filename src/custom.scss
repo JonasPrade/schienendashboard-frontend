@@ -40,3 +40,8 @@ $theme-colors: (
 .progress{
   height: 30px;
 }
+
+
+.tooltip {
+  pointer-events: none;
+}

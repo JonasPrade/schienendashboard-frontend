@@ -12,12 +12,6 @@ function ProjectItemShort(props) {
     let navigate = useNavigate();
     const project = props.project
 
-    function openProjectlong(e) {
-        e.preventDefault();
-        // props.changeActiveProject(project)
-        navigate(`/project/${project.id}`, { replace: true });
-    }
-
     // TODO: make the badges responsive to open the Project Groups with all there Projects.
     return(
         <Card className="bg-light">
@@ -35,7 +29,7 @@ function ProjectItemShort(props) {
             <Card.Body className="bg-background">
                 <ProjectProgress project={project}/>
                 <Link to={'/project/'+project.id}>
-                    <Button variant='outline-info' onClick={openProjectlong}>
+                    <Button variant='outline-info'>
                         Mehr Informationen
                     </Button>
                 </Link>
