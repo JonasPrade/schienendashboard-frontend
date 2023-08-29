@@ -10,7 +10,7 @@ function Home(props) {
             {props.loggedIn &&
                 <p>Du bist eingeloggt</p>
             }
-            <p>Die Ergebnisse der Masterarbeit von Jonas Prade können unter <a href="https://d-b.schienengruen.de/master_scenario/1">"Masterarbeit Szenarien"</a> eingesehen werden</p>
+            <p>Die Ergebnisse der Masterarbeit von Jonas Prade können unter <a href="https://dashboard.schienengruen.de/master_scenario/1">"Masterarbeit Szenarien"</a> eingesehen werden</p>
             <p>Unter Projektdashboard können Informationen zum Verlauf sowie aktuellen Stand von Bahnprojekten entnommen werden.</p>
 
             <p>Hinweise zu Fehlern oder fehlenden Daten können <a target="_blank" href="https://github.com/JonasPrade/schienendashboard_reporting" rel="noreferrer">hier gemeldet werden</a></p>
