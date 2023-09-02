@@ -4,7 +4,7 @@ import {Button} from "react-bootstrap";
 function TextWebsite(props) {
 
     return(
-        <Card className="bg-light border-website border-3">
+        <Card className="bg-light border-website border-3 mt-3">
             <Card.Body>
                 <Card.Title>🌐 {props.text.header}</Card.Title>
                 <Card.Text>{props.text.text}</Card.Text>

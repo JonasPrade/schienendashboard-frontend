@@ -151,9 +151,9 @@ function ProjectDetailContent(props) {
                 }
                 {props.activeProjectVariant.etcs &&
                     <Col>
-                        <span title='ETCS'>
-                            ETCS L{props.activeProjectVariant.etcs_level}
-                        </span>
+                        <TooltipWrapper tooltipContent="ETCS (ggf. Level angegeben)">
+                            <span>ETCS L{props.activeProjectVariant.etcs_level}</span>
+                        </TooltipWrapper>
                     </Col>
                 }
                 {props.activeProjectVariant.delta_co2 &&
