@@ -1,7 +1,6 @@
 import Container from "react-bootstrap/Container";
 import {MapContainer} from "react-leaflet/MapContainer";
 import {TileLayer} from "react-leaflet/TileLayer";
-import {GeoJSON} from "react-leaflet/GeoJSON";
 import {Link} from "react-router-dom";
 import {Col, Row, Table} from "react-bootstrap";
 import { Chart, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend} from 'chart.js';
@@ -155,7 +154,7 @@ function MasterAreaDetail(props) {
                     <div style={{'height':'500px', 'width': '100%'}}>
                         <MapContainer center={start_centroid} zoom={7} style={{"height": "100%"}}>
                             <TileLayer
-                                attribution='Kartenhintergrund: <a href="http://www.bkg.bund.de">Bundesamt für Kartographie und Geodäsie</a>'
+                                attribution='Kartenhintergrund: <a href="https:///www.bkg.bund.de">Bundesamt für Kartographie und Geodäsie</a>'
                                 url={process.env.REACT_APP_TILE_LAYER_URL}
                             />
                             {props.master_area.sub_master_areas.map(area =>

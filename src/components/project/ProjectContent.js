@@ -9,12 +9,6 @@ import AllTextInfo from "../texts/AllTextInfo";
 
 function ProjectContent(props) {
     const project = props.activeProjectVariant  // the activeProjectVariant is an not used anymore feature. But the name is still there. New features can now also use the variable project
-    const [selectedCategorie, changeSelectedCategorie] = useState(1)
-
-    function clickCategeorie(e) {
-        changeSelectedCategorie(parseInt(e.target.value))
-        e.setState({ active: e.state.active})
-    }
 
     function checkMemberProjectGroup(projectgroup_id) {
         return project.projectcontent_groups.some(project => project.id === projectgroup_id);

@@ -1,14 +1,12 @@
 import {Route, Routes} from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import Home from "./components/pages/Home";
 import Login from "./components/user/Login";
 import Logout from "./components/user/Logout";
 import Layout from "./components/layout/Layout";
 import Profile from "./components/user/Profile";
-import AllProjects from "./components/pages/AllProjects";
 import useLocalStorage from "./services/LocalStorageHook.service";
-import Authenticate from "./components/user/Authenticate";
 import TimetableTrainGroup from "./components/pages/TimetableTrainGroup"
 import MasterArea from "./components/pages/MasterArea";
 import MasterScenario from "./components/pages/Scenario";

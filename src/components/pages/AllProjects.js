@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from "axios";
 import ProjectList from "../project/ProjectList";
 
 //All Bootstrap import

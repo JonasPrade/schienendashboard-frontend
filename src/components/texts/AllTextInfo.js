@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import getTextForProjectContentAndTextType from "../../services/texts/getTextForProjectContentAndTextType";
 import Loading from "../layout/Loading";
-import TextWebsite from "./TextWebsite";
 import TextInfo from "./TextInfo";
 
 

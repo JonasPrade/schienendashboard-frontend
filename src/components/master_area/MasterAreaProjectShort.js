@@ -1,7 +1,6 @@
 import ProjectDetailContent from "../project/ProjectDetail/ProjectDetailContent";
 import ProjectDetailEffects from "../project/ProjectDetail/ProjectDetailEffects";
 import {Row, Col, Table} from "react-bootstrap";
-import {Link} from "react-router-dom";
 
 function MasterAreaProjectShort(props) {
 

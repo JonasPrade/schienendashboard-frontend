@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import getAllMasterScenarios from "../../services/master_scenario/get_all_scenarios";
-import {Col, Dropdown, Row} from "react-bootstrap";
+import {Dropdown} from "react-bootstrap";
 import Loading from "../layout/Loading";
 
 function MasterScenarioDropdown(props) {

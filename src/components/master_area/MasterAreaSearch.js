@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 function MasterAreaSearch(props) {
     const masterareaidInputRef = useRef()
-    var message = ""
     let navigate = useNavigate();
 
     function submitMasterArea(e) {

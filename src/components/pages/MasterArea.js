@@ -1,4 +1,3 @@
-import Container from "react-bootstrap/Container";
 import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import getMasterAreaById from "../../services/master_areas/master_areas_service";

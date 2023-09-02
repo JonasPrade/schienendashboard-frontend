@@ -2,22 +2,14 @@ import {useRef} from "react";
 import {useNavigate} from "react-router-dom";
 import {Row, Container, Col} from "react-bootstrap";
 import {useEffect, useState} from "react";
-import getMasterScenarioById from "../../services/master_scenario/master_scenario_service";
 import getAllMasterScenarios from "../../services/master_scenario/get_all_scenarios";
 import MasterScenarioShort from "./MasterScenarioShort";
 
 function MasterScenarioSearch(props) {
     const masterscenarioidInputRef = useRef()
     var message = ""
-    let navigate = useNavigate();
     const [loading, setLoading] = useState(false)
     const [scenarios, setScenarios] = useState(null)
-
-    function submitMasterScenario(e) {
-        e.preventDefault();
-        const masterscenario_id = masterscenarioidInputRef.current.value;
-        navigate(`/master_scenario/${masterscenario_id}`);
-    }
 
     useEffect(() => {
         setLoading(true);

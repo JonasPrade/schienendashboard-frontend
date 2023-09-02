@@ -1,4 +1,4 @@
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button'
@@ -9,7 +9,6 @@ import {Col, Row} from "react-bootstrap";
 import ProjectProgress from "./ProjectDetail/ProjectProgress";
 
 function ProjectItemShort(props) {
-    let navigate = useNavigate();
     const project = props.project
 
     // TODO: make the badges responsive to open the Project Groups with all there Projects.

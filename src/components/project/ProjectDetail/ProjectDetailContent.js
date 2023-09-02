@@ -1,4 +1,4 @@
-import {Row, Col, Tooltip, OverlayTrigger} from "react-bootstrap";
+import {Row, Col} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStairs} from "@fortawesome/free-solid-svg-icons";
 import TooltipWrapper from "../../layout/TooltipWrapper";

@@ -1,9 +1,5 @@
 import {Row, Col, Table} from "react-bootstrap";
 import {Pie} from "react-chartjs-2";
-import {useState, useEffect} from "react";
-import getTraingroupByMasterArea from "../../services/master_scenario/get_traingroups_by_masterscenario";
-import Loading from "../layout/Loading";
-import getTraingroupByMasterScenario from "../../services/master_scenario/get_traingroups_by_masterscenario";
 
 function MasterScenarioParametersTraingroup(props) {
 

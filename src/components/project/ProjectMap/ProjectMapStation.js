@@ -1,5 +1,4 @@
-import { CircleMarker, Popup } from "react-leaflet";
-import { Button } from "react-bootstrap";
+import { CircleMarker } from "react-leaflet";
 import ProjectPopup from "./ProjectPopup";
 
 function ProjectMapStation(props) {
@@ -16,11 +15,6 @@ function ProjectMapStation(props) {
         fillOpacity: 0.6,
         radius: 6
     };
-
-    function openProjectlong(e) {
-        e.preventDefault();
-        props.changeActiveProject(props.projectcontent);
-    }
 
     function handleMouseOver(e) {
         e.target.setStyle(hoveredStyle);

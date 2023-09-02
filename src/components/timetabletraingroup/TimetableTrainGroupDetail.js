@@ -26,9 +26,6 @@ function TimetableTrainGroupDetail(props) {
     }
 
     const iconMarkup = renderToStaticMarkup(<div>Test</div>);
-    const customMarkerIcon = divIcon({
-        html: iconMarkup
-    });
 
 
     return(

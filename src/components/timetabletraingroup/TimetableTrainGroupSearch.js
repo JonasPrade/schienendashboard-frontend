@@ -1,8 +1,6 @@
 import {Form, Button, Container} from "react-bootstrap";
 import {useRef} from "react";
-import getTraingroupById from "../../services/lines/line_service";
 import { useNavigate } from "react-router-dom";
-import {useParams} from "react-router-dom";
 
 function TimetableTrainGroupSearch(props) {
     const lineidInputRef = useRef()
