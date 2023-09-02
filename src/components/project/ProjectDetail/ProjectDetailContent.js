@@ -170,6 +170,41 @@ function ProjectDetailContent(props) {
                         </TooltipWrapper>
                     </Col>
                 }
+                {props.activeProjectVariant.railroad_crossing &&
+                    <Col>
+                        <TooltipWrapper tooltipContent="Änderungen an Bahnübergängen">
+                            <span>BÜ</span>
+                        </TooltipWrapper>
+                    </Col>
+                }
+                {props.activeProjectVariant.new_estw &&
+                    <Col>
+                        <TooltipWrapper tooltipContent="neues ESTW">
+                            <span>ESTW</span>
+                        </TooltipWrapper>
+                    </Col>
+                }
+                {props.activeProjectVariant.new_dstw &&
+                    <Col>
+                        <TooltipWrapper tooltipContent="neues DSTW">
+                            <span>DSTW</span>
+                        </TooltipWrapper>
+                    </Col>
+                }
+                {props.activeProjectVariant.noise_barrier &&
+                    <Col>
+                        <TooltipWrapper tooltipContent="Lärmschutzmaßnahmen (z.B. Schallschutzwand)">
+                            <span>🔇</span>
+                        </TooltipWrapper>
+                    </Col>
+                }
+                {props.activeProjectVariant.sanierung &&
+                    <Col>
+                        <TooltipWrapper tooltipContent="Sanierung der Strecke">
+                            <span>Sanierung</span>
+                        </TooltipWrapper>
+                    </Col>
+                }
             </Row>
         </div>
     )
