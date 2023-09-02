@@ -96,12 +96,12 @@ function ProjectContent(props) {
 
 
             {props.activeProjectVariant.texts.length >0 &&
-            <div className="mb-2 mt-2">
+            <div className="mt-5">
                 <h4>Hinweise</h4>
-                <div className="mb-2">
+                <div className="mt-3">
                     <AllTextInfo project={props.activeProjectVariant}/>
                 </div>
-                <div className="mb-2">
+                <div className="mt-3">
                     <AllTextWebsites project={props.activeProjectVariant}/>
                 </div>
             </div>

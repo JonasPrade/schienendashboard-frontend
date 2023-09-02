@@ -205,6 +205,13 @@ function ProjectDetailContent(props) {
                         </TooltipWrapper>
                     </Col>
                 }
+                {props.activeProjectVariant.closure &&
+                    <Col>
+                        <TooltipWrapper tooltipContent="Stilllegung">
+                            <span>❌</span>
+                        </TooltipWrapper>
+                    </Col>
+                }
             </Row>
         </div>
     )

@@ -7,7 +7,10 @@ function TextWebsite(props) {
         <Card className="bg-light border-website border-3 mt-3">
             <Card.Body>
                 <Card.Title>🌐 {props.text.header}</Card.Title>
-                <Card.Text>{props.text.text}</Card.Text>
+                <Card.Text>
+                    {props.text.text}
+
+                </Card.Text>
                 {props.text.logo_url &&
                     <Card.Img className="p-3 mb-3" variant="top" src={props.text.logo_url}/>
                 }
