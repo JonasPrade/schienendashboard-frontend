@@ -1,16 +1,17 @@
 import Container from "react-bootstrap/Container";
-import { Col, Row, Spinner } from "react-bootstrap";
+import {Col, Row, Spinner} from "react-bootstrap";
 import ProjectGroupSelection from "../projectgroup/ProjectGroupSelection";
 import { useState, useEffect } from "react";
 import getprojectgroupbyid from "../../services/projectgroup/getprojectgroupbyid";
 import ProjectGroupMap from "../projectgroup/ProjectGroupMap";
 import useLocalStorage from "../../services/LocalStorageHook.service";
 import ProjectItemShort from "../project/ProjectItemShort";
+import ProjectList from "../project/ProjectList";
 
-function ProjectGroup(props) {
+function ProjectGroup() {
     // Verwenden Sie den useLocalStorage Hook anstelle von useState
     const [selectedGroupIds, setSelectedGroupIds] = useLocalStorage('selectedGroupIds', []);
-    const [projects, setProjects] = useState([]);
+    const [projectGroups, setProjectGroups] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [selectedProject, setSelectedProject] = useState(null);
 
@@ -21,7 +22,7 @@ function ProjectGroup(props) {
             setIsLoading(true);
             try {
                 const projectGroups = await getprojectgroupbyid(selectedGroupIds);
-                setProjects(projectGroups);
+                setProjectGroups(projectGroups);
             } catch (error) {
                 console.error("Fehler beim Abrufen der Projekte:", error);
             }
@@ -33,7 +34,7 @@ function ProjectGroup(props) {
 
     return (
         <Container>
-            <h1>Projekte</h1>
+            <h1>Projektgruppen</h1>
             <Row>
                 <Col s="auto">
                     {isLoading ? (
@@ -42,7 +43,7 @@ function ProjectGroup(props) {
                             </Spinner>
                         </div>
                     ) : (
-                        <ProjectGroupMap projectGroups={projects} selectedProject={selectedProject} setSelectedProject={setSelectedProject}/>
+                        <ProjectGroupMap projectGroups={projectGroups} selectedProject={selectedProject} setSelectedProject={setSelectedProject}/>
                     )}
                 </Col>
                 <Col xl="4">
@@ -55,6 +56,13 @@ function ProjectGroup(props) {
                     </div>
                 </Col>
             </Row>
+            {projectGroups.map((group) =>  (
+                <Row className="mt-5">
+                    <h3>{group.name}</h3>
+                    <ProjectList projectscontent={group.projects_content}/>
+                </Row>
+            ))}
+
         </Container>
     )
 }
