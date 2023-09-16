@@ -31,7 +31,7 @@ function ProjectItemLong(props) {
         </Row>
 
     } else {
-        if (project.centroid === null && project.railway_stations.length === 0) {
+        if (project.centroid === null) {
             map = <Row>
                 <Col>
                     <Alert key={'info'} variant={'info'}>Keine Geo-Daten verfügbar</Alert>
