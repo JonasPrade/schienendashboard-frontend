@@ -17,12 +17,17 @@ function ProjectDetailContent(props) {
                 }
                 {props.activeProjectVariant.nbs &&
                     <Col>
-                        <span title='Neubaustrecke' className='border border-white bg-info rounded-1 p-1'>NBS</span>
+                        <TooltipWrapper tooltipContent="Neubaustrecke">
+                            <span title='Neubaustrecke' className='border border-white bg-info rounded-1 p-1'>NBS</span>
+                        </TooltipWrapper>
                     </Col>
                 }
                 {props.activeProjectVariant.abs &&
                     <Col>
-                        <span title="Ausbaustecke" className='border border-white bg-info rounded-1 p-1'>ABS</span>
+                        <TooltipWrapper tooltipContent="Ausbaustrecke">
+                            <span title="Ausbaustecke" className='border border-white bg-info rounded-1 p-1'>ABS</span>
+                        </TooltipWrapper>
+
                     </Col>
                 }
                 {props.activeProjectVariant.elektrification &&
