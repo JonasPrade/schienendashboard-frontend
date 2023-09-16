@@ -13,7 +13,7 @@ function ProjectItemShort(props) {
 
     // TODO: make the badges responsive to open the Project Groups with all there Projects.
     return(
-        <Card className="bg-light">
+        <Card className="bg-light h-100">
             <Card.Header className="bg-light">
                 <ProjectDetailContent activeProjectVariant={project}/>
             </Card.Header>

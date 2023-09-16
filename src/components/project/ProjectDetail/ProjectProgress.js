@@ -1,16 +1,25 @@
 import {ProgressBar} from "react-bootstrap";
+import ProjectProgressSubProjects from "./ProjectProgressSubProjects";
 
 
 function ProjectProgress(props) {
 
     function progress_bar(project) {
         if (project.lp_12 === 1) {
-            return(
+            return (
                 <div>
-                    <ProgressBar variant = "info" now={25} label={`LP 1-2`} />
+                    <ProgressBar variant="info" now={25} label={`LP 1-2`}/>
                     <p className='mt-1'>Leistungsphase 1-2 aktiv (Grundlagenermittlung & Vorplanung) </p>
                 </div>
             )
+        } else if (project.lp_12 === 0) {
+            return(
+                <div>
+                    <ProgressBar variant="info" now={0} label={`noch keine Planung`}/>
+                    <p className='mt-1'>Es ist noch keine Planung bekannt</p>
+                </div>
+            )
+
         } else if (project.lp_34 === 1) {
             return(
                 <div>
@@ -34,9 +43,15 @@ function ProjectProgress(props) {
             )
 
         } else {
-            return(
+            if (project.progress_sub_projects){
+                return(
+                    <ProjectProgressSubProjects progress_sub_projects={project.progress_sub_projects}/>
+                )
+            } else {
+                return(
                     <p>Kein Projektstatus verfügbar</p>
                 )
+            }
         }
     }
 
