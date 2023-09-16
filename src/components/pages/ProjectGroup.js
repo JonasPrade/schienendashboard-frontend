@@ -57,7 +57,7 @@ function ProjectGroup() {
                 </Col>
             </Row>
             {projectGroups.map((group) =>  (
-                <Row className="mt-5">
+                <Row className="mt-5" key={group.id}>
                     <h3>{group.name}</h3>
                     <ProjectList projectscontent={group.projects_content}/>
                 </Row>
