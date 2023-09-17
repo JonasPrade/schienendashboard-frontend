@@ -43,15 +43,11 @@ function ProjectProgress(props) {
             )
 
         } else {
-            if (project.progress_sub_projects){
-                return(
-                    <ProjectProgressSubProjects progress_sub_projects={project.progress_sub_projects}/>
+            return(
+                <div>
+                    <ProjectProgressSubProjects project_id={props.project.id}/>
+                </div>
                 )
-            } else {
-                return(
-                    <p>Kein Projektstatus verfügbar</p>
-                )
-            }
         }
     }
 

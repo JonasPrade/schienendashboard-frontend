@@ -8,6 +8,9 @@ import {
     Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import {useEffect, useState} from "react";
+import getProgressOfSubprojects from "../../../services/project_content/getprogresssubprojects";
+import Loading from "../../layout/Loading";
 
 
 ChartJS.register(
@@ -19,14 +22,33 @@ ChartJS.register(
     Legend
 );
 function ProjectProgressSubProjects(props) {
-    const progress_sub_projects = props.progress_sub_projects
+    const [loadingProgress, setLoadingProgress] = useState(true)
+    const [progress, setProgress] = useState(null)
 
-    let sum_projects = 0
-    for (const status in progress_sub_projects){
-        sum_projects += progress_sub_projects[status]
+    useEffect(()=> {
+        setLoadingProgress(true);
+        getProgressOfSubprojects(props.project_id).then(
+            (response) => {
+                setProgress(response);
+                setLoadingProgress(false);
+            }
+        )
+    }, []);
+
+    if (loadingProgress === true){
+        return(
+            <div>
+                <Loading/>
+            </div>
+        )
     }
 
-    if (sum_projects === 0 ){
+    let sum_projects = 0
+    for (const status in progress){
+        sum_projects += progress[status]
+    }
+
+    if (progress === 0 ){
         return(
             <div>
                 <p>Kein Projektstatus verfügbar</p>
@@ -42,7 +64,7 @@ function ProjectProgressSubProjects(props) {
         datasets: [
             {
                 label: 'Anzahl',
-                data: [progress_sub_projects.pending, progress_sub_projects.lp_12, progress_sub_projects.lp_34, progress_sub_projects.bau, progress_sub_projects.ibn_erfolgt, progress_sub_projects.not_known],
+                data: [progress.pending, progress.lp_12, progress.lp_34, progress.bau, progress.ibn_erfolgt, progress.not_known],
                 borderWidth: 1,
                 backgroundColor: '#769FB6'
             }
