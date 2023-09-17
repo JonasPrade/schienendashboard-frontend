@@ -20,11 +20,14 @@ function ProjectItemLong(props) {
             </Col>
             <Col xl="4">
                 {subProject ?
-                    <ProjectItemShort key={subProject.id}
-                                      project={subProject}
-                                      activeProject={subProject}
-                                      changeActiveProject={setSubProject}
-                    />:
+                    <div>
+                        <ProjectItemShort key={subProject.id}
+                                          project={subProject}
+                                          activeProject={subProject}
+                                          changeActiveProject={setSubProject}
+                        />
+                    </div>
+                    :
                     <p>Projekt in Karte auswählen</p>
                 }
             </Col>
