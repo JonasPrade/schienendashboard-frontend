@@ -48,7 +48,7 @@ function ProjectProgressSubProjects(props) {
         sum_projects += progress[status]
     }
 
-    if (progress === 0 ){
+    if (sum_projects === 0 ){
         return(
             <div>
                 <p>Kein Projektstatus verfügbar</p>
