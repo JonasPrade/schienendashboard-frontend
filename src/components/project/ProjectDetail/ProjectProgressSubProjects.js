@@ -33,7 +33,7 @@ function ProjectProgressSubProjects(props) {
                 setLoadingProgress(false);
             }
         )
-    }, []);
+    }, [props.project_id]);
 
     if (loadingProgress === true){
         return(
