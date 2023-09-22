@@ -13,25 +13,31 @@ function ProjectItemLong(props) {
     let map
 
     if (project.sub_project_contents.length > 0) {
-        map = <Row>
-            <Col xl="8" className="p-2 bg-light">
-                <h3>Teilprojekte Karte</h3>
-                <ProjectListMap projectscontent={project.sub_project_contents} activeProject={subProject} changeActiveProject={setSubProject}/>
-            </Col>
-            <Col xl="4">
-                {subProject ?
-                    <div>
-                        <ProjectItemShort key={subProject.id}
-                                          project={subProject}
-                                          activeProject={subProject}
-                                          changeActiveProject={setSubProject}
-                        />
-                    </div>
-                    :
-                    <p>Projekt in Karte auswählen</p>
-                }
-            </Col>
-        </Row>
+        map =
+            <div>
+                <Row>
+                    <h3>Teilprojekte Karte</h3>
+                </Row>
+                <Row>
+                    <Col xl="8">
+                        <ProjectListMap projectscontent={project.sub_project_contents} activeProject={subProject} changeActiveProject={setSubProject}/>
+                    </Col>
+                    <Col xl="4">
+                        {subProject ?
+                            <div>
+                                <ProjectItemShort key={subProject.id}
+                                                  project={subProject}
+                                                  activeProject={subProject}
+                                                  changeActiveProject={setSubProject}
+                                />
+                            </div>
+                            :
+                            <p>Projekt in Karte auswählen</p>
+                        }
+                    </Col>
+                </Row>
+            </div>
+
 
     } else {
         if (project.centroid === null) {

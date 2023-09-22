@@ -4,6 +4,7 @@ import getProjectContentById from "../../services/project_content/getprojectcont
 import Loading from "../layout/Loading";
 import ProjectSearch from "../project/ProjectSearch";
 import ProjectItemLong from "../project/ProjectItemLong";
+import getProjectContentShortById from "../../services/project_content/getprojectcontentshortbyid";
 
 function Project(props) {
     let params = useParams()
