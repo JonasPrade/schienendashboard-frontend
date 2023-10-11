@@ -140,7 +140,7 @@ function ProjectDetailContent(props) {
                         </TooltipWrapper>
                     </Col>
                 }
-                {props.activeProjectVariant.new_vmax &&
+                {props.activeProjectVariant.increase_speed &&
                     <Col>
                         <TooltipWrapper tooltipContent="Erhöhung Geschwindigkeit">
                             <span title='Erhöhung Geschwindigkeit'>vmax {props.activeProjectVariant.new_vmax} km/h</span>
@@ -150,7 +150,9 @@ function ProjectDetailContent(props) {
                 {props.activeProjectVariant.level_free_platform_entrance &&
                     <Col>
                         <TooltipWrapper tooltipContent="Beseitigung höhengleicher Bahnsteig">
-                            <FontAwesomeIcon icon={faStairs}/>
+                            <span>
+                                <FontAwesomeIcon icon={faStairs}/>
+                            </span>
                         </TooltipWrapper>
                     </Col>
                 }
@@ -158,6 +160,13 @@ function ProjectDetailContent(props) {
                     <Col>
                         <TooltipWrapper tooltipContent="ETCS (ggf. Level angegeben)">
                             <span>ETCS L{props.activeProjectVariant.etcs_level}</span>
+                        </TooltipWrapper>
+                    </Col>
+                }
+                {props.activeProjectVariant.station_railroad_switches &&
+                    <Col>
+                        <TooltipWrapper tooltipContent="Gleisvorfeld">
+                            <span>Gleisvorfeld</span>
                         </TooltipWrapper>
                     </Col>
                 }
@@ -214,6 +223,27 @@ function ProjectDetailContent(props) {
                     <Col>
                         <TooltipWrapper tooltipContent="Stilllegung">
                             <span>❌</span>
+                        </TooltipWrapper>
+                    </Col>
+                }
+                {props.activeProjectVariant.overpass &&
+                    <Col>
+                        <TooltipWrapper tooltipContent="Überleitstellen">
+                            <span>Überleitstellen</span>
+                        </TooltipWrapper>
+                    </Col>
+                }
+                {props.activeProjectVariant.buffer_track &&
+                    <Col>
+                        <TooltipWrapper tooltipContent="Überleitstellen">
+                            <span>Puffergleise</span>
+                        </TooltipWrapper>
+                    </Col>
+                }
+                {props.activeProjectVariant.simultaneous_train_entries &&
+                    <Col>
+                        <TooltipWrapper tooltipContent="gleichzeitige Einfahrten in den Bahnhof">
+                            <span>gleichzeitige Einfahrten</span>
                         </TooltipWrapper>
                     </Col>
                 }

@@ -9,7 +9,6 @@ import ProjectItemShort from "../project/ProjectItemShort";
 import ProjectList from "../project/ProjectList";
 
 function ProjectGroup() {
-    // Verwenden Sie den useLocalStorage Hook anstelle von useState
     const [selectedGroupIds, setSelectedGroupIds] = useLocalStorage('selectedGroupIds', []);
     const [projectGroups, setProjectGroups] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
