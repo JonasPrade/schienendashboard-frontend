@@ -46,21 +46,44 @@ function ProjectGroup() {
                     )}
                 </Col>
                 <Col xl="4">
-                    <div>
-                        <ProjectGroupSelection selectedGroupIds={selectedGroupIds} setSelectedGroupIds={setSelectedGroupIds} />
-                        <div className="mt-3">
-                            {selectedProject && <ProjectItemShort project={selectedProject}/>}
-                        </div>
+                    {isLoading ? (
+                        <div className="d-flex jsutify-content-start mt-5">
+                            <h3>Projektauswahl:</h3>
+                            <div className="d-flex justify-content-center mt-5">
+                                <Spinner animation="border" role="status" variant="primary">
+                                </Spinner>
+                            </div>
 
-                    </div>
+                        </div>
+                    ) : (
+                        <div>
+                            <ProjectGroupSelection selectedGroupIds={selectedGroupIds} setSelectedGroupIds={setSelectedGroupIds} />
+                            <div className="mt-3">
+                                {selectedProject && <ProjectItemShort project={selectedProject}/>}
+                            </div>
+                        </div>
+                    )}
                 </Col>
             </Row>
-            {projectGroups.map((group) =>  (
-                <Row className="mt-5" key={group.id}>
-                    <h3>{group.name}</h3>
-                    <ProjectList projectscontent={group.projects_content}/>
-                </Row>
-            ))}
+            {isLoading ? (
+                <div>
+                    <h3>Projektliste</h3>
+                    <div className="d-flex justify-content-center mt-5">
+                        <Spinner animation="border" role="status" variant="primary">
+                        </Spinner>
+                    </div>
+                </div>
+            ) : (
+                <div>
+                    <h3 className="mt-5">Projektliste</h3>
+                    {projectGroups.map((group) =>  (
+                        <Row className="mt-3" key={group.id}>
+                            <h4>{group.name}</h4>
+                            <ProjectList projectscontent={group.projects_content}/>
+                        </Row>
+                    ))}
+                </div>
+            )}
 
         </Container>
     )

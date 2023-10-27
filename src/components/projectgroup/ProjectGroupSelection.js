@@ -38,7 +38,7 @@ function ProjectGroupSelection({ selectedGroupIds, setSelectedGroupIds }) {
 
     return (
         <Container>
-            <h3>Bitte wählen Sie die gewünschten Projektgruppen aus:</h3>
+            <h3>Projektauswahl:</h3>
             <Form>
                 {projectGroups.map(group => (
                     <Form.Check
