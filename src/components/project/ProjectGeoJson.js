@@ -6,20 +6,22 @@ function ProjectGeoJson(props) {
     const projectColor = props.color;
     const style = { color: projectColor, weight: 4 };
 
+    const selectedProject_id = parseInt(localStorage.selected_project_id)
+
     // Verwenden Sie useRef für geoJsonLayer
     const geoJsonLayer = useRef(null);
 
     function highlightAllRelatedFeatures(layer) {
         const targetProjectContentId = layer.feature.properties.projectcontent_id;
-        geoJsonLayer.current.eachLayer((l) => { // Verwenden Sie .current hier
+        geoJsonLayer.current.eachLayer((l) => {
             if (l.feature.properties.projectcontent_id === targetProjectContentId) {
                 if (l instanceof L.CircleMarker) {
                     l.setStyle({
-                        fillColor: props.selectedProject && props.selectedProject.id === props.projectcontent.id ? '#FF0000' : '#E09A1A'
+                        fillColor: selectedProject_id === props.projectcontent.id ? '#FF0000' : '#E09A1A'
                     });
                 } else {
                     l.setStyle({
-                        color: props.selectedProject && props.selectedProject.id === props.projectcontent.id ? '#FF0000' : '#E09A1A'
+                        color: selectedProject_id === props.projectcontent.id ? '#FF0000' : '#E09A1A'
                     });
                 }
             }
@@ -31,9 +33,13 @@ function ProjectGeoJson(props) {
         geoJsonLayer.current.eachLayer((l) => { // Verwenden Sie .current hier
             if (l.feature.properties.projectcontent_id === targetProjectContentId) {
                 if (l instanceof L.CircleMarker) {
-                    l.setStyle(pointStyle);
+                    l.setStyle({
+                        fillColor: selectedProject_id === props.projectcontent.id ? '#FF0000' : projectColor
+                    });
                 } else {
-                    l.setStyle(style);
+                    l.setStyle({
+                        color: selectedProject_id === props.projectcontent.id ? '#FF0000' : projectColor
+                    });
                 }
             }
         });
@@ -69,7 +75,6 @@ function ProjectGeoJson(props) {
 
     function openPopupHandler(e) {
         props.setSelectedProject(props.projectcontent);
-        highlightAllRelatedFeatures(e.target);
     }
 
     return (

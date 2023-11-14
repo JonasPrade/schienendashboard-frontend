@@ -12,6 +12,7 @@ import MasterArea from "./components/pages/MasterArea";
 import MasterScenario from "./components/pages/Scenario";
 import Project from "./components/pages/Project";
 import ProjectGroup from "./components/pages/ProjectGroup";
+import Bks from "./components/pages/Bks";
 
 function App() {
 
@@ -60,6 +61,9 @@ function App() {
                     <Route index element ={
                         <MasterScenario/>
                     }/>
+                </Route>
+                <Route path="/bks" element={
+                    <Bks/>}>
                 </Route>
             </Routes>
         </Layout>

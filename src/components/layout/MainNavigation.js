@@ -17,12 +17,13 @@ function MainNavigation(props) {
                     <Nav className="me-auto">
                         <Nav.Link as={Link} to="/">Home</Nav.Link>
                         <Nav.Link as={Link} to="/projects">Projektdashboard</Nav.Link>
+                        <Nav.Link as={Link} to="/bks">Beschleunigungskommission</Nav.Link>
                         {props.loggedIn &&
                             <Nav.Link href="/lines/0">Deutschlandtakt Linien</Nav.Link>
                         }
-                        <Nav.Link href="/master_scenario/">Masterarbeit Szenarien</Nav.Link>
+                        <Nav.Link href="/master_scenario/">Masterarbeit</Nav.Link>
                         {props.loggedIn &&
-                            <Nav.Link href="/master_area/">Untersuchungsgebiete</Nav.Link>
+                            <Nav.Link href="/master_area/">Masterarbeit Untersuchungsgebiete</Nav.Link>
                         }
                         {!props.loggedIn &&
                             <Nav.Link href="/login">Login</Nav.Link>

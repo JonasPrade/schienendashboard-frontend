@@ -26,7 +26,6 @@ function ProjectGroupMap(props) {
                             projectcontent={projectcontent}
                             color={projectcontent.color}  // Hier geben wir die Farbe weiter
                             setSelectedProject={props.setSelectedProject}
-                            selectedProject={props.selectedProject}
                         />
                 ))}
             </MapContainer>

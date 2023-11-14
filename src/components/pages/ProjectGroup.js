@@ -13,6 +13,7 @@ function ProjectGroup() {
     const [projectGroups, setProjectGroups] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [selectedProject, setSelectedProject] = useState(null);
+    const [selectedProjectId, setSelectedProjectId] = useLocalStorage("selected_project_id", null)
 
     useEffect(() => {
         const fetchProjects = async () => {
@@ -31,6 +32,12 @@ function ProjectGroup() {
         fetchProjects();
     }, [selectedGroupIds]);
 
+    useEffect(()=>{
+        if (selectedProject != null) {
+            setSelectedProjectId(selectedProject.id)
+        }
+    }, [selectedProject])
+
     return (
         <Container>
             <h1>Projektgruppen</h1>
@@ -42,7 +49,7 @@ function ProjectGroup() {
                             </Spinner>
                         </div>
                     ) : (
-                        <ProjectGroupMap projectGroups={projectGroups} selectedProject={selectedProject} setSelectedProject={setSelectedProject}/>
+                        <ProjectGroupMap projectGroups={projectGroups} setSelectedProject={setSelectedProject}/>
                     )}
                 </Col>
                 <Col xl="4">
