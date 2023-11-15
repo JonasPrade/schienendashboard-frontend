@@ -19,7 +19,12 @@ function ProjectProgress(props) {
                     <p className='mt-1'>Es ist noch keine Planung bekannt</p>
                 </div>
             )
-
+        } else if (project.lp_12 === -1) {
+            return(
+                <div>
+                    <p>Dauerhaftes Vorhaben</p>
+                </div>
+            )
         } else if (project.lp_34 === 1) {
             return(
                 <div>
