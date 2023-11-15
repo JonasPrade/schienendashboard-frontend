@@ -38,7 +38,7 @@ function AllTextWebsites(props) {
 
     return(
         <div>
-            <h5>Websites</h5>
+            <h5>Links</h5>
             {textes.map((text) => (
                 <div className="mb-1"  key={text.id}>
                     <TextWebsite key={text.id} text={text}/>
