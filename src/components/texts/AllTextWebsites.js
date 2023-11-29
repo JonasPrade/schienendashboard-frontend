@@ -26,7 +26,6 @@ function AllTextWebsites(props) {
                 <h5>Websites</h5>
                 <Loading/>
             </div>
-
         )
     }
 
