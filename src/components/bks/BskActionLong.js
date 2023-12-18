@@ -1,10 +1,11 @@
 import {useEffect, useState} from "react";
 import Button from "react-bootstrap/Button";
 import getBksAllHandlungsfelder from "../../services/bks/get-all-handlungsfelder";
-import {Spinner} from "react-bootstrap";
+import {Modal, Spinner} from "react-bootstrap";
+import get_action from "../../services/bks/get_action";
 
 function BksActionLong(props) {
-    const [loadingAction, setLoadingAction] = useState(false)
+    const [loadingAction, setLoadingAction] = useState(true)
     const [action, setAction] = useState(null)
 
     const handleClose = () => {
@@ -14,7 +15,7 @@ function BksActionLong(props) {
 
     useEffect(() => {
         setLoadingAction(true);
-        getBksAllHandlungsfelder().then(
+        get_action(props.activeActionId).then(
             (response) => {
                 setAction(response);
                 setLoadingAction(false);
@@ -30,28 +31,70 @@ function BksActionLong(props) {
                     </Spinner>
                 </div>
             ):(
-                <div className="modal fade show d-block" tabIndex="-1" role="dialog">
-                    <div className="modal-dialog" role="document">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title">Overlay Titel</h5>
-                                <button type="button" className="close" onClick={handleClose}>
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                <Modal className="d-block" show={props.overlayVisible} tabIndex="-1" role="dialog" onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>{action.name}</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <h4>Bericht Beschleunigungskommission Schiene</h4>
+                        <h5>Aktuelle Umsetzung:</h5>
+                        <p>{action.review_1_status}</p>
+                        <h5>Inhalt</h5>
+                        {/*TODO: Show report text in Markdown*/}
+                        <p>{action.report_text}</p>
+                        <h5>Umsetzung</h5>
+                        <p>{action.report_process}</p>
+                        <h4>1. Fortschrittsbericht</h4>
+                        <h5>Startpunkt</h5>
+                        <p>{action.review_1_start}</p>
+                        <h5>Zurückgelegte Strecke</h5>
+                        <p>{action.review_1_done}</p>
+                        <h5>Nächster Halt</h5>
+                        <p>{action.review_1_next}</p>
+                        <h5>Umsetzungsstand bei erstem Fortschrittsbericht</h5>
+                        <p>{action.review_1_status}</p>
+                        {action.review_1_changed_aim &&
+                            <div>
+                                <h5>Änderung bei erstem Fortschrittsbericht</h5>
+                                <p>{action.review_1_changed_aim}</p>
                             </div>
-                            <div className="modal-body">
-                                <p>Hier ist der neue Inhalt der Overlay-Komponente.</p>
-                                {/* Hier kannst du den übergebenen Inhalt (props.children) anzeigen, falls erforderlich */}
-                                {props.children}
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" onClick={handleClose}>
-                                    Schließen
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        }
+                    </Modal.Body>
+                    <Modal.Footer>
+                        {/*TODO: Buttons Cluster und Handlungsfeld aktivieren*/}
+                        <Button variant="primary">
+                            Handlungsfeld {action.cluster.handlungsfeld_id}
+                        </Button>
+                        <Button variant="primary">
+                            Cluster {action.cluster.number} {action.cluster.name}
+                        </Button>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Schließen
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+                // <div className="modal fade show d-block" tabIndex="-1" role="dialog">
+                //     <div className="modal-dialog" role="document">
+                //         <div className="modal-content">
+                //             <div className="modal-header">
+                //                 <h5 className="modal-title">{action.name}</h5>
+                //                 <button type="button" className="close" onClick={handleClose}>
+                //                     <span aria-hidden="true">&times;</span>
+                //                 </button>
+                //             </div>
+                //             <div className="modal-body">
+                //                 <p>Hier ist der neue Inhalt der Overlay-Komponente.</p>
+                //                 {/* Hier kannst du den übergebenen Inhalt (props.children) anzeigen, falls erforderlich */}
+                //                 {props.children}
+                //             </div>
+                //             <div className="modal-footer">
+                //                 <button type="button" className="btn btn-secondary" onClick={handleClose}>
+                //                     Schließen
+                //                 </button>
+                //             </div>
+                //         </div>
+                //     </div>
+                // </div>
                 )}
         </div>
     ) : null;

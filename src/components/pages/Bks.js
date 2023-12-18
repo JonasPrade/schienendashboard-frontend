@@ -60,7 +60,9 @@ function Bks() {
             <div>
                 <BksOverview data={bksData}/>
                 <BksProgress all_actions={all_actions} setActiveActionId={setActiveActionId}/>
-                <BksActionLong activeActionId={activeActionId} setActiveActionId={setActiveActionId} overlayVisible={overlayActionVisible} setOverlayVisible={setOverlayActionVisible}/>
+                {overlayActionVisible &&
+                    <BksActionLong activeActionId={activeActionId} setActiveActionId={setActiveActionId} overlayVisible={overlayActionVisible} setOverlayVisible={setOverlayActionVisible}/>
+                }
             </div>
         )}
     </Container>
