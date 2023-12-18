@@ -49,7 +49,7 @@ function BksProgressDiagram(props){
             <Bar
                 options={options} data={data}
             />
-            <p className="mt-1">Unbekannt kann auch an Fehlern in der Datenbereitstellung liegen.</p>
+            <p className="mt-1 text-muted">"Unbekannt" kann auch an Fehlern in der Datenbereitstellung liegen.</p>
         </div>
     )
 }

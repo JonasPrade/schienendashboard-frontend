@@ -27,7 +27,7 @@ function BksOverview(props){
 
 
     return(
-        <div className="bg-light p-3 mt-3 border border-primary">
+        <div className="bg-light p-3 mt-3 border border-primary rounded">
             <h2>Übersicht</h2>
             <Row>
                 <Col xl={6} m={12}>
