@@ -15,7 +15,7 @@ function BksActionShort(props) {
             <Card.Header><h5>{action.name}</h5></Card.Header>
             <Card.Body>
                 <Card.Text>
-                    Umsetzung: {action.review_1_status}
+                    <p>{action.review_1_start}</p>
                     <Button variant='outline-info' className="mt-1" onClick={changeActiveAction}>
                         Mehr Informationen
                     </Button>
