@@ -30,7 +30,7 @@ function BksProgressDiagram(props){
         }
     }
 
-    const labels = [props.translationProgressNames["pruefung"], props.translationProgressNames["vorbereitung"], props.translationProgressNames["vorbereitung_changed"], props.translationProgressNames["umsetzung"], props.translationProgressNames["umsetzung_changed"], props.translationProgressNames["unbekannt"]]
+    const labels = [props.translationProgressNames["pruefung"], props.translationProgressNames["vorbereitung"], props.translationProgressNames["vorbereitung_changed"], props.translationProgressNames["umsetzung"], props.translationProgressNames["umsetzung_changed"]]
 
 
     const data = {
@@ -38,7 +38,7 @@ function BksProgressDiagram(props){
         datasets: [
             {
                 label: 'Beschleunigungskommission Schiene',
-                data: [progress.pruefung.length, progress.vorbereitung.length, progress.vorbereitung_changed.length, progress.umsetzung.length, progress.umsetzung_changed.length, progress.unbekannt.length],
+                data: [progress.pruefung.length, progress.vorbereitung.length, progress.vorbereitung_changed.length, progress.umsetzung.length, progress.umsetzung_changed.length],
                 backgroundColor: 'rgb(255, 99, 132)',
             }
         ]
