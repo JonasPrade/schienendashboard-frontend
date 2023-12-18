@@ -57,21 +57,26 @@ function ProjectProgressSubProjects(props) {
     }
 
     // Generation of diagram
-    const labels = ['ausstehend', 'LP 12', 'LP 34', 'in Bau', 'in Betrieb', 'nicht bekannt']
+    const labels = ['ausstehend', 'LP 12', 'LP 34', 'in Bau', 'in Betrieb', 'verschiedene Baustufen','nicht bekannt']
 
     const data = {
         labels,
         datasets: [
             {
                 label: 'Anzahl',
-                data: [progress.pending, progress.lp_12, progress.lp_34, progress.bau, progress.ibn_erfolgt, progress.not_known],
+                data: [progress.pending, progress.lp_12, progress.lp_34, progress.bau, progress.ibn_erfolgt, progress.has_sub_project, progress.not_known],
                 borderWidth: 1,
                 backgroundColor: '#769FB6'
             }
         ]
     }
 
-    const options = {
+    const options={
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
         scales:{
             y: {
                 beginAtZero: true,
@@ -80,7 +85,7 @@ function ProjectProgressSubProjects(props) {
                     suggestedMin: 1
                 }
             }
-        }
+        },
     }
 
     return(
