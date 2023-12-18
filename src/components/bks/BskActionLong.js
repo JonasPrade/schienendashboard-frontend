@@ -62,39 +62,17 @@ function BksActionLong(props) {
                     </Modal.Body>
                     <Modal.Footer>
                         {/*TODO: Buttons Cluster und Handlungsfeld aktivieren*/}
-                        <Button variant="primary">
+                        <Button variant="outline-secondary" disabled>
                             Handlungsfeld {action.cluster.handlungsfeld_id}
                         </Button>
-                        <Button variant="primary">
+                        <Button variant="outline-secondary" disabled>
                             Cluster {action.cluster.number} {action.cluster.name}
                         </Button>
-                        <Button variant="secondary" onClick={handleClose}>
+                        <Button variant="danger" onClick={handleClose}>
                             Schließen
                         </Button>
                     </Modal.Footer>
                 </Modal>
-                // <div className="modal fade show d-block" tabIndex="-1" role="dialog">
-                //     <div className="modal-dialog" role="document">
-                //         <div className="modal-content">
-                //             <div className="modal-header">
-                //                 <h5 className="modal-title">{action.name}</h5>
-                //                 <button type="button" className="close" onClick={handleClose}>
-                //                     <span aria-hidden="true">&times;</span>
-                //                 </button>
-                //             </div>
-                //             <div className="modal-body">
-                //                 <p>Hier ist der neue Inhalt der Overlay-Komponente.</p>
-                //                 {/* Hier kannst du den übergebenen Inhalt (props.children) anzeigen, falls erforderlich */}
-                //                 {props.children}
-                //             </div>
-                //             <div className="modal-footer">
-                //                 <button type="button" className="btn btn-secondary" onClick={handleClose}>
-                //                     Schließen
-                //                 </button>
-                //             </div>
-                //         </div>
-                //     </div>
-                // </div>
                 )}
         </div>
     ) : null;
