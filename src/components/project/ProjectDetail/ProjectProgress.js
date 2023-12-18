@@ -39,7 +39,7 @@ function ProjectProgress(props) {
                     <p className='mt-1'>Leistungsphase 5-9 aktiv (Ausführungsplanung, Vergabe, Bau) </p>
                 </div>
             )
-        } else if (project.ibn_erfolgt === 1) {
+        } else if (project.ibn_erfolgt === 2) {
             return (
                 <div>
                     <ProgressBar variant="success" now={100} label={`Fertiggestellt`}/>
