@@ -18,11 +18,11 @@ function ProjectGeoJson(props) {
             if (l.feature.properties.projectcontent_id === targetProjectContentId) {
                 if (l instanceof L.CircleMarker) {
                     l.setStyle({
-                        fillColor: selectedProject_id === props.projectcontent.id ? colors.danger : colors.diagram_color_2
+                        fillColor: selectedProject_id === props.projectcontent.id ? colors.success : colors.danger
                     });
                 } else {
                     l.setStyle({
-                        color: selectedProject_id === props.projectcontent.id ? colors.danger : colors.diagram_color_2
+                        color: selectedProject_id === props.projectcontent.id ? colors.success : colors.danger
                     });
                 }
             }
