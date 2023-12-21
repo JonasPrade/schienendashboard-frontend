@@ -21,7 +21,9 @@ function MainNavigation(props) {
                         {props.loggedIn &&
                             <Nav.Link href="/lines/0">Deutschlandtakt Linien</Nav.Link>
                         }
-                        <Nav.Link href="/master_scenario/">Masterarbeit</Nav.Link>
+                        {props.loggedIn &&
+                            <Nav.Link href="/master_scenario/">Masterarbeit</Nav.Link>
+                        }
                         {props.loggedIn &&
                             <Nav.Link href="/master_area/">Masterarbeit Untersuchungsgebiete</Nav.Link>
                         }
