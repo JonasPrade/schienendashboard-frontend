@@ -1,5 +1,6 @@
 import {MapContainer} from "react-leaflet/MapContainer";
 import {TileLayer} from "react-leaflet/TileLayer";
+import colors from '../../../custom.scss';
 
 import 'leaflet/dist/leaflet.css';
 import ProjectGeoJson from "../ProjectGeoJson";
@@ -26,7 +27,7 @@ function ProjectListMap(props) {
                         projectcontent={projectcontent}
                         selectedProject={props.activeProject}
                         setSelectedProject={props.changeActiveProject}
-                        color={'#17C3B2'}
+                        color={colors.map_color_1}
                     />
                 ))}
             </MapContainer>

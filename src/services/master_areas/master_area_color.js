@@ -1,12 +1,15 @@
+import colors from '../../custom.scss';
+
+
 function getColorMasterAreaTraction() {
     var color_by_traction = {
-        "electrification": "#1E491D",
-        "battery": "#D741A7",
-        "optimised_electrification": "#17C3B2",
-        "efuel": "#E9806E",
-        "diesel": "#E09A1A",
-        "h2": "#6ED7E9",
-        "no calculated cost": "#1D3449"
+        "electrification": colors.info,
+        "battery": colors.diagram_color_3,
+        "optimised_electrification": colors.diagram_color_4,
+        "efuel": colors.danger,
+        "diesel": colors.diagram_color_2,
+        "h2": colors.diagram_color,
+        "no calculated cost": colors.primary
     }
     return color_by_traction
 }

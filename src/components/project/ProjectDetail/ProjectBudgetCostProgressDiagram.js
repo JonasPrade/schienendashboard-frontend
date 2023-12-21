@@ -8,6 +8,7 @@ import {
     Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import colors from '../../../custom.scss';
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -25,27 +26,27 @@ function ProjectBudgetostProgressDiagram(props) {
             {
                 label: "Ausgaben bis " + (props.budget.budget_year-1).toString(),
                 data: [props.budget.spent_two_years_previous],
-                backgroundColor: ["#769FB6"]
+                backgroundColor: [colors.diagram_color_1]
             },
             {
                 label: "Erwartete Ausgaben in " + (props.budget.budget_year).toString(),
                 data: [props.budget.allowed_previous_year],
-                backgroundColor: ["#E9806E"]
+                backgroundColor: [colors.diagram_color_2]
             },
             {
                 label: "Ausgabereste bis " + (props.budget.budget_year).toString(),
                 data: [props.budget.spending_residues],
-                backgroundColor: ["#6ED7E9"]
+                backgroundColor: [colors.diagram_color_3]
             },
             {
                 label: "Geplante Ausgaben in " + (props.budget.budget_year+1).toString(),
                 data: [props.budget.year_planned],
-                backgroundColor: ["#204E4A"]
+                backgroundColor: [colors.diagram_color_4]
             },
             {
                 label: "Übrige Ausgaben ab " + (props.budget.budget_year+2).toString(),
                 data: [props.budget.next_years],
-                backgroundColor: ["#E09A1A"]
+                backgroundColor: [colors.diagram_color_5]
             }
         ]
     }

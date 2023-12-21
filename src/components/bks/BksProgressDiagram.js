@@ -1,4 +1,5 @@
 import {Bar} from "react-chartjs-2";
+import colors from '../../custom.scss'
 import {
     Chart as ChartJS,
         CategoryScale,
@@ -39,7 +40,7 @@ function BksProgressDiagram(props){
             {
                 label: 'Beschleunigungskommission Schiene',
                 data: [progress.pruefung.length, progress.vorbereitung.length, progress.vorbereitung_changed.length, progress.umsetzung.length, progress.umsetzung_changed.length],
-                backgroundColor: '#769FB6',
+                backgroundColor: colors.info,
             }
         ]
     }

@@ -1,6 +1,6 @@
 import {GeoJSON} from "react-leaflet/GeoJSON";
 import getColorMasterAreaTraction from "../../services/master_areas/master_area_color";
-
+import colors from '../../custom.scss'
 
 function MasterScenarioPlotArea(props) {
     var style = { color: getColorMasterAreaTraction()[props.master_area.traction_minimal_cost], weight:4};
@@ -19,7 +19,7 @@ function MasterScenarioPlotArea(props) {
 
     function highlightFeature(e) {
         e.target.setStyle({
-            color: '#E09A1A'  // diagram_color_2
+            color: colors.diagram_color_2
         })
     };
 

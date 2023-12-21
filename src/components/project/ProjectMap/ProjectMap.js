@@ -1,16 +1,17 @@
 import { MapContainer } from 'react-leaflet/MapContainer';
 import { GeoJSON } from "react-leaflet/GeoJSON";
 import { TileLayer } from 'react-leaflet/TileLayer';
+import colors from '../../../custom.scss';
 
 import 'leaflet/dist/leaflet.css';
 import L from "leaflet";
 
 function ProjectMap(props) {
-    var style= { color: '#17C3B2', weight:4};
+    var style= { color: colors.map_color_1, weight:4};
     var centroid = [51.3127114, 9.4797461]
 
     const pointStyle = {
-        fillColor: "#17C3B2",
+        fillColor: colors.map_color_1,
         fillOpacity: 1,
         radius: 8,
         stroke: false

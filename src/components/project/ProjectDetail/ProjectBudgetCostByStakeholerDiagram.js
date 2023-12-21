@@ -1,4 +1,5 @@
 import {Doughnut} from "react-chartjs-2";
+import colors from '../../../custom.scss'
 
 function ProjectBudgetDiagramCostByStakeholderDiagram(props) {
     const budget = props.budget
@@ -25,7 +26,7 @@ function ProjectBudgetDiagramCostByStakeholderDiagram(props) {
             {
                 labels: 'Gesamtausgaben nach Titelgruppen',
                 data: Object.values(cost_by_stakeholder),
-                backgroundColor: ['#204E4A', '#769FB6', '#E9806E']
+                backgroundColor: [colors.diagram_color_1, colors.diagram_color_2, colors.diagram_color_3]
             }
         ]
     }

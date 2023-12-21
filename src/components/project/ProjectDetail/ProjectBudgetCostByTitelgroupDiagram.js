@@ -1,5 +1,6 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import colors from '../../../custom.scss'
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -33,7 +34,7 @@ function ProjectBudgetCostByTitelgroupDiagram(props) {
             {
                 labels: 'Gesamtausgaben nach Titelgruppen',
                 data: Object.values(cost_plot),
-                backgroundColor: ["#769FB6", "#E9806E", "#204E4A", "#481D49", "#6ED7E9"]
+                backgroundColor: [colors.diagram_color_1, colors.diagram_color_2, colors.diagram_color_3, colors.diagram_color_4, colors.diagram_color_5]
             },
         ]
     }

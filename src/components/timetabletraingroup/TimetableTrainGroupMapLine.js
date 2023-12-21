@@ -1,8 +1,8 @@
 import {GeoJSON} from "react-leaflet/GeoJSON";
-
+import colors from '../../custom.scss'
 
 function TimetableTrainGroupMapLine(props) {
-    var style= { color: '#17C3B2', weight:4};
+    var style= { color: colors.diagram_color_4, weight:4};
 
     return(
         <GeoJSON

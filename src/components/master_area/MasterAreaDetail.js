@@ -10,6 +10,7 @@ import MasterScenarioPlotArea from "../master_scenario/MasterScenarioPlotArea";
 import {useState} from "react";
 import MasterAreaShort from "./MasterAreaShort";
 import MasterAreaMap from "./MasterAreaMap";
+import colors from '../../custom.scss'
 
 Chart.register(
     CategoryScale,
@@ -96,11 +97,11 @@ function MasterAreaDetail(props) {
                                     datasets: [{
                                         label: "Infrastrukturkosten",
                                         data: props.master_area.cost_overview.infrastructure_cost,
-                                        backgroundColor: '#1D3449'
+                                        backgroundColor: colors.diagram_color_1
                                     }, {
                                         label: "Betriebskosten",
                                         data: props.master_area.cost_overview.operating_cost,
-                                        backgroundColor: '#E9806E'
+                                        backgroundColor: colors.diagram_color_2
                                     }
                                     ]
 

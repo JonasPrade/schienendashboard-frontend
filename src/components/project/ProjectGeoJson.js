@@ -1,6 +1,7 @@
 import {GeoJSON} from "react-leaflet";
 import L from 'leaflet';
 import { useRef } from "react"; // Importieren Sie den useRef Hook
+import colors from '../../custom.scss'
 
 function ProjectGeoJson(props) {
     const projectColor = props.color;
@@ -17,11 +18,11 @@ function ProjectGeoJson(props) {
             if (l.feature.properties.projectcontent_id === targetProjectContentId) {
                 if (l instanceof L.CircleMarker) {
                     l.setStyle({
-                        fillColor: selectedProject_id === props.projectcontent.id ? '#FF0000' : '#E09A1A'
+                        fillColor: selectedProject_id === props.projectcontent.id ? colors.danger : colors.diagram_color_2
                     });
                 } else {
                     l.setStyle({
-                        color: selectedProject_id === props.projectcontent.id ? '#FF0000' : '#E09A1A'
+                        color: selectedProject_id === props.projectcontent.id ? colors.danger : colors.diagram_color_2
                     });
                 }
             }
@@ -34,11 +35,11 @@ function ProjectGeoJson(props) {
             if (l.feature.properties.projectcontent_id === targetProjectContentId) {
                 if (l instanceof L.CircleMarker) {
                     l.setStyle({
-                        fillColor: selectedProject_id === props.projectcontent.id ? '#FF0000' : projectColor
+                        fillColor: selectedProject_id === props.projectcontent.id ? colors.danger : projectColor
                     });
                 } else {
                     l.setStyle({
-                        color: selectedProject_id === props.projectcontent.id ? '#FF0000' : projectColor
+                        color: selectedProject_id === props.projectcontent.id ? colors.danger : projectColor
                     });
                 }
             }

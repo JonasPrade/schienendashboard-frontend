@@ -1,4 +1,5 @@
 import {Line} from "react-chartjs-2";
+import colors from '../../../custom.scss';
 
 import {
     Chart as ChartJS,
@@ -63,8 +64,8 @@ function ProjectBudgetCostTotalHistoryDiagram(props) {
                     const budgetEntry = budget_cost_history.find((budget) => budget.year.toString() === year);
                     return budgetEntry ? budgetEntry.cost_estimate : null; // Set to null if the year is not found in budget_cost_history
                 }),
-                borderColor: '#769FB6',
-                backgroundColor: '#769FB6',
+                borderColor: colors.primary,
+                backgroundColor: colors.primary,
             },
         ],
     }

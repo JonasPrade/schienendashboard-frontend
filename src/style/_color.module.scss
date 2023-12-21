@@ -5,26 +5,14 @@ $info: #769FB6;
 $light: #F4F1DE;
 $danger: #E9806E;
 $success: #204E4A;
-$secondary: #4A6A80;
+$secondary: #4A6A80; // is this needed anywhere??
 $background: #FAF9F0;
 $green_color: #1E491D;
 $purple_color: #481D49;
-$diagram_color: #6ED7E9;
+$diagram_color_1: $primary;
 $diagram_color_2: #E09A1A;
 $diagram_color_3: #D741A7;
+$diagram_color_4: #17C3B2;
+$diagram_color_5: #6ED7E9;
+$map_color_1: $diagram_color_4;
 
-
-:export {
-    primary: $primary;
-    info: $info;
-    light: $light;
-    danger: $danger;
-    success: $success;
-    secondary: $secondary;
-    background: $background;
-    green_color: $green_color;
-    purple_color: $purple_color;
-    diagram_color: $diagram_color;
-    diagram_color_2: $diagram_color_2;
-    diagram_color_3: $diagram_color_3;
-}

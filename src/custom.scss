@@ -5,6 +5,19 @@
 :export {
   primary: $primary;
   info: $info;
+  light: $light;
+  danger: $danger;
+  success: $success;
+  secondary: $secondary;
+  background: $background;
+  green_color: $green_color;
+  purple_color: $purple_color;
+  diagram_color_1: $diagram_color_1;
+  diagram_color_2: $diagram_color_2;
+  diagram_color_3: $diagram_color_3;
+  diagram_color_4: $diagram_color_4;
+  diagram_color_5: $diagram_color_5;
+  map_color_1: $map_color_1
 }
 
 // change the theme
@@ -16,7 +29,7 @@ $theme-colors: (
   "success": $success,
   "secondary": $secondary,
   "background": $background,
-  "website": $diagram_color
+  "website": $diagram_color_1
 );
 
 

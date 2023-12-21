@@ -1,5 +1,7 @@
 import {Bar} from "react-chartjs-2";
 import { Chart, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend} from 'chart.js';
+import colors from '../../custom.scss'
+
 Chart.register(
     CategoryScale,
     LinearScale,
@@ -70,32 +72,32 @@ function TimetableTrainCostDiagramm(props) {
                             {
                                 label:"Kapitalkosten",
                                 data: debt_service,
-                                backgroundColor: '#1D3449',
+                                backgroundColor: colors.diagram_color_1
                             },
                             {
                                 label:"Energiekosten",
                                 data: energy_cost,
-                                backgroundColor: '#E9806E'
+                                backgroundColor: colors.diagram_color_2
                             },
                             {
                                 label:"Instandhaltungskosten",
                                 data: maintenance_cost,
-                                backgroundColor: '#481D49'
+                                backgroundColor: colors.diagram_color_3
                             },
                             {
                                 label:"CO2-Kosten",
                                 data: co2_cost,
-                                backgroundColor: '#1E491D'
+                                backgroundColor: colors.green_color
                             },
                             {
                                 label:"Kosten sonstige Abgase",
                                 data: pollutants_cost,
-                                backgroundColor: '#6ED7E9'
+                                backgroundColor: colors.diagram_color_4
                             },
                             {
                                 label:"Primärenergie",
                                 data: primary_energy_cost,
-                                backgroundColor: '#E09A1A'
+                                backgroundColor: colors.diagram_color_5
                             }
 
                         ]

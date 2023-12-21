@@ -11,7 +11,7 @@ import { Bar } from 'react-chartjs-2';
 import {useEffect, useState} from "react";
 import getProgressOfSubprojects from "../../../services/project_content/getprogresssubprojects";
 import Loading from "../../layout/Loading";
-
+import colors from '../../../custom.scss'
 
 ChartJS.register(
     CategoryScale,
@@ -66,7 +66,7 @@ function ProjectProgressSubProjects(props) {
                 label: 'Anzahl',
                 data: [progress.pending, progress.lp_12, progress.lp_34, progress.bau, progress.ibn_erfolgt, progress.has_sub_project, progress.not_known],
                 borderWidth: 1,
-                backgroundColor: '#769FB6'
+                backgroundColor: colors.info
             }
         ]
     }
