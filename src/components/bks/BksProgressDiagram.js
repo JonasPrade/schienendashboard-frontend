@@ -39,7 +39,7 @@ function BksProgressDiagram(props){
             {
                 label: 'Beschleunigungskommission Schiene',
                 data: [progress.pruefung.length, progress.vorbereitung.length, progress.vorbereitung_changed.length, progress.umsetzung.length, progress.umsetzung_changed.length],
-                backgroundColor: 'rgb(255, 99, 132)',
+                backgroundColor: '#769FB6',
             }
         ]
     }
