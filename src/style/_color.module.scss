@@ -1,18 +1,16 @@
 // Variables
-$primary: #1D3449;
-$blue: $primary;
-$info: #769FB6;
+$primary: #005F6A;
+$info: #00A8BB;
 $light: #F4F1DE;
 $danger: #E9806E;
 $success: #204E4A;
-$secondary: #4A6A80; // is this needed anywhere??
+$secondary: $primary; // is this needed anywhere??
 $background: #FAF9F0;
-$green_color: #1E491D;
-$purple_color: #481D49;
 $diagram_color_1: $primary;
-$diagram_color_2: #E09A1A;
-$diagram_color_3: #D741A7;
-$diagram_color_4: #17C3B2;
-$diagram_color_5: #6ED7E9;
-$map_color_1: $diagram_color_4;
+$diagram_color_2: #6B0B00;
+$diagram_color_3: #002B6B;
+$diagram_color_4: #006B40;
+$diagram_color_5: $info;
+$diagram_color_6: #BB004B;
+$map_color_1: $primary;
 

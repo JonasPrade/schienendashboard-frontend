@@ -66,7 +66,7 @@ function ProjectProgressSubProjects(props) {
                 label: 'Anzahl',
                 data: [progress.pending, progress.lp_12, progress.lp_34, progress.bau, progress.ibn_erfolgt, progress.has_sub_project, progress.not_known],
                 borderWidth: 1,
-                backgroundColor: colors.info
+                backgroundColor: colors.diagram_color_1
             }
         ]
     }

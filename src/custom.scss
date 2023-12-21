@@ -10,13 +10,12 @@
   success: $success;
   secondary: $secondary;
   background: $background;
-  green_color: $green_color;
-  purple_color: $purple_color;
   diagram_color_1: $diagram_color_1;
   diagram_color_2: $diagram_color_2;
   diagram_color_3: $diagram_color_3;
   diagram_color_4: $diagram_color_4;
   diagram_color_5: $diagram_color_5;
+  diagram_color_6: $diagram_color_6;
   map_color_1: $map_color_1
 }
 
@@ -32,9 +31,7 @@ $theme-colors: (
   "website": $diagram_color_1
 );
 
-
 @import '~bootstrap/scss/bootstrap.scss';
-
 
 #root {
   height: 100vh;

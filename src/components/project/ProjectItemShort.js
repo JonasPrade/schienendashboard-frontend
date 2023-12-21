@@ -28,7 +28,7 @@ function ProjectItemShort(props) {
             <Card.Body className="bg-background">
                 <ProjectProgress project={project}/>
                 <Link to={'/project/'+project.id}>
-                    <Button variant='outline-info'>
+                    <Button variant='outline-primary' className="mt-1">
                         Mehr Informationen
                     </Button>
                 </Link>

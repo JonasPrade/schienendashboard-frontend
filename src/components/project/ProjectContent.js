@@ -66,30 +66,6 @@ function ProjectContent(props) {
             <div className="mb-2 mt-2">
                 <h4 >Kennzahlen</h4>
                 <span>Die BVWP Kennzahlen (sofern BVWP-Projekt) werden demnächst hier angezeigt</span>
-
-                {/*<div className="mb-2">*/}
-                {/*    <ButtonGroup className={'d-flex'}>*/}
-                {/*        {props.activeProjectVariant.nkv &&*/}
-                {/*            <Button variant={selectedCategorie === 1 ? "outline-secondary active":"outline-secondary"} value="1" onClick={clickCategeorie}>Bewertung</Button>*/}
-                {/*        }*/}
-                {/*        <Button variant={selectedCategorie === 2 ? "outline-secondary active":"outline-secondary"} value="2" onClick={clickCategeorie}>Umwelt</Button>*/}
-                {/*        <Button variant={selectedCategorie === 3 ? "outline-secondary active":"outline-secondary"} value="3" onClick={clickCategeorie}>Finanzen</Button>*/}
-                {/*    </ButtonGroup>*/}
-                {/*</div>*/}
-
-                {/*{selectedCategorie===1 && props.activeProjectVariant.nkv &&*/}
-                {/*    <ErrorBoundary fallback={*/}
-                {/*        <Alert key={'info'} variant={'info'}>Es gab ein Fehler bei der Darstellung der Bewertungsdaten</Alert>*/}
-                {/*    }>*/}
-                {/*        <ProjectDetailBewertung activeProjectVariant={props.activeProjectVariant}/>*/}
-                {/*    </ErrorBoundary>*/}
-                {/*}*/}
-                {/*{selectedCategorie===2 &&*/}
-                {/*    <h4>Umwelt</h4>*/}
-                {/*}*/}
-                {/*{selectedCategorie===3 &&*/}
-                {/*    <h4>Finanzen</h4>*/}
-                {/*}*/}
             </div>
             }
 

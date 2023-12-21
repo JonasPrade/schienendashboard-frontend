@@ -87,17 +87,17 @@ function TimetableTrainCostDiagramm(props) {
                             {
                                 label:"CO2-Kosten",
                                 data: co2_cost,
-                                backgroundColor: colors.green_color
+                                backgroundColor: colors.diagram_color_4
                             },
                             {
                                 label:"Kosten sonstige Abgase",
                                 data: pollutants_cost,
-                                backgroundColor: colors.diagram_color_4
+                                backgroundColor: colors.diagram_color_5
                             },
                             {
                                 label:"Primärenergie",
                                 data: primary_energy_cost,
-                                backgroundColor: colors.diagram_color_5
+                                backgroundColor: colors.diagram_color_6
                             }
 
                         ]

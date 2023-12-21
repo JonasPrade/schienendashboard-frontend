@@ -8,14 +8,14 @@ function ProjectProgress(props) {
         if (project.lp_12 === 1) {
             return (
                 <div>
-                    <ProgressBar variant="info" now={25} label={`LP 1-2`}/>
+                    <ProgressBar variant="primary" now={25} label={`LP 1-2`}/>
                     <p className='mt-1'>Leistungsphase 1-2 aktiv (Grundlagenermittlung & Vorplanung) </p>
                 </div>
             )
         } else if (project.lp_12 === 0) {
             return(
                 <div>
-                    <ProgressBar variant="info" now={0} label={`noch keine Planung`}/>
+                    <ProgressBar variant="primary" now={0} label={`noch keine Planung`}/>
                     <p className='mt-1'>Es ist noch keine Planung bekannt</p>
                 </div>
             )
@@ -28,14 +28,14 @@ function ProjectProgress(props) {
         } else if (project.lp_34 === 1) {
             return(
                 <div>
-                    <ProgressBar variant = "info" now={50} label={`LP 3-4`}/>
+                    <ProgressBar variant = "primary" now={50} label={`LP 3-4`}/>
                     <p className='mt-1'>Leistungsphase 3-4 aktiv (Entwurfs- und Genehmigungsplanung) </p>
                 </div>
             )
         } else if (project.bau === 1) {
             return (
                 <div>
-                    <ProgressBar variant="info" now={75} label={`LP 5-9`}/>
+                    <ProgressBar variant="primary" now={75} label={`LP 5-9`}/>
                     <p className='mt-1'>Leistungsphase 5-9 aktiv (Ausführungsplanung, Vergabe, Bau) </p>
                 </div>
             )

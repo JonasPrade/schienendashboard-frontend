@@ -62,10 +62,10 @@ function BksActionLong(props) {
                     </Modal.Body>
                     <Modal.Footer>
                         {/*TODO: Buttons Cluster und Handlungsfeld aktivieren*/}
-                        <Button variant="outline-secondary" disabled>
+                        <Button variant="outline-primary" disabled>
                             Handlungsfeld {action.cluster.handlungsfeld_id}
                         </Button>
-                        <Button variant="outline-secondary" disabled>
+                        <Button variant="outline-primary" disabled>
                             Cluster {action.cluster.number} {action.cluster.name}
                         </Button>
                         <Button variant="danger" onClick={handleClose}>
