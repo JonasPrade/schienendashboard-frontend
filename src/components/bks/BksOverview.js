@@ -1,6 +1,4 @@
 import {Col, Row} from "react-bootstrap";
-import BksProgressDiagram from "./BksProgressDiagram";
-import BksProgress from "./BksProgress";
 
 function BksOverview(props){
 
@@ -12,8 +10,8 @@ function BksOverview(props){
                     <div>
                         <h5>Dokumente</h5>
                         <ul>
-                            <li><a href="https://bmdv.bund.de/SharedDocs/DE/Anlage/K/abschlussbericht-beschleunigungskommission-schiene.pdf?__blob=publicationFile" target="_blank">Abschluss Bericht Beschleunigungskommission Schiene</a></li>
-                            <li><a href="https://bmdv.bund.de/SharedDocs/DE/Anlage/K/presse/fortschrittsbericht-bks.pdf?__blob=publicationFile" target="_blank">1. Fortschrittsbericht</a></li>
+                            <li><a href="https://bmdv.bund.de/SharedDocs/DE/Anlage/K/abschlussbericht-beschleunigungskommission-schiene.pdf?__blob=publicationFile" target="_blank" rel="noopener noreferrer">Abschluss Bericht Beschleunigungskommission Schiene</a></li>
+                            <li><a href="https://bmdv.bund.de/SharedDocs/DE/Anlage/K/presse/fortschrittsbericht-bks.pdf?__blob=publicationFile" target="_blank" rel="noopener noreferrer">1. Fortschrittsbericht</a></li>
                         </ul>
                     </div>
                 </Col>

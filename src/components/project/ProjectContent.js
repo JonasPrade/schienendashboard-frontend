@@ -1,5 +1,4 @@
 import {Col, Row} from "react-bootstrap";
-import {useState} from "react";
 import ProjectDetailContent from "./ProjectDetail/ProjectDetailContent";
 import ProjectGroupBadge from "./ProjectGroupBadge";
 import ProjectDetailEffects from "./ProjectDetail/ProjectDetailEffects";

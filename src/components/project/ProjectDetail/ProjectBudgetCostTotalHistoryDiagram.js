@@ -24,7 +24,6 @@ ChartJS.register(
 
 function ProjectBudgetCostTotalHistoryDiagram(props) {
     const budgets = props.finve.budgets.sort((a, b) => a.budget_year - b.budget_year);
-    const last_budget = props.finve.budgets[props.finve.budgets.length - 1]
     const first_budget = props.finve.budgets[0]
 
     // map the budgets to object that have the year as key and the cost_estimate_actual as value

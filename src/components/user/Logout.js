@@ -1,6 +1,5 @@
 import Button from "react-bootstrap/Button";
 import {useNavigate} from "react-router-dom";
-import {useEffect} from "react";
 import Container from "react-bootstrap/Container";
 
 

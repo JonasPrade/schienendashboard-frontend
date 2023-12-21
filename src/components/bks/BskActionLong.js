@@ -1,6 +1,5 @@
 import {useEffect, useState} from "react";
 import Button from "react-bootstrap/Button";
-import getBksAllHandlungsfelder from "../../services/bks/get-all-handlungsfelder";
 import {Modal, Spinner} from "react-bootstrap";
 import get_action from "../../services/bks/get_action";
 

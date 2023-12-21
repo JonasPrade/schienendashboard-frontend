@@ -1,5 +1,4 @@
 import {useRef} from "react";
-import {useNavigate} from "react-router-dom";
 import {Row, Container, Col} from "react-bootstrap";
 import {useEffect, useState} from "react";
 import getAllMasterScenarios from "../../services/master_scenario/get_all_scenarios";
