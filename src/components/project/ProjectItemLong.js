@@ -5,6 +5,7 @@ import {Alert, Col, Container, Row} from "react-bootstrap";
 import ProjectListMap from "./ProjectMap/ProjectListMap";
 import ProjectItemShort from "./ProjectItemShort";
 import ProjectList from "./ProjectList";
+import ProjectBudget from "./ProjectDetail/ProjectBudget";
 
 function ProjectItemLong(props) {
     const project = props.project
@@ -67,6 +68,11 @@ function ProjectItemLong(props) {
                 <Row className ="mt-3">
                     <ProjectContent activeProjectVariant={project}/>
                 </Row>
+                {project.finve.length>0 &&
+                    <Row className="mt-3">
+                        <ProjectBudget project={project}/>
+                    </Row>
+                }
                 {project.sub_project_contents.length > 0 &&
                     <Row className = "mt-3">
                         <h3>Teilprojekte Liste</h3>
