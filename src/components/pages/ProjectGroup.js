@@ -7,6 +7,7 @@ import ProjectGroupMap from "../projectgroup/ProjectGroupMap";
 import useLocalStorage from "../../services/LocalStorageHook.service";
 import ProjectItemShort from "../project/ProjectItemShort";
 import ProjectList from "../project/ProjectList";
+import ProjectsSearchByString from "../project/ProjectDetail/ProjectsSearchByString";
 
 function ProjectGroup() {
     const [selectedGroupIds, setSelectedGroupIds] = useLocalStorage('selectedGroupIds', []);
@@ -71,6 +72,9 @@ function ProjectGroup() {
                         </div>
                     )}
                 </Col>
+            </Row>
+            <Row className="mt-5">
+                {!isLoading && <ProjectsSearchByString projectGroups={projectGroups}/>}
             </Row>
             {isLoading ? (
                 <div>
