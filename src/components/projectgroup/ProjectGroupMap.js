@@ -3,28 +3,19 @@ import 'leaflet/dist/leaflet.css';
 import ProjectGeoJson from "../project/ProjectGeoJson";
 
 function ProjectGroupMap(props) {
+    // add the color to each project of props.project. the color is defined for each projectgroup
+    for (const project of props.projects) {
+        const project_groups = project.projectcontent_groups
+        project.plot = project.superior_project_content_id === null;
 
-    const allProjectContentsWithColor = props.projectGroups.flatMap(group =>
-        group.projects_content.map(projectcontent => ({
-            ...projectcontent,
-            color: group.color,
-            plot: group.plot_only_superior_projects === false ? true : false
-        }))
-    );
-
-    const allProjectContents = []
-
-    for (let Group of props.projectGroups) {
-        for (let Project of Group.projects_content) {
-            Project["color"] = Group.color;
-            if (Group.plot_only_superior_projects === false) {
-                Project["plot"] = true;
-            } else {
-                if (Project.superior_project_content_id === null) {
-                    Project["plot"] = true;
-                }
+        // add the color if the project_group is in selectedGroupIds
+        for (const group of project_groups) {
+            if (props.selectedGroupIds.includes(group.id)) {
+                project.color = group.color
             }
-            allProjectContents.push(Project);
+            if (project.plot === false && group.plot_only_superior_projects === false) {
+                project.plot = true
+            }
         }
     }
 
@@ -37,12 +28,12 @@ function ProjectGroupMap(props) {
                     attribution='Kartenhintergrund: <a href="https://www.bkg.bund.de">Bundesamt für Kartographie und Geodäsie</a>'
                     url={process.env.REACT_APP_TILE_LAYER_URL}
                 />
-                {allProjectContents.map(projectcontent => (
+                {props.projects.map(projectcontent => (
                     projectcontent.plot &&
                         <ProjectGeoJson
                             key={projectcontent.id}
                             projectcontent={projectcontent}
-                            color={projectcontent.color}  // Hier geben wir die Farbe weiter
+                            color={projectcontent.color}
                             setSelectedProject={props.setSelectedProject}
                         />
                 ))}

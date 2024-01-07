@@ -12,8 +12,6 @@ function ProjectList(props) {
                     <ProjectItemShort
                         key={project.id}
                         project={project}
-                        // activeProject={props.activeProject}
-                        // changeActiveProject={props.changeActiveProject}
                     />
                 </Col>
                 )

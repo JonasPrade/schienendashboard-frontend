@@ -1,37 +1,19 @@
 import Container from "react-bootstrap/Container";
 import {Col, Row, Spinner} from "react-bootstrap";
-import ProjectGroupSelection from "../projectgroup/ProjectGroupSelection";
 import { useState, useEffect } from "react";
-import getprojectgroupbyid from "../../services/projectgroup/getprojectgroupbyid";
 import ProjectGroupMap from "../projectgroup/ProjectGroupMap";
 import useLocalStorage from "../../services/LocalStorageHook.service";
-import ProjectItemShort from "../project/ProjectItemShort";
-import ProjectList from "../project/ProjectList";
-import ProjectsSearchByString from "../project/ProjectDetail/ProjectsSearchByString";
+import ProjectSearchList from "../project/ProjectDetail/ProjectSearchList";
+import ProjectGroupMapSidebar from "../projectgroup/ProjectGroupMapSidebar";
 
 function ProjectGroup() {
-    const [selectedGroupIds, setSelectedGroupIds] = useLocalStorage('selectedGroupIds', []);
-    const [projectGroups, setProjectGroups] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [selectedProject, setSelectedProject] = useState(null);
     const [selectedProjectId, setSelectedProjectId] = useLocalStorage("selected_project_id", null)
+    const [projects, setProjects] = useState([])
+    const [selectedGroupIds, setSelectedGroupIds] = useLocalStorage('selectedGroupIds', []);
+    const [showSubprojects, setShowSubprojects] = useLocalStorage("show_subprojects", false);
 
-    useEffect(() => {
-        const fetchProjects = async () => {
-            if (selectedGroupIds.length === 0) return;
-
-            setIsLoading(true);
-            try {
-                const projectGroups = await getprojectgroupbyid(selectedGroupIds);
-                setProjectGroups(projectGroups);
-            } catch (error) {
-                console.error("Fehler beim Abrufen der Projekte:", error);
-            }
-            setIsLoading(false);
-        };
-
-        fetchProjects();
-    }, [selectedGroupIds]);
 
     useEffect(()=>{
         if (selectedProject != null) {
@@ -50,52 +32,31 @@ function ProjectGroup() {
                             </Spinner>
                         </div>
                     ) : (
-                        <ProjectGroupMap projectGroups={projectGroups} setSelectedProject={setSelectedProject}/>
+                        <ProjectGroupMap
+                            projects={projects}
+                            setSelectedProject={setSelectedProject}
+                            selectedGroupIds={selectedGroupIds}
+                        />
                     )}
                 </Col>
                 <Col xl="4">
-                    {isLoading ? (
-                        <div className="d-flex jsutify-content-start mt-5">
-                            <h3>Projektauswahl:</h3>
-                            <div className="d-flex justify-content-center mt-5">
-                                <Spinner animation="border" role="status" variant="primary">
-                                </Spinner>
-                            </div>
-
-                        </div>
-                    ) : (
-                        <div>
-                            <ProjectGroupSelection selectedGroupIds={selectedGroupIds} setSelectedGroupIds={setSelectedGroupIds} />
-                            <div className="mt-3">
-                                {selectedProject && <ProjectItemShort project={selectedProject}/>}
-                            </div>
-                        </div>
-                    )}
+                    <ProjectGroupMapSidebar
+                        setIsLoading={setIsLoading}
+                        isLoading={isLoading}
+                        projects={projects}
+                        setProjects={setProjects}
+                        selectedProject={selectedProject}
+                        selectedGroupIds={selectedGroupIds}
+                        setSelectedGroupIds={setSelectedGroupIds}
+                        showSubprojects={showSubprojects}
+                        setShowSubprojects={setShowSubprojects}
+                    />
                 </Col>
             </Row>
             <Row className="mt-5">
-                {!isLoading && <ProjectsSearchByString projectGroups={projectGroups}/>}
+                <h3>Projektliste</h3>
+                <ProjectSearchList isLoading={isLoading} projects={projects}/>
             </Row>
-            {isLoading ? (
-                <div>
-                    <h3>Projektliste</h3>
-                    <div className="d-flex justify-content-center mt-5">
-                        <Spinner animation="border" role="status" variant="primary">
-                        </Spinner>
-                    </div>
-                </div>
-            ) : (
-                <div>
-                    <h3 className="mt-5">Projektliste</h3>
-                    {projectGroups.map((group) =>  (
-                        <Row className="mt-3" key={group.id}>
-                            <h4>{group.name}</h4>
-                            <ProjectList projectscontent={group.projects_content}/>
-                        </Row>
-                    ))}
-                </div>
-            )}
-
         </Container>
     )
 }
