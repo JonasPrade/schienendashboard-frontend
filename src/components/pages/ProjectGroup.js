@@ -41,8 +41,8 @@ function ProjectGroup() {
                 </Col>
                 <Col xl="4">
                     <ProjectGroupMapSidebar
-                        setIsLoading={setIsLoading}
                         isLoading={isLoading}
+                        setIsLoading={setIsLoading}
                         projects={projects}
                         setProjects={setProjects}
                         selectedProject={selectedProject}

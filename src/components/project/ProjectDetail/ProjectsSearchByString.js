@@ -1,26 +1,26 @@
-import {Button} from "react-bootstrap";
+import {Button, Col, Row, Spinner} from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import {useEffect, useRef, useState} from "react";
 import getProjectsBySearchString from "../../../services/projects/getprojectbysearchstring";
-import useLocalStorage from "../../../services/LocalStorageHook.service";
 
 function ProjectsSearchByString(props) {
     const forminputRef = useRef()
+    const [loading, setLoading] = useState(false)
 
     function getSearchString(e) {
-        props.setIsLoading(true);
         e.preventDefault();
         searchProjects(forminputRef.current.value)
     }
 
     function getAllProjects() {
-        props.setIsLoading(true);
         let searchString = '';
         searchProjects(searchString);
+        forminputRef.current.value = '';
     }
 
     function searchProjects(searchString) {
         const fetchProjects = async() => {
+            setLoading(true)
             if (searchString === '') {
                 searchString = 'all'
             }
@@ -30,11 +30,12 @@ function ProjectsSearchByString(props) {
                 props.setProjects(projects_received);
             } catch (error) {
                 console.error("Fehler beim Abrufen der Projekte:", error);
+            } finally {
+                setLoading(false)
             }
 
         };
         fetchProjects();
-        props.setIsLoading(false);
     }
 
     useEffect(() => {
@@ -53,13 +54,27 @@ function ProjectsSearchByString(props) {
                     <Form.Label><h3>Projekte suchen</h3></Form.Label>
                     <Form.Control type='text' placeholder='Nach Projekten suchen' ref={forminputRef}/>
                 </Form.Group>
-                <Button type='submit' variant='primary'>
+                <Button type='submit' variant='primary' disabled={loading}>
                     Suchen
                 </Button>
             </Form>
-            <Button type='button' variant='primary' onClick={getAllProjects} className="mt-2">
-                Alle anzeigen
-            </Button>
+            <Row>
+                <Col>
+                    <Button type='button' variant='primary' onClick={getAllProjects} className="mt-2" disabled={loading}>
+                        Alle anzeigen
+                    </Button>
+                </Col>
+                <Col>
+                    {
+                        loading &&
+                        <div className="d-flex justify-content-start">
+                            <Spinner animation="border" role="status" variant="primary">
+                            </Spinner>
+                        </div>
+                    }
+                </Col>
+            </Row>
+
             <Form className="mt-2">
                 <Form.Check
                     type="checkbox"
