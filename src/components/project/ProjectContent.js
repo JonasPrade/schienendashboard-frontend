@@ -1,6 +1,6 @@
 import {Col, Row} from "react-bootstrap";
 import ProjectDetailContent from "./ProjectDetail/ProjectDetailContent";
-import ProjectGroupBadge from "./ProjectGroupBadge";
+import ProjectGroupBadge from "../projectgroup/ProjectGroupBadge";
 import ProjectDetailEffects from "./ProjectDetail/ProjectDetailEffects";
 import ProjectProgress from "./ProjectDetail/ProjectProgress";
 import AllTextWebsites from "../texts/AllTextWebsites";
@@ -29,6 +29,7 @@ function ProjectContent(props) {
                             <ProjectGroupBadge
                                 key = {project_group.id}
                                 name = {project_group.name}
+                                short_name = {project_group.short_name}
                             />)
                         )}
                     </Col>

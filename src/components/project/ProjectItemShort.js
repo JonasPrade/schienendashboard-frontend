@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button'
-import ProjectGroupBadge from "./ProjectGroupBadge";
+import ProjectGroupBadge from "../projectgroup/ProjectGroupBadge";
 import ProjectDetailContent from "./ProjectDetail/ProjectDetailContent";
 import ProjectDetailEffects from "./ProjectDetail/ProjectDetailEffects";
 import {Col, Row} from "react-bootstrap";
@@ -41,6 +41,7 @@ function ProjectItemShort(props) {
                                 <ProjectGroupBadge
                                     key = {project_group.id}
                                     name = {project_group.name}
+                                    short_name = {project_group.short_name}
                                 />)
                             )}
                         </Col>

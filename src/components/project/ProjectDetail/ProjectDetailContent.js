@@ -235,7 +235,7 @@ function ProjectDetailContent(props) {
                 }
                 {props.activeProjectVariant.buffer_track &&
                     <Col>
-                        <TooltipWrapper tooltipContent="Überleitstellen">
+                        <TooltipWrapper tooltipContent="Puffergleise">
                             <span>Puffergleise</span>
                         </TooltipWrapper>
                     </Col>
