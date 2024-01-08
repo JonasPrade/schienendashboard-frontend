@@ -57,7 +57,7 @@ function ProjectProgressSubProjects(props) {
     }
 
     // Generation of diagram
-    const labels = ['ausstehend', 'LP 12', 'LP 34', 'in Bau', 'in Betrieb', 'verschiedene Baustufen','nicht bekannt']
+    const labels = ['ausstehend', 'Vorplanung', 'Planung', 'in Bau', 'in Betrieb', 'verschiedene Baustufen','nicht bekannt']
 
     const data = {
         labels,
