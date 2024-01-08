@@ -18,14 +18,14 @@ function ProjectDetailContent(props) {
                 {props.activeProjectVariant.nbs &&
                     <Col>
                         <TooltipWrapper tooltipContent="Neubaustrecke">
-                            <span title='Neubaustrecke' className='border border-white bg-info rounded-1 p-1'>NBS</span>
+                            <span title='Neubaustrecke' className='border border-white bg-primary rounded-1 p-1'>NBS</span>
                         </TooltipWrapper>
                     </Col>
                 }
                 {props.activeProjectVariant.abs &&
                     <Col>
                         <TooltipWrapper tooltipContent="Ausbaustrecke">
-                            <span title="Ausbaustecke" className='border border-white bg-info rounded-1 p-1'>ABS</span>
+                            <span title="Ausbaustecke" className='border border-white bg-primary rounded-1 p-1'>ABS</span>
                         </TooltipWrapper>
 
                     </Col>
