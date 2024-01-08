@@ -52,14 +52,14 @@ function BksProgress(props) {
                 <div>
                     <Row className="mt-3">
                         <Col>
-                            <h5>Übersicht</h5>
+                            <h3>Übersicht Umsetzung Projekte</h3>
                             <BksProgressDiagram progress={progress} translationProgressNames={translationProgressNames}/>
                         </Col>
 
                     </Row>
                     <Row>
                         <Col>
-                            <h5>Details</h5>
+                            <h3>Details zur Umsetzung der Projekte</h3>
                             <BksProgressActions progress={progress} translationProgressNames={translationProgressNames} setActiveActionId={props.setActiveActionId}/>
                         </Col>
                     </Row>
