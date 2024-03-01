@@ -47,3 +47,32 @@ $theme-colors: (
 .tooltip {
   pointer-events: none;
 }
+
+.color-picker {
+  appearance: none; // Remove default styling
+  border: none; // Remove border
+  outline: none; // Remove outline
+  padding: 0em; // Remove padding
+  margin: 0.3em;
+  width: 1.5em; // Adjust width if needed
+  height: 1em; // Adjust height if needed
+  border-radius: 50%; // Make it circular
+  cursor: pointer; // Change cursor to pointer
+  &::-webkit-color-swatch-wrapper {
+    padding: 0; // Remove padding
+    border: none; // Remove border
+    border-radius: 50%; // Make it circular
+    background: none; // Remove background
+  }
+  &::-webkit-color-swatch {
+    border: none; // Remove border
+    border-radius: 50%; // Make it circular
+    box-shadow: none; // Remove box shadow
+  }
+}
+
+
+
+
+
+

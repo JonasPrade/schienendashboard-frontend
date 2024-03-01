@@ -36,6 +36,11 @@ function ProjectGroupMapSidebar(props) {
                 <ProjectGroupSelection
                     selectedGroupIds={props.selectedGroupIds}
                     setSelectedGroupIds={props.setSelectedGroupIds}
+                    projectGroups={props.projectGroups}
+                    selectedGroups={props.selectedGroups}
+                    setSelectedGroups={props.setSelectedGroups}
+                    groupColors={props.groupColors}
+                    setGroupColors={props.setGroupColors}
                 />
             </div>
 

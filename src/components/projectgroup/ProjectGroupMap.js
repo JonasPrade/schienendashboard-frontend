@@ -20,7 +20,7 @@ function ProjectGroupMap(props) {
 
             for (const group of projectGroups) {
                 if (props.selectedGroupIds.includes(group.id)) {
-                    result[project.id] = group.color;
+                    result[project.id] = props.groupColors[group.name];
                 }
                 if (!project.plot && !group.plot_only_superior_projects) {
                     project.plot = true;
@@ -35,7 +35,7 @@ function ProjectGroupMap(props) {
         });
 
         setColorToProject(result);
-    }, [props.projects, props.selectedProject]);
+    }, [props.projects, props.selectedProject, props.groupColors]);
 
     function highlightAllRelatedFeatures(layer, geoJsonLayer) {
         const targetProjectContentId = layer.feature.properties.projectcontent_id;
