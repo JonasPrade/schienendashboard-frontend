@@ -34,6 +34,7 @@ function ProjectGroup() {
                     ) : (
                         <ProjectGroupMap
                             projects={projects}
+                            selectedProject={selectedProject}
                             setSelectedProject={setSelectedProject}
                             selectedGroupIds={selectedGroupIds}
                         />
