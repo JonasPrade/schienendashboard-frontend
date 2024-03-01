@@ -23,7 +23,7 @@ function ProjectGroup() {
 
     return (
         <Container>
-            <h1>Projektgruppen</h1>
+            <h1>Projektdashboard</h1>
             <Row>
                 <Col s="auto">
                     {isLoading ? (
