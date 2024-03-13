@@ -1,6 +1,5 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {Form, Button, Container, Spinner, Row, Col} from 'react-bootstrap';
-import { ChromePicker } from 'react-color'; // Importieren Sie den ColorPicker
+import React, {useEffect} from 'react';
+import {Form, Button, Row, Col} from 'react-bootstrap';
 
 function ProjectGroupSelection(props) {
     // update the selectedGroups state when a checkbox is clicked

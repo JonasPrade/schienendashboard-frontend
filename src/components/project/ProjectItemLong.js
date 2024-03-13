@@ -6,6 +6,7 @@ import ProjectListMap from "./ProjectMap/ProjectListMap";
 import ProjectItemShort from "./ProjectItemShort";
 import ProjectList from "./ProjectList";
 import ProjectBudget from "./ProjectDetail/ProjectBudget";
+import ProjectGroupMap from "../projectgroup/ProjectGroupMap";
 
 function ProjectItemLong(props) {
     const project = props.project

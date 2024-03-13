@@ -1,9 +1,10 @@
 import {MapContainer} from "react-leaflet/MapContainer";
 import {TileLayer} from "react-leaflet/TileLayer";
-import colors from '../../../custom.scss';
-
 import 'leaflet/dist/leaflet.css';
 import ProjectGeoJson from "../ProjectGeoJson";
+import {highlightAllRelatedFeatures, resetAllRelatedFeatures} from "../../../services/projectgroup/leafletfunctions";
+import settings from "../../../config/settings";
+import colors from '../../../custom.scss';
 
 function ProjectListMap(props) {
     var centroid = [51.3127114, 9.4797461]
@@ -13,6 +14,11 @@ function ProjectListMap(props) {
             centroid = [props.projectscontent[0].centroid.coordinates[1],props.projectscontent[0].centroid.coordinates[0]]
         }
     }
+
+    const colorToProject = {}
+    props.projectscontent.forEach(project => {
+        colorToProject[project.id] = colors.map_color_1
+    })
 
     return(
         <div style={{'height': '800px', 'width': '100%'}}>
@@ -27,7 +33,11 @@ function ProjectListMap(props) {
                         projectcontent={projectcontent}
                         selectedProject={props.activeProject}
                         setSelectedProject={props.changeActiveProject}
-                        color={colors.map_color_1}
+                        colorToProject={colorToProject}
+                        highlightAllRelatedFeatures={highlightAllRelatedFeatures}
+                        resetAllRelatedFeatures={resetAllRelatedFeatures}
+                        CircleRadius={settings.CircleRadius}
+                        LineWeight={settings.LineWeight}
                     />
                 ))}
             </MapContainer>

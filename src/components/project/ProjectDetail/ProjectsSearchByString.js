@@ -59,11 +59,7 @@ function ProjectsSearchByString(props) {
                 </Button>
             </Form>
             <Row>
-                <Col>
-                    <Button type='button' variant='primary' onClick={getAllProjects} className="mt-2" disabled={loading}>
-                        Alle anzeigen
-                    </Button>
-                </Col>
+
                 <Col>
                     {
                         loading &&
@@ -84,6 +80,11 @@ function ProjectsSearchByString(props) {
                     onChange={changeShowSubprojects}
                 />
             </Form>
+            <Col>
+                <Button type='button' variant='primary' onClick={getAllProjects} className="mt-2" disabled={loading}>
+                    Projekte anzeigen
+                </Button>
+            </Col>
         </div>
     )
 }
