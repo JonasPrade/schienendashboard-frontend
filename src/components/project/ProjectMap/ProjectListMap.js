@@ -5,9 +5,11 @@ import ProjectGeoJson from "../ProjectGeoJson";
 import {highlightAllRelatedFeatures, resetAllRelatedFeatures} from "../../../services/projectgroup/leafletfunctions";
 import settings from "../../../config/settings";
 import colors from '../../../custom.scss';
+import {useEffect, useState} from "react";
 
 function ProjectListMap(props) {
     var centroid = [51.3127114, 9.4797461]
+    const [colorToProject, setColorToProject] = useState({});
 
     if (props.projectscontent[0].hasOwnProperty('centroid')) {
         if (props.projectscontent[0].centroid != null) {
@@ -15,10 +17,16 @@ function ProjectListMap(props) {
         }
     }
 
-    const colorToProject = {}
-    props.projectscontent.forEach(project => {
-        colorToProject[project.id] = colors.map_color_1
-    })
+    useEffect(() => {
+        const result = {};
+        props.projectscontent.forEach(project => {
+            result[project.id] = colors.map_color_1
+            if (props.activeProject) {
+                result[props.activeProject.id] = colors.map_color_2
+            }
+        })
+        setColorToProject(result)
+    }, [props.activeProject])
 
     return(
         <div style={{'height': '800px', 'width': '100%'}}>

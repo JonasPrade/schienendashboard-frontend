@@ -1,7 +1,7 @@
 const settings = {
-    CircleRadius: 6,
+    CircleRadius: 6.5,
     CircleRadiusHover: 8.5,
-    LineWeight: 2.8,
+    LineWeight: 3,
     LineWeightHover: 5,
 };
 

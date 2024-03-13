@@ -71,7 +71,17 @@ $theme-colors: (
   }
 }
 
+.chart-container {
+  height: 400px;
+  width: 100%
+}
 
+@media (max-width: 768px) {
+  .chart-container {
+    height: 200px;
+    width: 100%
+  }
+}
 
 
 

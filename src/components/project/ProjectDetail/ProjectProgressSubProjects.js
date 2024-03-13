@@ -72,6 +72,8 @@ function ProjectProgressSubProjects(props) {
     }
 
     const options={
+        responsive: true,
+        maintainAspectRatio: false,
         plugins: {
             legend: {
                 display: false
@@ -91,7 +93,9 @@ function ProjectProgressSubProjects(props) {
     return(
         <div>
             <h6>Projektfortschritt Teilprojekte:</h6>
-            <Bar options={options} data={data} className="h-100"/>
+            <div className="chart-container">
+                <Bar options={options} data={data}/>
+            </div>
         </div>
     )
 }
