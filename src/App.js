@@ -30,7 +30,6 @@ function App() {
                 }
                 <Route path="/logout" element={<Logout  user={user} changeUser={changeUser} />} />
                 <Route path="/profile" element={<Profile/>}/>
-
                 <Route path="/projects" element={
                     <ProjectGroup/>
                 }/>

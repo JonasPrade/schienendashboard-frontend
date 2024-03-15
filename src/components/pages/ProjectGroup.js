@@ -10,7 +10,6 @@ import getprojectgroups from "../../services/projectgroup/getprojectgroups";
 function ProjectGroup() {
     const [isLoading, setIsLoading] = useState(false);
     const [selectedProject, setSelectedProject] = useState(null);
-    const [selectedProjectId, setSelectedProjectId] = useLocalStorage("selected_project_id", null)
     const [projects, setProjects] = useState([])
     const [selectedGroupIds, setSelectedGroupIds] = useLocalStorage('selectedGroupIds', []);
     const [showSubprojects, setShowSubprojects] = useLocalStorage("show_subprojects", false);
@@ -18,12 +17,6 @@ function ProjectGroup() {
     const [projectGroups, setProjectGroups] = useState([]); // all existing project groups
     const [loadingGroup, setIsLoadingGroup] = useState(false);
     const [selectedGroups, setSelectedGroups] = useState({}); // selected project groups
-
-    useEffect(()=>{
-        if (selectedProject != null) {
-            setSelectedProjectId(selectedProject.id)
-        }
-    }, [selectedProject])
 
     useEffect(() => {
         setIsLoadingGroup(true);
@@ -38,6 +31,7 @@ function ProjectGroup() {
             }
         )
     }, []);
+
 
     //set groupcolors if not Existing
     useEffect(() => {
