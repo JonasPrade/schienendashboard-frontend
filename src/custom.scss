@@ -52,7 +52,6 @@ $theme-colors: (
   appearance: none; // Remove default styling
   border: none; // Remove border
   outline: none; // Remove outline
-  padding: 0em; // Remove padding
   margin: 0.3em;
   width: 1.5em; // Adjust width if needed
   height: 1em; // Adjust height if needed
@@ -71,17 +70,6 @@ $theme-colors: (
   }
 }
 
-.chart-container {
-  height: 400px;
-  width: 100%
-}
-
-@media (max-width: 768px) {
-  .chart-container {
-    height: 200px;
-    width: 100%
-  }
-}
 
 
 

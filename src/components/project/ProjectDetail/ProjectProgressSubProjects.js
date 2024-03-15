@@ -93,7 +93,7 @@ function ProjectProgressSubProjects(props) {
     return(
         <div>
             <h6>Projektfortschritt Teilprojekte:</h6>
-            <div className="chart-container">
+            <div>
                 <Bar options={options} data={data}/>
             </div>
         </div>
