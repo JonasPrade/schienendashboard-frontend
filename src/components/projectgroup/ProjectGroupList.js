@@ -36,7 +36,7 @@ function ProjectGroupList(props) {
                     />
                 </Col>
             </Row>
-            <div className="mt-3">
+            <div className="mt-4">
                 <ProjectSearchList isLoading={props.isLoading} projects={props.projects}/>
             </div>
         </div>
