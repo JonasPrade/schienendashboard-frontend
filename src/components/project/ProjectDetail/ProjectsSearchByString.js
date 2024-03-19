@@ -1,45 +1,12 @@
 import {Button, Col, Row, Spinner} from "react-bootstrap";
 import Form from "react-bootstrap/Form";
-import {useEffect, useRef, useState} from "react";
-import {getProjectsBySearchString} from "../../../services/projects/projectfunctions";
+import {useEffect} from "react";
+import { getAllProjects, getSearchString} from "../../../services/projects/projectfunctions";
 
 function ProjectsSearchByString(props) {
-    const forminputRef = useRef()
-    const [loading, setLoading] = useState(false)
-
-    function getSearchString(e) {
-        e.preventDefault();
-        searchProjects(forminputRef.current.value)
-    }
-
-    function getAllProjects() {
-        let searchString = '';
-        searchProjects(searchString);
-        forminputRef.current.value = '';
-    }
-
-    function searchProjects(searchString) {
-        const fetchProjects = async() => {
-            setLoading(true)
-            if (searchString === '') {
-                searchString = 'all'
-            }
-
-            try {
-                const projects_received = await getProjectsBySearchString(searchString, props.selectedGroupIds);
-                props.setProjects(projects_received);
-            } catch (error) {
-                console.error("Fehler beim Abrufen der Projekte:", error);
-            } finally {
-                setLoading(false)
-            }
-
-        };
-        fetchProjects();
-    }
 
     useEffect(() => {
-        getAllProjects(); 
+        getAllProjects(props.searchHistoryRef, props.setIsLoadingSearch, props.setProjects, props.selectedGroupIds);
     }, []);
 
     const changeShowSubprojects = (event) => {
@@ -47,16 +14,32 @@ function ProjectsSearchByString(props) {
         props.setShowSubprojects(checked)
     }
 
+    function clickAllProjects() {
+        getAllProjects(props.searchHistoryRef, props.setIsLoadingSearch, props.setProjects, props.selectedGroupIds);
+    }
+
+    function onSubmit(e) {
+        getSearchString(e, props.searchHistoryRef.current.value, props.setIsLoadingSearch, props.setProjects, props.selectedGroupIds)
+    }
+
     return(
         <div>
-            <Form onSubmit={getSearchString}>
+            <Form onSubmit={onSubmit}>
                 <Form.Group className="mb-3" controlId="projectid">
                     <Form.Label><h3>Projekte suchen</h3></Form.Label>
-                    <Form.Control type='text' placeholder='Nach Projekten suchen' ref={forminputRef}/>
+                    <Form.Control type='text' placeholder='Nach Projekten suchen' ref={props.searchHistoryRef}/>
                 </Form.Group>
-                <Button type='submit' variant='primary' disabled={loading}>
-                    Suchen
-                </Button>
+                <Row>
+                    <Col>
+                        <Button type='submit' variant='primary' disabled={props.isLoadingSearch}>
+                            Suchen
+                        </Button>
+                        <Button type='button' variant='primary' onClick={clickAllProjects} className="ms-2" disabled={props.isLoadingSearch}>
+                            Alle Projekte
+                        </Button>
+                    </Col>
+                </Row>
+
             </Form>
             <Form className="mt-2">
                 <Form.Check
@@ -70,7 +53,7 @@ function ProjectsSearchByString(props) {
             <Row>
                 <Col>
                     {
-                        loading &&
+                        props.isLoadingSearch &&
                         <div className="d-flex justify-content-start">
                             <Spinner animation="border" role="status" variant="primary">
                             </Spinner>
@@ -79,9 +62,7 @@ function ProjectsSearchByString(props) {
                 </Col>
             </Row>
             <Col>
-                <Button type='button' variant='primary' onClick={getAllProjects} className="mt-2" disabled={loading}>
-                    Projekte anzeigen
-                </Button>
+
             </Col>
         </div>
     )

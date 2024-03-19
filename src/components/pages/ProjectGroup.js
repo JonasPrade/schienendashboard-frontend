@@ -1,16 +1,15 @@
 import Container from "react-bootstrap/Container";
 import {ButtonGroup, Col, Row, Spinner, ToggleButton} from "react-bootstrap";
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect, useRef} from "react";
 import ProjectGroupMap from "../projectgroup/ProjectGroupMap";
 import useLocalStorage from "../../services/LocalStorageHook.service";
-import ProjectSearchList from "../project/ProjectDetail/ProjectSearchList";
 import ProjectGroupMapSidebar from "../projectgroup/ProjectGroupMapSidebar";
 import getprojectgroups from "../../services/projectgroup/getprojectgroups";
-import ProjectsSearchByString from "../project/ProjectDetail/ProjectsSearchByString";
-import ProjectGroupSelection from "../projectgroup/ProjectGroupSelection";
+import ProjectGroupList from "../projectgroup/ProjectGroupList";
 
 function ProjectGroup() {
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoadingGroups, setIsLoadingGroups] = useState(false);
+    const [isLoadingSearch, setIsLoadingSearch] = useState(false);
     const [selectedProject, setSelectedProject] = useState(null);
     const [projects, setProjects] = useState([])
     const [selectedGroupIds, setSelectedGroupIds] = useLocalStorage('selectedGroupIds', []);
@@ -20,6 +19,7 @@ function ProjectGroup() {
     const [loadingGroup, setIsLoadingGroup] = useState(false);
     const [selectedGroups, setSelectedGroups] = useState({}); // selected project groups
     const [switchButton, setSwitchButton]  = useState('map')
+    const searchHistoryRef = useRef();
 
     useEffect(() => {
         setIsLoadingGroup(true);
@@ -53,28 +53,37 @@ function ProjectGroup() {
                 <ButtonGroup>
                     <ToggleButton
                         key={"map"}
+                        id="map"
                         type="radio"
                         variant={switchButton === "map" ? "success":"secondary"}
                         active={switchButton === "map"}
-                        onClick={() => setSwitchButton("map")}
+                        onClick={(e) => {
+                            e.preventDefault()
+                            setSwitchButton("map")
+                        }}
                     >
                         Karte
                     </ToggleButton>
                     <ToggleButton
                         key={"list"}
+                        id="list"
                         type="radio"
                         variant={switchButton === "list" ? "success":"secondary"}
                         active={switchButton === "list"}
-                        onClick={() => setSwitchButton("list")}
+                        onClick={(e) => {
+                            e.preventDefault()
+                            setSwitchButton("list")
+                        }}
                     >
                         Liste
                     </ToggleButton>
                 </ButtonGroup>
             </Row>
+
             {switchButton === 'map' &&
                 <Row>
                     <Col s="auto">
-                        {isLoading ? (
+                        {isLoadingGroups ? (
                             <div className="d-flex justify-content-center mt-5">
                                 <Spinner animation="border" role="status" variant="primary">
                                 </Spinner>
@@ -97,8 +106,8 @@ function ProjectGroup() {
                             </div>
                         ):(
                             <ProjectGroupMapSidebar
-                                isLoading={isLoading}
-                                setIsLoading={setIsLoading}
+                                isLoading={isLoadingGroups}
+                                setIsLoading={setIsLoadingGroups}
                                 projects={projects}
                                 setProjects={setProjects}
                                 selectedProject={selectedProject}
@@ -111,40 +120,34 @@ function ProjectGroup() {
                                 projectGroups={projectGroups}
                                 selectedGroups={selectedGroups}
                                 setSelectedGroups={setSelectedGroups}
+                                searchHistoryRef={searchHistoryRef}
+                                isLoadingSearch={isLoadingSearch}
+                                setIsLoadingSearch={setIsLoadingSearch}
                             />
                         )}
                     </Col>
                 </Row>
             }
             {switchButton === 'list' &&
-                <div>
-                    <Row className="mt-3 mt-md-5">
-                        <Col md={6}>
-                            <ProjectsSearchByString
-                                selectedGroupIds={selectedGroupIds}
-                                projects={projects}
-                                setProjects={setProjects}
-                                showSubprojects={showSubprojects}
-                                setShowSubprojects={setShowSubprojects}
-                            />
-                        </Col>
-                        <Col md={6} className="mt-3 mt-md-0">
-                            <ProjectGroupSelection
-                                selectedGroupIds={selectedGroupIds}
-                                setSelectedGroupIds={setSelectedGroupIds}
-                                projectGroups={projectGroups}
-                                selectedGroups={selectedGroups}
-                                setSelectedGroups={setSelectedGroups}
-                                groupColors={groupColors}
-                                setGroupColors={setGroupColors}
-                            />
-                        </Col>
-                    </Row>
-                    <div className="mt-3">
-                        <ProjectSearchList isLoading={isLoading} projects={projects}/>
-                    </div>
-                </div>
-
+                <ProjectGroupList
+                    isLoading={isLoadingGroups}
+                    setIsLoading={setIsLoadingGroups}
+                    projects={projects}
+                    setProjects={setProjects}
+                    selectedProject={selectedProject}
+                    selectedGroupIds={selectedGroupIds}
+                    setSelectedGroupIds={setSelectedGroupIds}
+                    showSubprojects={showSubprojects}
+                    setShowSubprojects={setShowSubprojects}
+                    groupColors={groupColors}
+                    setGroupColors={setGroupColors}
+                    projectGroups={projectGroups}
+                    selectedGroups={selectedGroups}
+                    setSelectedGroups={setSelectedGroups}
+                    searchHistoryRef={searchHistoryRef}
+                    isLoadingSearch={isLoadingSearch}
+                    setIsLoadingSearch={setIsLoadingSearch}
+                />
             }
         </Container>
     )

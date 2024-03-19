@@ -23,33 +23,33 @@ export function getProjectsBySearchString(searchString, projectgroup_ids) {
         });
 }
 
-// export function searchProjects(searchString, setLoading, setProjects) {
-//     const fetchProjects = async() => {
-//         setLoading(true)
-//         if (searchString === '') {
-//             searchString = 'all'
-//         }
-//
-//         try {
-//             const projects_received = await getProjectsBySearchString(searchString, props.selectedGroupIds);
-//             setProjects(projects_received);
-//         } catch (error) {
-//             console.error("Fehler beim Abrufen der Projekte:", error);
-//         } finally {
-//             setLoading(false)
-//         }
-//
-//     };
-//     fetchProjects();
-// }
-//
-// export function getSearchString(searchString) {
-//     e.preventDefault();
-//     searchProjects(forminputRef.current.value)
-// }
-//
-// export function getAllProjects() {
-//     let searchString = '';
-//     searchProjects(searchString);
-//     forminputRef.current.value = '';
-// }
+function searchProjects(searchString, setLoading, setProjects, selectedGroupIds) {
+    const fetchProjects = async() => {
+        setLoading(true)
+        if (searchString === '') {
+            searchString = 'all'
+        }
+
+        try {
+            const projects_received = await getProjectsBySearchString(searchString, selectedGroupIds);
+            setProjects(projects_received);
+        } catch (error) {
+            console.error("Fehler beim Abrufen der Projekte:", error);
+        } finally {
+            setLoading(false)
+        }
+
+    };
+    fetchProjects();
+}
+
+export function getSearchString(event, searchString, setLoading, setProjects, selectedGroupIds) {
+    event.preventDefault();
+    searchProjects(searchString, setLoading, setProjects, selectedGroupIds)
+}
+
+export function getAllProjects(forminputRef, setLoading, setProjects, selectedGroupIds) {
+    let searchString = '';
+    searchProjects(searchString, setLoading, setProjects, selectedGroupIds);
+    forminputRef.current.value = searchString;
+}

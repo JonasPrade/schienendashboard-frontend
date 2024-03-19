@@ -2,7 +2,7 @@ import {Spinner} from "react-bootstrap";
 import ProjectsSearchByString from "../project/ProjectDetail/ProjectsSearchByString";
 import ProjectGroupSelection from "./ProjectGroupSelection";
 import ProjectItemShort from "../project/ProjectItemShort";
-import React, {useState} from "react";
+import React from "react";
 
 function ProjectGroupMapSidebar(props) {
     return(
@@ -28,6 +28,9 @@ function ProjectGroupMapSidebar(props) {
                         setProjects={props.setProjects}
                         showSubprojects={props.showSubprojects}
                         setShowSubprojects={props.setShowSubprojects}
+                        searchHistoryRef={props.searchHistoryRef}
+                        isLoadingSearch={props.isLoadingSearch}
+                        setIsLoadingSearch={props.setIsLoadingSearch}
                     />
                 </div>
             )}
@@ -40,6 +43,10 @@ function ProjectGroupMapSidebar(props) {
                     setSelectedGroups={props.setSelectedGroups}
                     groupColors={props.groupColors}
                     setGroupColors={props.setGroupColors}
+                    isLoadingSearch={props.isLoadingSearch}
+                    setIsLoadingSearch={props.setIsLoadingSearch}
+                    searchHistoryRef={props.searchHistoryRef}
+                    setProjects={props.setProjects}
                 />
             </div>
 
