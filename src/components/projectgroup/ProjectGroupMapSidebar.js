@@ -26,7 +26,6 @@ function ProjectGroupMapSidebar(props) {
                         selectedGroupIds={props.selectedGroupIds}
                         projects={props.projects}
                         setProjects={props.setProjects}
-                        setIsLoading={props.setIsLoading}
                         showSubprojects={props.showSubprojects}
                         setShowSubprojects={props.setShowSubprojects}
                     />

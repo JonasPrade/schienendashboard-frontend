@@ -1,7 +1,7 @@
 import {Button, Col, Row, Spinner} from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import {useEffect, useRef, useState} from "react";
-import getProjectsBySearchString from "../../../services/projects/getprojectbysearchstring";
+import {getProjectsBySearchString} from "../../../services/projects/projectfunctions";
 
 function ProjectsSearchByString(props) {
     const forminputRef = useRef()
@@ -58,8 +58,16 @@ function ProjectsSearchByString(props) {
                     Suchen
                 </Button>
             </Form>
+            <Form className="mt-2">
+                <Form.Check
+                    type="checkbox"
+                    name="show subprojects"
+                    label="Zeige Unterprojekte (in Liste)"
+                    checked={props.showSubprojects || false}
+                    onChange={changeShowSubprojects}
+                />
+            </Form>
             <Row>
-
                 <Col>
                     {
                         loading &&
@@ -70,16 +78,6 @@ function ProjectsSearchByString(props) {
                     }
                 </Col>
             </Row>
-
-            <Form className="mt-2">
-                <Form.Check
-                    type="checkbox"
-                    name="show subprojects"
-                    label="Zeige Unterprojekte (in Liste)"
-                    checked={props.showSubprojects || false}
-                    onChange={changeShowSubprojects}
-                />
-            </Form>
             <Col>
                 <Button type='button' variant='primary' onClick={getAllProjects} className="mt-2" disabled={loading}>
                     Projekte anzeigen
