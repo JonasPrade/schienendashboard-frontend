@@ -6,6 +6,7 @@ import useLocalStorage from "../../services/LocalStorageHook.service";
 import ProjectGroupMapSidebar from "../projectgroup/ProjectGroupMapSidebar";
 import getprojectgroups from "../../services/projectgroup/getprojectgroups";
 import ProjectSearchList from "../project/ProjectDetail/ProjectSearchList";
+import ProjectGroupSelection from "../projectgroup/ProjectGroupSelection";
 
 function ProjectGroup() {
     const [isLoadingGroups, setIsLoadingGroups] = useState(false);
@@ -78,7 +79,7 @@ function ProjectGroup() {
                                 key={"map"}
                                 id="map"
                                 type="radio"
-                                variant={switchButton === "map" ? "success":"secondary"}
+                                variant={switchButton === "map" ? "success" : "secondary"}
                                 active={switchButton === "map"}
                                 onClick={(e) => {
                                     e.preventDefault()
@@ -91,7 +92,7 @@ function ProjectGroup() {
                                 key={"list"}
                                 id="list"
                                 type="radio"
-                                variant={switchButton === "list" ? "success":"secondary"}
+                                variant={switchButton === "list" ? "success" : "secondary"}
                                 active={switchButton === "list"}
                                 onClick={(e) => {
                                     e.preventDefault()
@@ -110,19 +111,42 @@ function ProjectGroup() {
                                     </Spinner>
                                 </div>
                             ) : (
-                                <ProjectGroupMap
-                                    projects={projects}
-                                    selectedProject={selectedProject}
-                                    setSelectedProject={setSelectedProject}
-                                    selectedGroupIds={selectedGroupIds}
-                                    groupColors={groupColors}
-                                />
+                                <div>
+                                    <ProjectGroupMap
+                                        projects={projects}
+                                        selectedProject={selectedProject}
+                                        setSelectedProject={setSelectedProject}
+                                        selectedGroupIds={selectedGroupIds}
+                                        groupColors={groupColors}
+                                    />
+
+                                </div>
                             )}
                         </div>
                     }
                     {switchButton === 'list' &&
                         <ProjectSearchList isLoading={isLoadingGroups} projects={projects}/>
                     }
+                    <div className="mt-3">
+                        {selectedGroupIds ?
+                            <ProjectGroupSelection
+                                selectedGroupIds={selectedGroupIds}
+                                setSelectedGroupIds={setSelectedGroupIds}
+                                projectGroups={projectGroups}
+                                selectedGroups={selectedGroups}
+                                setSelectedGroups={setSelectedGroups}
+                                groupColors={groupColors}
+                                setGroupColors={setGroupColors}
+                                setIsLoadingSearch={setIsLoadingSearch}
+                                searchHistoryRef={searchHistoryRef}
+                                setProjects={setProjects}
+                            /> :
+                            <p>
+                                Bitte wählen Sie eine Projektgruppe aus.
+                            </p>
+                        }
+
+                    </div>
                 </Col>
             </Row>
         </Container>

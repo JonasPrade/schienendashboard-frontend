@@ -46,7 +46,6 @@ function ProjectGroupMapSidebar(props) {
                                         setSelectedGroups={props.setSelectedGroups}
                                         groupColors={props.groupColors}
                                         setGroupColors={props.setGroupColors}
-                                        isLoadingSearch={props.isLoadingSearch}
                                         setIsLoadingSearch={props.setIsLoadingSearch}
                                         searchHistoryRef={props.searchHistoryRef}
                                         setProjects={props.setProjects}

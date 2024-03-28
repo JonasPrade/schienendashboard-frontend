@@ -2,43 +2,43 @@ import React, {useEffect} from 'react';
 import {Form, Button, Row, Col} from 'react-bootstrap';
 import {getAllProjects} from "../../services/projects/projectfunctions";
 
-function ProjectGroupSelection(props) {
+function ProjectGroupSelection({selectedGroupIds, setSelectedGroupIds, projectGroups, selectedGroups, setSelectedGroups, groupColors, setGroupColors, setIsLoadingSearch, searchHistoryRef, setProjects}) {
     // update the selectedGroups state when a checkbox is clicked
     const handleCheckboxChange = (event) => {
         const { name, checked } = event.target;
-        props.setSelectedGroups(prevState => ({
+        setSelectedGroups(prevState => ({
             ...prevState,
             [name]: checked
         }));
     };
 
-    // change the props.selectedGroupIds depending on a change of the selectedGroups state
+    // change the selectedGroupIds depending on a change of the selectedGroups state
     useEffect(() => {
-        const selectedGroupIds = props.projectGroups
-            .filter((group) => props.selectedGroups[group.name])
+        const selectedGroupIds = projectGroups
+            .filter((group) => selectedGroups[group.name])
             .map((group) => group.id);
-        props.setSelectedGroupIds(selectedGroupIds);
-    }, [props.selectedGroups]);
+        setSelectedGroupIds(selectedGroupIds);
+    }, [selectedGroups]);
 
     // Function to reset colors to default
     const resetColors = () => {
         const defaultColors = {};
-        props.projectGroups.forEach(group => {
+        projectGroups.forEach(group => {
             defaultColors[group.name] = group.color || "#000000";
         });
-        props.setGroupColors(defaultColors);
+        setGroupColors(defaultColors);
     };
 
     const handleColorChange = (event) => {
         const { name, value } = event.target;
-        props.setGroupColors(prevState => ({
+        setGroupColors(prevState => ({
             ...prevState,
             [name]: value
         }));
     };
 
     function clickAllProjects() {
-        getAllProjects(props.searchHistoryRef, props.setIsLoadingSearch, props.setProjects, props.selectedGroupIds);
+        getAllProjects(searchHistoryRef, setIsLoadingSearch, setProjects, selectedGroupIds);
     }
 
     return (
@@ -46,7 +46,7 @@ function ProjectGroupSelection(props) {
             <h3>Auswahl Projektgruppe:</h3>
             <div>
                 <Form>
-                    {props.projectGroups.map(group => (
+                    {projectGroups.map(group => (
                         <div key={group.name}>
                             <Row>
                                 <Col xs={9}>
@@ -55,7 +55,7 @@ function ProjectGroupSelection(props) {
                                         id={group.name}
                                         label={group.name}
                                         name={group.name}
-                                        checked={props.selectedGroups[group.name] || false}
+                                        checked={selectedGroups[group.name] || false}
                                         onChange={handleCheckboxChange}
                                     />
                                 </Col>
@@ -63,7 +63,7 @@ function ProjectGroupSelection(props) {
                                     <Form.Control
                                         type="color"
                                         name={group.name}
-                                        value={props.groupColors[group.name] || group.color}
+                                        value={groupColors[group.name] || group.color}
                                         onChange={handleColorChange}
                                         className="color-picker"
                                     />
