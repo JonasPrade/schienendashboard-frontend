@@ -22,6 +22,9 @@ function ProjectGeoJson(props) {
                 },
                 touchend: (e) => {
                     openPopupHandler(e);
+                },
+                touchstart: (e) => {
+                    openPopupHandler(e);
                 }
             });
         });
@@ -39,6 +42,9 @@ function ProjectGeoJson(props) {
                 openPopupHandler(e);
             },
             touchend: (e) => {
+                openPopupHandler(e);
+            },
+            touchstart: (e) => {
                 openPopupHandler(e);
             }
         });
