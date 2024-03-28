@@ -18,8 +18,8 @@ function ProjectDetailFinVe(props) {
                         Finanzierungsvereinbarung: {props.finve.name} (abgeschlossen {props.finve.starting_year})
                     </Card.Title>
                     <Card.Text>
-                            Budgetplan von {last_budget.budget_year} <br/>
-                            Aktuell erwartete Gesamtkosten: {last_budget.cost_estimate_actual.toLocaleString('de')} Tsd. €.
+                            Budgetplan von {last_budget?.budget_year} <br/>
+                            Aktuell erwartete Gesamtkosten: {last_budget?.cost_estimate_actual.toLocaleString('de')} Tsd. €.
                     </Card.Text>
                     <Row>
                         <Col xl={6}>

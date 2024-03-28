@@ -75,7 +75,7 @@ function ProjectGroupSelection(props) {
                 <Row className="mt-2">
                     <Col>
                         <Button onClick={resetColors}>Farben zurücksetzen</Button>
-                        <Button type='button' variant='primary' onClick={clickAllProjects} className="ms-2 ms-lg-0 ms-xxl-2 mt-0 mt-lg-2 mt-xxl-0">
+                        <Button type='button' variant='primary' onClick={clickAllProjects} className="ms-2 mt-0">
                             Projektgruppen auswählen
                         </Button>
                     </Col>
