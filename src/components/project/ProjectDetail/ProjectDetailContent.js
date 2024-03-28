@@ -247,6 +247,13 @@ function ProjectDetailContent(props) {
                         </TooltipWrapper>
                     </Col>
                 }
+                {props.activeProjectVariant.tilting &&
+                    <Col>
+                        <TooltipWrapper tooltipContent="Ermöglichung bogenschnelles Fahren (Neigetechnik)">
+                            <span>NeiTi</span>
+                        </TooltipWrapper>
+                    </Col>
+                }
             </Row>
         </div>
     )
