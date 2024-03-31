@@ -65,7 +65,10 @@ function App() {
                 <Route path="/bks" element={
                     <Bks/>}>
                 </Route>
-                <Route path='/finve'element={<Finance/>}/>
+                <Route path='/finve'>
+                    <Route path=":finveid" element={<Finance/>}/>
+                    <Route index element={<Finance/>}/>
+                </Route>
             </Routes>
         </Layout>
     );

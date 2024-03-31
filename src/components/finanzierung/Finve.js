@@ -7,14 +7,16 @@ import FinveList from "./FinveList";
 import Loading from "../layout/Loading";
 import PopupField from "../layout/PopupField";
 import FinveItemLong from "./FinveItemLong";
+import { useLocation } from 'react-router-dom';
 
 
 function Finve() {
     const [loadingFinve, setLoadingFinves] = useState(false);
     const [finves, setFinves] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
-    const [activeFinve, setActiveFinve] = useState({})
+    const [activeFinveId, setActiveFinveId] = useState(null)
     const [showFinveLong, setShowFinveLong] = useState(false)
+    const location = useLocation();
 
     useEffect(() => {
         setLoadingFinves(true)
@@ -30,13 +32,15 @@ function Finve() {
             })
     }, [searchTerm])
 
+    const queryParams = new URLSearchParams(location.search);
+    const finveid = queryParams.get('finveid');
+
     useEffect(() => {
-        if (Object.keys(activeFinve).length !== 0) {
+        if (finveid !== null) {
+            setActiveFinveId(finveid)
             setShowFinveLong(true)
-        } else {
-            setShowFinveLong(false)
         }
-    }, [activeFinve])
+    }, [])
 
     function onSubmit(event) {
         event.preventDefault()
@@ -56,14 +60,14 @@ function Finve() {
                     </Form>
                 </Col>
                 <Col className="ms-1">
-                    {loadingFinve ? <Loading/> : <FinveList finves={finves} setActiveFinve={setActiveFinve} setShowFinveLong={setShowFinveLong}/>}
+                    {loadingFinve ? <Loading/> : <FinveList finves={finves} setActiveFinveId={setActiveFinveId} setShowFinveLong={setShowFinveLong}/>}
                 </Col>
             </Row>
             <div>
-                {activeFinve &&
-                    <PopupField header={`Finanzierungsvereinbarung: ${activeFinve.name} (geschlossen ${activeFinve.starting_year})`} show={showFinveLong} setShow={setShowFinveLong}
+                {showFinveLong &&
+                    <PopupField header={`Übersicht Finanzierungsvereinbarung`} show={showFinveLong} setShow={setShowFinveLong}
                         content={
-                            <FinveItemLong finve_id={activeFinve.id}/>
+                            <FinveItemLong finve_id={activeFinveId}/>
                         }
                     />
                 }

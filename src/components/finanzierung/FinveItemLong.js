@@ -43,6 +43,7 @@ function FinveItemLong({finve_id}) {
         <div>
             {finveLoading ? <Loading/> :
                 <div>
+                    <h3>{finve.name} (geschlossen {finve.starting_year}</h3>
                     <h4>Überblick Finanzierungsstand</h4>
                     <FinveDetailKPIs
                         finve={finve}

@@ -1,6 +1,6 @@
 import FinveItemShort from "./FinveItemShort";
 
-function FinveList({ finves, setActiveFinve, setShowFinveLong }) {
+function FinveList({ finves, setActiveFinveId, setShowFinveLong }) {
     // if finves list empty or finves not existing return message
     if (finves?.length === 0 || !finves) {
         return (
@@ -15,7 +15,7 @@ function FinveList({ finves, setActiveFinve, setShowFinveLong }) {
         <div>
             <h4>Liste</h4>
             {finves.map(finve => (
-                <FinveItemShort key={finve.id} finve={finve} showDiagrams={false} showButtonLong={true} setActiveFinve={setActiveFinve} setShowFinveLong={setShowFinveLong}/>
+                <FinveItemShort key={finve.id} finve={finve} showDiagrams={false} showButtonLong={true} setActiveFinveId={setActiveFinveId} setShowFinveLong={setShowFinveLong}/>
             ))}
         </div>
     )
