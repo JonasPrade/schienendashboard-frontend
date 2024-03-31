@@ -6,7 +6,6 @@ import {Col, Row} from "react-bootstrap";
 import FinveList from "./FinveList";
 import Loading from "../layout/Loading";
 import PopupField from "../layout/PopupField";
-import FinveItemShort from "./FinveItemShort";
 import FinveItemLong from "./FinveItemLong";
 
 
@@ -50,27 +49,27 @@ function Finve() {
                 <Col xs={4}>
                     <Form onSubmit={onSubmit}>
                         <Form.Group className="mb-3">
-                            <Form.Label><h3>Finanzierungsvereinbarungen suchen</h3></Form.Label>
+                            <Form.Label><h4>Finanzierungsvereinbarungen suchen</h4></Form.Label>
                             <Form.Control id='searchstring' type='text' placeholder='Nach Finanzierungsvereinbarungen suchen'/>
                         </Form.Group>
                         <Button type='submit' variant='primary' disabled={loadingFinve}>Suchen</Button>
                     </Form>
                 </Col>
                 <Col className="ms-1">
-                    {loadingFinve ? <Loading/> : <FinveList finves={finves} setActiveFinve={setActiveFinve}/>}
+                    {loadingFinve ? <Loading/> : <FinveList finves={finves} setActiveFinve={setActiveFinve} setShowFinveLong={setShowFinveLong}/>}
                 </Col>
             </Row>
             <div>
                 {activeFinve &&
                     <PopupField header={`Finanzierungsvereinbarung: ${activeFinve.name} (geschlossen ${activeFinve.starting_year})`} show={showFinveLong} setShow={setShowFinveLong}
                         content={
-                            <FinveItemLong finve={activeFinve}/>
+                            <FinveItemLong finve_id={activeFinve.id}/>
                         }
                     />
                 }
             </div>
         </div>
-        )
+    )
 }
 
 export default Finve

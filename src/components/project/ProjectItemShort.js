@@ -8,8 +8,7 @@ import ProjectDetailEffects from "./ProjectDetail/ProjectDetailEffects";
 import {Col, Row} from "react-bootstrap";
 import ProjectProgress from "./ProjectDetail/ProjectProgress";
 
-function ProjectItemShort(props) {
-    const project = props.project
+function ProjectItemShort({project}) {
 
     // TODO: make the badges responsive to open the Project Groups with all there Projects.
     return(

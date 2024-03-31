@@ -7,13 +7,14 @@ import ProjectBudgetDiagramCostByStakeholderDiagram
     from "../project/ProjectDetail/ProjectBudgetCostByStakeholerDiagram";
 import Button from "react-bootstrap/Button";
 
-function FinveItemShort ({ finve, showDiagrams, showButtonLong, setActiveFinve=null }) {
+function FinveItemShort ({ finve, showDiagrams, showButtonLong, setActiveFinve=null, setShowFinveLong=null }) {
     finve.budgets.sort((a, b) => a.budget_year - b.budget_year);
     const last_budget = finve.budgets[finve.budgets.length - 1]
 
     function onSubmitRequestLong(e) {
         e.preventDefault()
         setActiveFinve(finve)
+        setShowFinveLong(true)
     }
 
     return(

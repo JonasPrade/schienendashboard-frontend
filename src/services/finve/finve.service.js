@@ -15,5 +15,12 @@ export function searchFinve(searchTerm) {
         })
 }
 
-
-
+export function getFinve(id) {
+    return axios
+        .get(
+            API_URL + 'finve/' + id, {headers: authHeader()}
+        )
+        .then(response => {
+            return response.data
+        })
+}
