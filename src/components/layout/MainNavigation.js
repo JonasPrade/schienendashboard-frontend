@@ -18,6 +18,7 @@ function MainNavigation(props) {
                         <Nav.Link as={Link} to="/">Home</Nav.Link>
                         <Nav.Link as={Link} to="/projects">Projektdashboard</Nav.Link>
                         <Nav.Link as={Link} to="/bks">Beschleunigungskommission</Nav.Link>
+                        <Nav.Link as={Link} to="/finve">Finanzierung</Nav.Link>
                         {props.loggedIn &&
                             <Nav.Link href="/lines/0">Deutschlandtakt Linien</Nav.Link>
                         }

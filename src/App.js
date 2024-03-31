@@ -13,6 +13,7 @@ import MasterScenario from "./components/pages/Scenario";
 import Project from "./components/pages/Project";
 import ProjectGroup from "./components/pages/ProjectGroup";
 import Bks from "./components/pages/Bks";
+import Finance from "./components/pages/Finance";
 
 function App() {
 
@@ -64,6 +65,7 @@ function App() {
                 <Route path="/bks" element={
                     <Bks/>}>
                 </Route>
+                <Route path='/finve'element={<Finance/>}/>
             </Routes>
         </Layout>
     );

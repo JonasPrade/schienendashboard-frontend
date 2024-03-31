@@ -69,8 +69,6 @@ function ProjectContent(props) {
             </div>
             }
 
-
-
             {props.activeProjectVariant.texts.length >0 &&
             <div className="mt-5">
                 <h4>Hinweise</h4>

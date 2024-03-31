@@ -39,7 +39,6 @@ function ProjectsSearchByString(props) {
                         </Button>
                     </Col>
                 </Row>
-
             </Form>
             <Form className="mt-2">
                 <Form.Check

@@ -37,20 +37,22 @@ function ProjectGroupMapSidebar(props) {
                 </Button>
                 {showProjectGroup &&
                     <PopupField show={showProjectGroup} setShow={setShowPopup} header={"Projektgruppen auswählen"}
-                                content={
-                                    <ProjectGroupSelection
-                                        selectedGroupIds={props.selectedGroupIds}
-                                        setSelectedGroupIds={props.setSelectedGroupIds}
-                                        projectGroups={props.projectGroups}
-                                        selectedGroups={props.selectedGroups}
-                                        setSelectedGroups={props.setSelectedGroups}
-                                        groupColors={props.groupColors}
-                                        setGroupColors={props.setGroupColors}
-                                        setIsLoadingSearch={props.setIsLoadingSearch}
-                                        searchHistoryRef={props.searchHistoryRef}
-                                        setProjects={props.setProjects}
-                                    />
-                                }/>}
+                        content={
+                            <ProjectGroupSelection
+                                selectedGroupIds={props.selectedGroupIds}
+                                setSelectedGroupIds={props.setSelectedGroupIds}
+                                projectGroups={props.projectGroups}
+                                selectedGroups={props.selectedGroups}
+                                setSelectedGroups={props.setSelectedGroups}
+                                groupColors={props.groupColors}
+                                setGroupColors={props.setGroupColors}
+                                setIsLoadingSearch={props.setIsLoadingSearch}
+                                searchHistoryRef={props.searchHistoryRef}
+                                setProjects={props.setProjects}
+                            />
+                        }
+                    />
+                }
             </div>
             <div className="mt-3">
                 {props.selectedProject &&

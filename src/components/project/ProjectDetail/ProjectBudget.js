@@ -1,5 +1,5 @@
 import {Row} from "react-bootstrap";
-import ProjectDetailFinVe from "./ProjectDetailFinVe";
+import FinveItemShort from "../../finanzierung/FinveItemShort";
 
 function ProjectBudget(props) {
 
@@ -8,7 +8,7 @@ function ProjectBudget(props) {
             <h4>Budget</h4>
             {props.project.finve.map((finve)=>(
                 <Row key={finve.id}>
-                    <ProjectDetailFinVe finve={finve}/>
+                    <FinveItemShort finve={finve} showDiagrams={true} showButtonLong={false}/>
                 </Row>
             )
             )}
