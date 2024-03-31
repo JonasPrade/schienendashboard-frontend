@@ -6,6 +6,7 @@ import ProjectBudgetCostByTitelgroupDiagram from "../project/ProjectDetail/Proje
 import ProjectBudgetDiagramCostByStakeholderDiagram
     from "../project/ProjectDetail/ProjectBudgetCostByStakeholerDiagram";
 import Button from "react-bootstrap/Button";
+import {Link} from "react-router-dom";
 
 function FinveItemShort ({ finve, showDiagrams, showButtonLong, setActiveFinveId, setShowFinveLong=null }) {
     finve.budgets.sort((a, b) => a.budget_year - b.budget_year);
@@ -44,12 +45,17 @@ function FinveItemShort ({ finve, showDiagrams, showButtonLong, setActiveFinveId
                         </Col>
                     </Row>
                     }
-                    {showButtonLong &&
+                    {showButtonLong ?
                         <div>
                             <Button variant='outline-primary' onClick={onSubmitRequestLong}>
                                 Mehr Informationen
                             </Button>
-                        </div>
+                        </div> :
+                        <Link to={`/finanzierung?finveid=${finve.id}`}>
+                            <Button>
+                                Mehr Informationen
+                            </Button>
+                        </Link>
                     }
                 </Card.Body>
             </Card>

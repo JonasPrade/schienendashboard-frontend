@@ -65,7 +65,7 @@ function App() {
                 <Route path="/bks" element={
                     <Bks/>}>
                 </Route>
-                <Route path='/finve'>
+                <Route path='/finanzierung'>
                     <Route path=":finveid" element={<Finance/>}/>
                     <Route index element={<Finance/>}/>
                 </Route>
