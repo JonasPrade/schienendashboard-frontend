@@ -12,6 +12,7 @@ function BksOverview(props){
                         <ul>
                             <li><a href="https://bmdv.bund.de/SharedDocs/DE/Anlage/K/abschlussbericht-beschleunigungskommission-schiene.pdf?__blob=publicationFile" target="_blank" rel="noopener noreferrer">Abschluss Bericht Beschleunigungskommission Schiene</a></li>
                             <li><a href="https://bmdv.bund.de/SharedDocs/DE/Anlage/K/presse/fortschrittsbericht-bks.pdf?__blob=publicationFile" target="_blank" rel="noopener noreferrer">1. Fortschrittsbericht</a></li>
+                            <li><a href="https://bmdv.bund.de/SharedDocs/DE/Anlage/K/2-fortschrittsbericht-bks.html" target="_blank" rel="noopener noreferrer">2. Fortschrittsbericht</a></li>
                         </ul>
                     </div>
                 </Col>

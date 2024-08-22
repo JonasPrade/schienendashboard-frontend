@@ -1,72 +1,59 @@
-import {Col, Row} from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import BksProgressDiagram from "./BksProgressDiagram";
 import BksProgressActions from "./BksProgressActions";
 
+const translationProgressNames = {
+    pruefung: "in Prüfung",
+    vorbereitung: "in Vorbereitung",
+    vorbereitung_changed: "in Vorbereitung (inhaltlich verändert)",
+    umsetzung: "in Umsetzung",
+    umsetzung_changed: "in Umsetzung (inhaltlich verändert)",
+    unbekannt: "Unbekannt",
+    nicht_umgesetzt: "wird aktuell nicht umgesetzt",
+    fertig: "vollständig umgesetzt",
+    fertig_changed: "vollständig umgesetzt (inhaltlich verändert)"
+};
 
-function BksProgress(props) {
-    const translationProgressNames ={
-        pruefung: "in Prüfung",
-        vorbereitung: "in Vorbereitung",
-        vorbereitung_changed: "in Vorbereitung (inhaltlich Verändert)",
-        umsetzung: "in Umsetzung",
-        umsetzung_changed: "in Umsetzung (inhaltlich Verändert)",
-        unbekannt: "Unbekannt"
-    }
+function BksProgress({ all_actions, setActiveActionId }) {
+    const sortByProgressReview2 = (actions) => {
+        const progress = Object.keys(translationProgressNames).reduce((acc, key) => ({ ...acc, [key]: [] }), {});
 
-    function sort_by_progress_review_1(all_actions){
-        var progress = {}
-        progress.pruefung = []
-        progress.vorbereitung = []
-        progress.vorbereitung_changed = []
-        progress.umsetzung = []
-        progress.umsetzung_changed = []
-        progress.unbekannt = []
+        actions.forEach(action => {
+            const status = action.review_2_status;
+            const key = Object.keys(translationProgressNames).find(k => translationProgressNames[k] === status) || 'unbekannt';
+            progress[key].push(action);
+        });
 
-        for (var action of all_actions){
-            if (action.review_1_status === "in Prüfung"){
-                progress.pruefung.push(action)
-            } else if (action.review_1_status === "in Vorbereitung"){
-                progress.vorbereitung.push(action)
-            } else if (action.review_1_status === "in Vorbereitung (inhaltlich Verändert)") {
-                progress.vorbereitung_changed.push(action)
-            } else if (action.review_1_status === "in Umsetzung") {
-                progress.umsetzung.push(action)
-            } else if (action.review_1_status === "in Umsetzung (inhaltlich Verändert)") {
-                progress.umsetzung_changed.push(action)
-            } else if (action.review_1_status === null) {
-                progress.unbekannt.push(action)
-            } else {
-                console.log("Error: Progress not found for action: " + action.name + " with progress: " + action.review_1_status + " with id" + action.id)
-            }
-        }
+        return progress;
+    };
 
-        return progress
-    }
+    const progress = sortByProgressReview2(all_actions);
 
-    const progress = sort_by_progress_review_1(props.all_actions)
-
-    return(
+    return (
         <div className="mt-5">
             <h2>Fortschritt</h2>
-            {props.all_actions.length > 0 &&
-                <div>
+            {all_actions.length > 0 && (
+                <>
                     <Row className="mt-3">
                         <Col>
                             <h3>Übersicht Umsetzung Projekte</h3>
-                            <BksProgressDiagram progress={progress} translationProgressNames={translationProgressNames}/>
+                            <BksProgressDiagram progress={progress} translationProgressNames={translationProgressNames} />
                         </Col>
-
                     </Row>
                     <Row>
                         <Col>
                             <h3>Details zur Umsetzung der Projekte</h3>
-                            <BksProgressActions progress={progress} translationProgressNames={translationProgressNames} setActiveActionId={props.setActiveActionId}/>
+                            <BksProgressActions
+                                progress={progress}
+                                translationProgressNames={translationProgressNames}
+                                setActiveActionId={setActiveActionId}
+                            />
                         </Col>
                     </Row>
-                </div>
-            }
+                </>
+            )}
         </div>
-    )
+    );
 }
 
-export default BksProgress
+export default BksProgress;

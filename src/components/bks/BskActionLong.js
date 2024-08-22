@@ -52,10 +52,19 @@ function BksActionLong(props) {
                         <p>{action.review_1_next}</p>
                         <h5>Umsetzungsstand bei erstem Fortschrittsbericht</h5>
                         <p>{action.review_1_status}</p>
-                        {action.review_1_changed_aim &&
+                        <h4>2. Fortschrittsbericht</h4>
+                        <h5>Startpunkt</h5>
+                        <p>{action.review_2_start}</p>
+                        <h5>Zurückgelegte Strecke</h5>
+                        <p>{action.review_2_done}</p>
+                        <h5>Nächster Halt</h5>
+                        <p>{action.review_2_next}</p>
+                        <h5>Umsetzungsstand bei zweitem Fortschrittsbericht</h5>
+                        <p>{action.review_2_status}</p>
+                        {action.review_2_changed_aim &&
                             <div>
-                                <h5>Änderung bei erstem Fortschrittsbericht</h5>
-                                <p>{action.review_1_changed_aim}</p>
+                                <h5>Änderung bei zweitem Fortschrittsbericht</h5>
+                                <p>{action.review_2_changed_aim}</p>
                             </div>
                         }
                     </Modal.Body>
