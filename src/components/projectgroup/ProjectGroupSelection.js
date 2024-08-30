@@ -74,10 +74,10 @@ function ProjectGroupSelection({selectedGroupIds, setSelectedGroupIds, projectGr
                 </Form>
                 <Row className="mt-2">
                     <Col>
-                        <Button onClick={resetColors}>Farben zurücksetzen</Button>
-                        <Button type='button' variant='primary' onClick={clickAllProjects} className="ms-2 mt-0">
+                        <Button type='button' variant='primary' onClick={clickAllProjects}>
                             Projektgruppen auswählen
                         </Button>
+                        <Button className="ms-2 mt-0" onClick={resetColors}>Farben zurücksetzen</Button>
                     </Col>
                 </Row>
             </div>
