@@ -19,7 +19,7 @@ function FinveDetailKPIs({ finve, last_budget }) {
                 </thead>
                 <tbody>
                 <tr>
-                    <td>Kostenerwartung {last_budget.budget_year} aktuell</td>
+                    <td>Kostenerwartung {last_budget.budget_year} (aktuell)</td>
                     <td>{last_budget.cost_estimate_actual.toLocaleString('de')} Tsd. €</td>
                 </tr>
                 {last_budget.cost_estimate_last_year &&
@@ -31,7 +31,7 @@ function FinveDetailKPIs({ finve, last_budget }) {
                 {last_budget.cost_estimate_last_year &&
                     <tr>
                         <td>Kostensteigerung zu letztem Jahr</td>
-                        <td>{(last_budget.cost_estimate_actual / last_budget.cost_estimate_last_year - 1) * 100}%</td>
+                        <td>{((last_budget.cost_estimate_actual / last_budget.cost_estimate_last_year - 1) * 100).toLocaleString('de')} %</td>
                     </tr>
                 }
                 {last_budget.cost_estimate_original &&

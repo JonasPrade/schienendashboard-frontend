@@ -27,7 +27,7 @@ function FinveItemShort ({ finve, showDiagrams, showButtonLong, setActiveFinveId
                     </Card.Title>
                     <Card.Text>
                         Budgetplan von {last_budget?.budget_year} <br/>
-                        Aktuell erwartete Gesamtkosten: {last_budget?.cost_estimate_actual.toLocaleString('de')} Tsd. €.
+                        Aktuell erwartete Gesamtkosten: {last_budget?.cost_estimate_actual?.toLocaleString('de')} Tsd. €.
                     </Card.Text>
                     {showDiagrams &&
                     <Row>
