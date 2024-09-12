@@ -5,6 +5,7 @@ import ProjectItemShort from "../project/ProjectItemShort";
 import React, {useState} from "react";
 import PopupField from "../layout/PopupField";
 import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
 function ProjectGroupMapSidebar(props) {
     const [showProjectGroup, setShowPopup] = useState(false);
@@ -37,20 +38,20 @@ function ProjectGroupMapSidebar(props) {
                 </Button>
                 {showProjectGroup &&
                     <PopupField show={showProjectGroup} setShow={setShowPopup} header={"Projektgruppen auswählen"}
-                        content={
-                            <ProjectGroupSelection
-                                selectedGroupIds={props.selectedGroupIds}
-                                setSelectedGroupIds={props.setSelectedGroupIds}
-                                projectGroups={props.projectGroups}
-                                selectedGroups={props.selectedGroups}
-                                setSelectedGroups={props.setSelectedGroups}
-                                groupColors={props.groupColors}
-                                setGroupColors={props.setGroupColors}
-                                setIsLoadingSearch={props.setIsLoadingSearch}
-                                searchHistoryRef={props.searchHistoryRef}
-                                setProjects={props.setProjects}
-                            />
-                        }
+                                content={
+                                    <ProjectGroupSelection
+                                        selectedGroupIds={props.selectedGroupIds}
+                                        setSelectedGroupIds={props.setSelectedGroupIds}
+                                        projectGroups={props.projectGroups}
+                                        selectedGroups={props.selectedGroups}
+                                        setSelectedGroups={props.setSelectedGroups}
+                                        groupColors={props.groupColors}
+                                        setGroupColors={props.setGroupColors}
+                                        setIsLoadingSearch={props.setIsLoadingSearch}
+                                        searchHistoryRef={props.searchHistoryRef}
+                                        setProjects={props.setProjects}
+                                    />
+                                }
                     />
                 }
             </div>
@@ -62,6 +63,21 @@ function ProjectGroupMapSidebar(props) {
                     </div>
                 }
             </div>
+            {props.selectedGroupIds.length === 0 &&
+            <div>
+                <Card className="bg-light border-website border-3 mt-3">
+                    <Card.Body>
+                        <Card.Title>⚠️ Keine Projektgruppe ausgewählt</Card.Title>
+                        <Card.Text>
+                            Aktuell ist keine Projektgruppe ausgewählt. Um Projekte zu finden (auch über die Suche)
+                            wähle bitte mindestens eine Projektgruppe aus. Klicke dafür auf den Button und setze die
+                            Haken bei den gewünschten Projektgruppen. Bestätige die Auswahl, indem du den Button
+                            "Projektgruppe auswählen" drückst.
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+            </div>
+            }
         </div>
     )
 }

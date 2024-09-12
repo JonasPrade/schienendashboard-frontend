@@ -145,7 +145,6 @@ function ProjectGroup() {
                                 Bitte wählen Sie eine Projektgruppe aus.
                             </p>
                         }
-
                     </div>
                 </Col>
             </Row>
