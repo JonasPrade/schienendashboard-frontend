@@ -1,3 +1,7 @@
+[!WARNING]
+This project is not developed anymore. 
+The new Project is: https://github.com/JonasPrade/raildashboard
+
 # Frontend prosd (Projekte Schiene Deutschland)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It is used for the website [Schienendashboard](https://d-b.schienengruen.de/).
